@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support StylePatch ☕</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #fff;
+    }
+    .card {
+      background: #fff;
+      color: #333;
+      border-radius: 20px;
+      padding: 50px 40px;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .icon { font-size: 64px; margin-bottom: 16px; }
+    h1 { font-size: 28px; margin-bottom: 8px; color: #1a1a2e; }
+    .desc {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      text-decoration: none;
+      padding: 16px 48px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102,126,234,0.6);
+    }
+    .footer {
+      margin-top: 24px;
+      font-size: 13px;
+      color: #999;
+    }
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+
+    /* 多语言全部显示时的样式 */
+    .all-langs .lang-section {
+      display: block;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid #eee;
+    }
+    .all-langs .lang-section:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .all-langs .btn { margin-top: 12px; }
+  </style>
+</head>
+<body>
+
+<div class="card" id="card">
+
+  <!-- ☕ 英文 -->
+  <div class="lang-section" data-lang="en">
+    <div class="icon">☕</div>
+    <h1>Buy Me a Coffee</h1>
+    <p class="desc">If StylePatch has been helpful to you,<br>consider supporting the developer!</p>
+    <a class="btn" href="https://www.creem.io/payment/prod_4LTHdgvsMSURUjevX47qHE" target="_blank">☕ Support Now</a>
+    <div class="footer">Thank you for your support ❤️</div>
+  </div>
+
+  <!-- ☕ 中文 -->
+  <div class="lang-section" data-lang="zh">
+    <div class="icon">☕</div>
+    <h1>请作者喝杯咖啡</h1>
+    <p class="desc">如果 StylePatch 对你有帮助，<br>请作者喝杯咖啡吧！</p>
+    <a class="btn" href="https://www.creem.io/payment/prod_4LTHdgvsMSURUjevX47qHE" target="_blank">☕ 立即支持</a>
+    <div class="footer">感谢你的支持 ❤️</div>
+  </div>
+
+  <!-- ☕ 西班牙语 -->
+  <div class="lang-section" data-lang="es">
+    <div class="icon">☕</div>
+    <h1>Invítame a un café</h1>
+    <p class="desc">Si StylePatch te ha sido útil,<br>¡apoya al desarrollador!</p>
+    <a class="btn" href="https://www.creem.io/payment/prod_4LTHdgvsMSURUjevX47qHE" target="_blank">☕ Apoyar ahora</a>
+    <div class="footer">Gracias por tu apoyo ❤️</div>
+  </div>
+
+  <!-- ☕ 德语 -->
+  <div class="lang-section" data-lang="de">
+    <div class="icon">☕</div>
+    <h1>Spendier mir einen Kaffee</h1>
+    <p class="desc">Wenn dir StylePatch gefällt,<br>unterstütze den Entwickler!</p>
+    <a class="btn" href="https://www.creem.io/payment/prod_4LTHdgvsMSURUjevX47qHE" target="_blank">☕ Jetzt unterstützen</a>
+    <div class="footer">Danke für deine Unterstützung ❤️</div>
+  </div>
+
+  <!-- ☕ 日语 -->
+  <div class="lang-section" data-lang="ja">
+    <div class="icon">☕</div>
+    <h1>コーヒーをおごる</h1>
+    <p class="desc">StylePatchが役に立ったら、<br>開発者を支援していただけると嬉しいです！</p>
+    <a class="btn" href="https://www.creem.io/payment/prod_4LTHdgvsMSURUjevX47qHE" target="_blank">☕ 今すぐ支援する</a>
+    <div class="footer">ご支援ありがとうございます ❤️</div>
+  </div>
+
+  <!-- ☕ 法语 -->
+  <div class="lang-section" data-lang="fr">
+    <div class="icon">☕</div>
+    <h1>Offrez-moi un café</h1>
+    <p class="desc">Si StylePatch vous a été utile,<br>soutenez le développeur !</p>
+    <a class="btn" href="https://www.creem.io/payment/prod_4LTHdgvsMSURUjevX47qHE" target="_blank">☕ Soutenir maintenant</a>
+    <div class="footer">Merci pour votre soutien ❤️</div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  var card = document.getElementById('card');
+  var sections = card.querySelectorAll('.lang-section');
+
+  // 语言代码映射：浏览器语言 → data-lang
+  var langMap = {
+    'zh': 'zh', 'zh-cn': 'zh', 'zh-tw': 'zh', 'zh-hk': 'zh',
+    'es': 'es', 'es-es': 'es', 'es-mx': 'es', 'es-ar': 'es',
+    'de': 'de', 'de-de': 'de', 'de-at': 'de', 'de-ch': 'de',
+    'ja': 'ja', 'ja-jp': 'ja',
+    'fr': 'fr', 'fr-fr': 'fr', 'fr-ca': 'fr', 'fr-be': 'fr', 'fr-ch': 'fr',
+    'en': 'en', 'en-us': 'en', 'en-gb': 'en', 'en-au': 'en', 'en-ca': 'en'
+  };
+
+  // 尝试匹配：先精确匹配，再取前缀
+  var matched = langMap[lang] || langMap[lang.split('-')[0]];
+
+  if (matched) {
+    // 匹配到了 → 只显示该语言
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].getAttribute('data-lang') === matched) {
+        sections[i].classList.add('active');
+        break;
+      }
+    }
+  } else {
+    // 匹配不到 → 显示所有语言
+    card.classList.add('all-langs');
+  }
+})();
+</script>
+
+</body>
+</html>
