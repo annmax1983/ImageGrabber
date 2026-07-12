@@ -29,7 +29,7 @@ Una extensión de navegador que escanea automáticamente las páginas web en bus
 ## Vista previa
 
 <p align="center">
-  <img src="assets/es.png" alt="Icono de Image Grabber" >
+  <img src="imgs/es.png" alt="Icono de Image Grabber" >
 </p>
 
 ---

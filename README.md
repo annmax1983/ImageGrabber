@@ -29,7 +29,7 @@ A browser extension that automatically scans webpages for images and enables bat
 ## Preview
 
 <p align="center">
-  <img src="assets/en.png" alt="Image Grabber Icon" >
+  <img src="imgs/en.png" alt="Image Grabber Icon" >
 </p>
 
 ---

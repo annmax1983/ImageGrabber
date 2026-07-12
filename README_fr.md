@@ -29,7 +29,7 @@ Une extension de navigateur qui analyse automatiquement les pages web pour trouv
 ## Aperçu
 
 <p align="center">
-  <img src="assets/fr.png" alt="Icône Image Grabber" >
+  <img src="imgs/fr.png" alt="Icône Image Grabber" >
 </p>
 
 ---

@@ -29,7 +29,7 @@
 ## 预览
 
 <p align="center">
-  <img src="assets/zh.png" alt="Image Grabber 图标" >
+  <img src="imgs/zh.png" alt="Image Grabber 图标" >
 </p>
 
 ---

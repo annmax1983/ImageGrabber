@@ -29,7 +29,7 @@ Eine Browser-Erweiterung, die Webseiten automatisch nach Bildern durchsucht und 
 ## Vorschau
 
 <p align="center">
-  <img src="assets/de.png" alt="Image Grabber Symbol">
+  <img src="imgs/de.png" alt="Image Grabber Symbol">
 </p>
 
 ---

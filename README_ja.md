@@ -29,7 +29,7 @@
 ## プレビュー
 
 <p align="center">
-  <img src="assets/ja.png" alt="Image Grabber アイコン">
+  <img src="imgs/ja.png" alt="Image Grabber アイコン">
 </p>
 
 ---
