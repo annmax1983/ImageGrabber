@@ -21,6 +21,7 @@ Une extension de navigateur qui analyse automatiquement les pages web pour trouv
 | ⬇️ **Téléchargement individuel** | Téléchargez les images sélectionnées une par une dans un dossier `ImageGrabber/` |
 | 📦 **Téléchargement ZIP par lot** | Regroupez toutes les images sélectionnées en un seul fichier ZIP (propulsé par JSZip) |
 | 💾 **État persistant** | Les listes d'images survivent aux redémarrages du service worker via `chrome.storage.local` |
+| 🎯 **Sélection manuelle** | Mode de capture par clic — survol pour surligner, clic pour collecter |
 | 🔄 **Compatibilité SPA** | Détecte la navigation des applications monopage (`pushState` / `replaceState` / `popstate`) et réanalyse automatiquement |
 
 ---
@@ -60,6 +61,7 @@ Une extension de navigateur qui analyse automatiquement les pages web pour trouv
 2. **Cliquez sur l'icône Image Grabber** pour ouvrir le panneau latéral
 3. **Activez Auto** — Basculez « Auto » pour collecter les images en continu pendant le chargement de la page
 4. **Ou cliquez sur Scanner** — Lancez une analyse manuelle de toute la page
+5. **Sélection manuelle** — Cliquez sur 🎯 pour entrer en mode capture, survolez pour surligner, cliquez pour collecter
 5. **Filtrez** — Définissez la largeur/hauteur minimale, sélectionnez le type d'image, choisissez l'ordre
 6. **Changez de vue** — Basculez entre la disposition grille (▦) et liste (☰)
 7. **Sélectionnez** — Cliquez sur les images pour les sélectionner, ou utilisez les boutons Tout / Aucun
@@ -70,7 +72,7 @@ Une extension de navigateur qui analyse automatiquement les pages web pour trouv
 
 ## Confidentialité
 
-- Permissions requises : `activeTab`, `tabs`, `storage`, `downloads`, `scripting`, `sidePanel`
+- Permissions requises : `storage`, `downloads`, `sidePanel`
 - Tout le traitement des images s'exécute localement dans votre navigateur, aucun téléchargement de données externe
 - Aucune analyse, aucun suivi utilisateur, aucune collecte de données
 - Toutes les données d'images en cache sont stockées uniquement dans le stockage local de votre navigateur

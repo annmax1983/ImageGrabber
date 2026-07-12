@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Grabber - Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f8f9fa; color: #333; line-height: 1.7; padding: 40px 20px;
+    }
+    .container {
+      max-width: 680px; margin: 0 auto; background: white;
+      border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 40px 32px;
+    }
+    h1 { font-size: 24px; color: #4CAF50; margin-bottom: 8px; }
+    .updated { font-size: 13px; color: #80868b; margin-bottom: 24px; }
+    h2 { font-size: 18px; color: #202124; margin: 24px 0 8px; }
+    p { margin-bottom: 12px; }
+    ul { margin: 8px 0 12px 20px; }
+    li { margin-bottom: 6px; }
+    .highlight {
+      background: #e8f5e9; border-left: 4px solid #4CAF50;
+      padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0;
+    }
+    .footer {
+      margin-top: 32px; padding-top: 16px; border-top: 1px solid #e8eaed;
+      font-size: 13px; color: #80868b; text-align: center;
+    }
+    .footer a { color: #4CAF50; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 id="pageTitle"></h1>
+  <div class="updated" id="updated"></div>
+  <div class="highlight" id="highlight"></div>
+  <h2 id="hCollection"></h2>
+  <p id="pCollection"></p>
+  <ul id="listCollection"></ul>
+  <h2 id="hStorage"></h2>
+  <p id="pStorage"></p>
+  <ul id="listStorage"></ul>
+  <p id="pStorageNote"></p>
+  <h2 id="hPermissions"></h2>
+  <ul id="listPermissions"></ul>
+  <p id="pPermissions"></p>
+  <h2 id="hDownloads"></h2>
+  <ul id="listDownloads"></ul>
+  <h2 id="hThirdParty"></h2>
+  <p id="pThirdParty"></p>
+  <h2 id="hChanges"></h2>
+  <p id="pChanges"></p>
+  <h2 id="hContact"></h2>
+  <p id="pContact"></p>
+  <div class="footer" id="footer"></div>
+</div>
+
+<script>
+const I18N = {
+  en: {
+    title: '🔒 Privacy Policy — Image Grabber',
+    updated: 'Last updated: July 2026',
+    highlight: '<strong>Image Grabber does not collect, store, transmit, or share any personal data.</strong><br>All image scanning and processing runs entirely in your browser. No data leaves your device.',
+    hCollection: 'Data Collection', pCollection: 'Image Grabber does <strong>not</strong> collect any of the following:',
+    listCollection: ['Personal identification information', 'Browsing history or URLs visited', 'Usage analytics or telemetry', 'Cookies or tracking identifiers', 'Image content or file data'],
+    hStorage: 'Data Storage', pStorage: 'Image Grabber stores the following data <strong>locally in your browser</strong> using the Chrome Storage API:',
+    listStorage: ['<strong>Collected image URLs</strong> — URLs of images found on web pages you visit while the extension is active', '<strong>User preferences</strong> — filter settings, auto-collect toggle state, view mode'],
+    pStorageNote: 'This data never leaves your browser and is automatically deleted when you uninstall the extension.',
+    hPermissions: 'Permissions',
+    listPermissions: ['<strong>storage</strong> — Required to save collected image URLs and user preferences locally', '<strong>downloads</strong> — Required to download selected images to your computer', '<strong>sidePanel</strong> — Required to display the image gallery in Chrome\'s side panel', '<strong>host_permissions (&lt;all_urls&gt;)</strong> — Required to scan web pages for images. Only scans when you explicitly trigger it.'],
+    pPermissions: 'Image Grabber does <strong>not</strong> use these permissions to read personal data, track activity, or transmit content to external servers.',
+    hDownloads: 'Image Downloads',
+    listDownloads: ['Images are fetched directly from their original source URLs', 'Downloads are saved locally to your computer\'s ImageGrabber/ folder', 'No image data is sent to any third-party server', 'ZIP files are generated locally in your browser using JSZip'],
+    hThirdParty: 'Third-Party Services', pThirdParty: 'Image Grabber does <strong>not</strong> connect to any third-party servers, APIs, or analytics services.',
+    hChanges: 'Changes to This Policy', pChanges: 'Any changes to this privacy policy will be reflected on this page with an updated date.',
+    hContact: 'Contact', pContact: 'If you have questions about this privacy policy, please open an issue on <a href="https://gitee.com/xinsiyu/pic-grabber">Gitee</a>.',
+    footer: 'Image Grabber &copy; 2026. Your privacy is respected by design.'
+  },
+  zh: {
+    title: '🔒 隐私条款 — Image Grabber',
+    updated: '最后更新：2026 年 7 月',
+    highlight: '<strong>Image Grabber 不收集、存储、传输或共享任何个人数据。</strong><br>所有图片扫描和处理均在您的浏览器本地完成，数据不会离开您的设备。',
+    hCollection: '数据收集', pCollection: 'Image Grabber <strong>不会</strong>收集以下任何信息：',
+    listCollection: ['个人身份信息', '浏览历史或访问的网址', '使用分析或遥测数据', 'Cookie 或跟踪标识符', '图片内容或文件数据'],
+    hStorage: '数据存储', pStorage: 'Image Grabber 使用 Chrome Storage API 将以下数据<strong>存储在您的浏览器本地</strong>：',
+    listStorage: ['<strong>采集的图片 URL</strong> — 您访问网页时发现的图片链接', '<strong>用户偏好</strong> — 筛选设置、自动采集开关、视图模式'],
+    pStorageNote: '这些数据不会离开您的浏览器，卸载扩展时会自动删除。',
+    hPermissions: '权限说明',
+    listPermissions: ['<strong>storage</strong> — 用于在本地保存采集的图片 URL 和用户偏好', '<strong>downloads</strong> — 用于将选中的图片下载到您的电脑', '<strong>sidePanel</strong> — 用于在浏览器侧边栏中展示图片库', '<strong>host_permissions (&lt;all_urls&gt;)</strong> — 用于扫描网页中的图片。仅在您主动触发时才进行扫描。'],
+    pPermissions: 'Image Grabber <strong>不会</strong>使用这些权限读取个人数据、追踪活动或向外部服务器传输内容。',
+    hDownloads: '图片下载',
+    listDownloads: ['图片直接从原始源 URL 获取', '下载的图片保存在您电脑的 ImageGrabber/ 文件夹中', '不会将任何图片数据发送到第三方服务器', 'ZIP 文件使用 JSZip 在浏览器本地生成'],
+    hThirdParty: '第三方服务', pThirdParty: 'Image Grabber <strong>不会</strong>连接任何第三方服务器、API 或分析服务。',
+    hChanges: '条款变更', pChanges: '本隐私条款的任何变更将在本页面上更新并注明日期。',
+    hContact: '联系方式', pContact: '如果您对本隐私条款有任何疑问，请在 <a href="https://gitee.com/xinsiyu/pic-grabber">Gitee</a> 上提交 Issue。',
+    footer: 'Image Grabber &copy; 2026。您的隐私是我们的设计原则。'
+  },
+  ja: {
+    title: '🔒 プライバシーポリシー — Image Grabber',
+    updated: '最終更新：2026年7月',
+    highlight: '<strong>Image Grabber は個人データを収集、保存、送信、共有しません。</strong><br>すべての画像スキャンと処理はブラウザ内でローカルに実行されます。',
+    hCollection: 'データの収集', pCollection: 'Image Grabber は以下のデータを<strong>収集しません</strong>：',
+    listCollection: ['個人識別情報', '閲覧履歴またはアクセスしたURL', '使用分析またはテレメトリ', 'Cookieまたは追跡識別子', '画像コンテンツまたはファイルデータ'],
+    hStorage: 'データの保存', pStorage: 'Image Grabber は Chrome Storage API を使用して、以下のデータを<strong>ブラウザ内にローカル保存</strong>します：',
+    listStorage: ['<strong>収集した画像URL</strong> — アクティブなタブで訪問したウェブページから発見された画像のURL', '<strong>ユーザー設定</strong> — フィルタ設定、自動収集トグル状態、表示モード'],
+    pStorageNote: 'このデータはブラウザから外に出ず、拡張機能をアンインストールすると自動的に削除されます。',
+    hPermissions: '権限の説明',
+    listPermissions: ['<strong>storage</strong> — 収集した画像URLとユーザー設定をローカルに保存するために必要', '<strong>downloads</strong> — 選択した画像をパソコンにダウンロードするために必要', '<strong>sidePanel</strong> — ブラウザのサイドパネルに画像ギャラリーを表示するために必要', '<strong>host_permissions (&lt;all_urls&gt;)</strong> — ウェブページの画像をスキャンするために必要。ユーザーが明示的にトリガーした時のみスキャンします。'],
+    pPermissions: 'Image Grabber はこれらの権限を使用して個人データの読み取り、活動の追跡、外部サーバーへのデータ送信は<strong>行いません</strong>。',
+    hDownloads: '画像のダウンロード',
+    listDownloads: ['画像は元のソースURLから直接取得されます', 'ダウンロードされた画像はパソコンの ImageGrabber/ フォルダに保存されます', '画像データがサードパーティサーバーに送信されることはありません', 'ZIPファイルはJSZipを使用してブラウザ内でローカルに生成されます'],
+    hThirdParty: 'サードパーティサービス', pThirdParty: 'Image Grabber はサードパーティのサーバー、API、分析サービスに<strong>接続しません</strong>。',
+    hChanges: 'ポリシーの変更', pChanges: '本プライバシーポリシーの変更は、このページに更新日付とともに反映されます。',
+    hContact: 'お問い合わせ', pContact: '本プライバシーポリシーに関するご質問は、<a href="https://gitee.com/xinsiyu/pic-grabber">Gitee</a> で Issue を作成してください。',
+    footer: 'Image Grabber &copy; 2026。あなたのプライバシーは設計の原則です。'
+  },
+  de: {
+    title: '🔒 Datenschutzrichtlinie — Image Grabber',
+    updated: 'Letzte Aktualisierung: Juli 2026',
+    highlight: '<strong>Image Grabber erfasst, speichert, übermittelt oder teilt keine personenbezogenen Daten.</strong><br>Alle Bildverarbeitung läuft lokal in Ihrem Browser.',
+    hCollection: 'Datenerfassung', pCollection: 'Image Grabber erfasst <strong>keine</strong> der folgenden Daten:',
+    listCollection: ['Persönliche Identifikationsinformationen', 'Browserverlauf oder besuchte URLs', 'Nutzungsanalysen oder Telemetrie', 'Cookies oder Tracking-Kennungen', 'Bildinhalte oder Dateidaten'],
+    hStorage: 'Datenspeicherung', pStorage: 'Image Grabber speichert die folgenden Daten <strong>lokal in Ihrem Browser</strong> über die Chrome Storage API:',
+    listStorage: ['<strong>Gesammelte Bild-URLs</strong> — URLs von Bildern auf besuchten Webseiten', '<strong>Benutzereinstellungen</strong> — Filtereinstellungen, Auto-Sammeln-Status, Ansichtsmodus'],
+    pStorageNote: 'Diese Daten verlassen Ihren Browser nie und werden beim Deinstallieren automatisch gelöscht.',
+    hPermissions: 'Berechtigungen',
+    listPermissions: ['<strong>storage</strong> — Erforderlich, um gesammelte Bild-URLs und Einstellungen lokal zu speichern', '<strong>downloads</strong> — Erforderlich, um ausgewählte Bilder herunterzuladen', '<strong>sidePanel</strong> — Erforderlich, um die Bildergalerie in der Seitenleiste anzuzeigen', '<strong>host_permissions (&lt;all_urls&gt;)</strong> — Erforderlich, um Webseiten nach Bildern zu scannen. Scannt nur auf expliziten Auslöser.'],
+    pPermissions: 'Image Grabber verwendet diese Berechtigungen <strong>nicht</strong>, um personenbezogene Daten zu lesen oder zu übermitteln.',
+    hDownloads: 'Bild-Downloads',
+    listDownloads: ['Bilder werden direkt von ihrer Original-URL geladen', 'Downloads werden lokal in Ihrem ImageGrabber/ Ordner gespeichert', 'Keine Bilddaten werden an Dritte gesendet', 'ZIP-Dateien werden lokal im Browser mit JSZip erstellt'],
+    hThirdParty: 'Dienste von Drittanbietern', pThirdParty: 'Image Grabber verbindet sich <strong>nicht</strong> mit Servern, APIs oder Analysediensten Dritter.',
+    hChanges: 'Änderungen dieser Richtlinie', pChanges: 'Änderungen werden auf dieser Seite mit aktualisiertem Datum angezeigt.',
+    hContact: 'Kontakt', pContact: 'Bei Fragen erstellen Sie bitte ein Issue auf <a href="https://gitee.com/xinsiyu/pic-grabber">Gitee</a>.',
+    footer: 'Image Grabber &copy; 2026. Ihre Privatsphäre ist unser Designprinzip.'
+  },
+  es: {
+    title: '🔒 Política de Privacidad — Image Grabber',
+    updated: 'Última actualización: julio de 2026',
+    highlight: '<strong>Image Grabber no recopila, almacena, transmite ni comparte datos personales.</strong><br>Todo el procesamiento se realiza localmente en su navegador.',
+    hCollection: 'Recopilación de Datos', pCollection: 'Image Grabber <strong>no</strong> recopila ninguna de las siguientes informaciones:',
+    listCollection: ['Información de identificación personal', 'Historial de navegación o URLs visitadas', 'Analíticas de uso o telemetría', 'Cookies o identificadores de seguimiento', 'Contenido de imágenes o datos de archivos'],
+    hStorage: 'Almacenamiento de Datos', pStorage: 'Image Grabber almacena los siguientes datos <strong>localmente en su navegador</strong> usando la API de Chrome Storage:',
+    listStorage: ['<strong>URLs de imágenes recopiladas</strong> — URLs de imágenes encontradas en las páginas que visita', '<strong>Preferencias del usuario</strong> — configuración de filtros, estado de auto-recolección, modo de vista'],
+    pStorageNote: 'Estos datos nunca salen de su navegador y se eliminan automáticamente al desinstalar.',
+    hPermissions: 'Permisos',
+    listPermissions: ['<strong>storage</strong> — Requerido para guardar URLs y preferencias localmente', '<strong>downloads</strong> — Requerido para descargar imágenes seleccionadas', '<strong>sidePanel</strong> — Requerido para mostrar la galería en el panel lateral', '<strong>host_permissions (&lt;all_urls&gt;)</strong> — Requerido para escanear páginas web en busca de imágenes. Solo escanea cuando usted lo activa.'],
+    pPermissions: 'Image Grabber <strong>no</strong> usa estos permisos para leer datos personales ni transmitir contenido.',
+    hDownloads: 'Descarga de Imágenes',
+    listDownloads: ['Las imágenes se obtienen directamente de sus URLs originales', 'Las descargas se guardan localmente en su carpeta ImageGrabber/', 'No se envían datos de imágenes a terceros', 'Los archivos ZIP se generan localmente con JSZip'],
+    hThirdParty: 'Servicios de Terceros', pThirdParty: 'Image Grabber <strong>no</strong> se conecta a servidores de terceros, APIs ni servicios de análisis.',
+    hChanges: 'Cambios en Esta Política', pChanges: 'Cualquier cambio se reflejará en esta página con la fecha actualizada.',
+    hContact: 'Contacto', pContact: 'Si tiene preguntas, abra un issue en <a href="https://gitee.com/xinsiyu/pic-grabber">Gitee</a>.',
+    footer: 'Image Grabber &copy; 2026. Su privacidad es nuestro principio de diseño.'
+  },
+  fr: {
+    title: '🔒 Politique de Confidentialité — Image Grabber',
+    updated: 'Dernière mise à jour : juillet 2026',
+    highlight: '<strong>Image Grabber ne collecte, ne stocke, ne transmet ni ne partage de données personnelles.</strong><br>Tout le traitement s\'effectue localement dans votre navigateur.',
+    hCollection: 'Collecte de Données', pCollection: 'Image Grabber ne collecte <strong>aucune</strong> des données suivantes :',
+    listCollection: ['Informations d\'identification personnelle', 'Historique de navigation ou URLs visitées', 'Analyses d\'utilisation ou télémétrie', 'Cookies ou identifiants de suivi', 'Contenu d\'images ou données de fichiers'],
+    hStorage: 'Stockage des Données', pStorage: 'Image Grabber stocke les données suivantes <strong>localement dans votre navigateur</strong> via l\'API Chrome Storage :',
+    listStorage: ['<strong>URLs d\'images collectées</strong> — URLs des images trouvées sur les pages visitées', '<strong>Préférences utilisateur</strong> — paramètres de filtre, état de collecte automatique, mode d\'affichage'],
+    pStorageNote: 'Ces données ne quittent jamais votre navigateur et sont supprimées lors de la désinstallation.',
+    hPermissions: 'Permissions',
+    listPermissions: ['<strong>storage</strong> — Requis pour enregistrer les URLs et préférences localement', '<strong>downloads</strong> — Requis pour télécharger les images sélectionnées', '<strong>sidePanel</strong> — Requis pour afficher la galerie dans le panneau latéral', '<strong>host_permissions (&lt;all_urls&gt;)</strong> — Requis pour scanner les pages web. Ne scanne que lorsque vous le déclenchez.'],
+    pPermissions: 'Image Grabber n\'utilise <strong>pas</strong> ces permissions pour lire des données personnelles ou transmettre du contenu.',
+    hDownloads: 'Téléchargement d\'Images',
+    listDownloads: ['Les images sont récupérées directement depuis leurs URLs sources', 'Les téléchargements sont sauvegardés localement dans votre dossier ImageGrabber/', 'Aucune donnée d\'image n\'est envoyée à des tiers', 'Les fichiers ZIP sont générés localement avec JSZip'],
+    hThirdParty: 'Services Tiers', pThirdParty: 'Image Grabber ne se connecte <strong>pas</strong> à des serveurs tiers, des API ou des services d\'analyse.',
+    hChanges: 'Modifications de Cette Politique', pChanges: 'Toute modification sera reflétée sur cette page avec la date mise à jour.',
+    hContact: 'Contact', pContact: 'Pour toute question, ouvrez une issue sur <a href="https://gitee.com/xinsiyu/pic-grabber">Gitee</a>.',
+    footer: 'Image Grabber &copy; 2026. Votre vie privée est notre principe de conception.'
+  }
+};
+
+function detectLang() {
+  const code = (navigator.language || 'en').split('-')[0].toLowerCase();
+  return I18N[code] ? code : 'en';
+}
+
+function apply(t) {
+  document.title = t.title.replace(/🔒\s*/, '');
+  document.getElementById('pageTitle').textContent = t.title;
+  document.getElementById('updated').textContent = t.updated;
+  document.getElementById('highlight').innerHTML = t.highlight;
+  document.getElementById('hCollection').textContent = t.hCollection;
+  document.getElementById('pCollection').innerHTML = t.pCollection;
+  document.getElementById('listCollection').innerHTML = t.listCollection.map(i => '<li>' + i + '</li>').join('');
+  document.getElementById('hStorage').textContent = t.hStorage;
+  document.getElementById('pStorage').innerHTML = t.pStorage;
+  document.getElementById('listStorage').innerHTML = t.listStorage.map(i => '<li>' + i + '</li>').join('');
+  document.getElementById('pStorageNote').textContent = t.pStorageNote;
+  document.getElementById('hPermissions').textContent = t.hPermissions;
+  document.getElementById('listPermissions').innerHTML = t.listPermissions.map(i => '<li>' + i + '</li>').join('');
+  document.getElementById('pPermissions').innerHTML = t.pPermissions;
+  document.getElementById('hDownloads').textContent = t.hDownloads;
+  document.getElementById('listDownloads').innerHTML = t.listDownloads.map(i => '<li>' + i + '</li>').join('');
+  document.getElementById('hThirdParty').textContent = t.hThirdParty;
+  document.getElementById('pThirdParty').innerHTML = t.pThirdParty;
+  document.getElementById('hChanges').textContent = t.hChanges;
+  document.getElementById('pChanges').innerHTML = t.pChanges;
+  document.getElementById('hContact').textContent = t.hContact;
+  document.getElementById('pContact').innerHTML = t.pContact;
+  document.getElementById('footer').innerHTML = t.footer;
+  document.documentElement.lang = detectLang();
+}
+
+apply(I18N[detectLang()]);
+</script>
+</body>
+</html>

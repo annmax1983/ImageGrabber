@@ -21,6 +21,7 @@ A browser extension that automatically scans webpages for images and enables bat
 | ⬇️ **Individual Download** | Download selected images one by one to an `ImageGrabber/` folder |
 | 📦 **ZIP Batch Download** | Pack all selected images into a single ZIP file (powered by JSZip) |
 | 💾 **Persistent State** | Image lists survive service worker restarts via `chrome.storage.local` |
+| 🎯 **Manual Pick** | Click-to-collect mode — hover to highlight, click to grab individual images |
 | 🔄 **SPA Support** | Detects SPA navigation (`pushState` / `replaceState` / `popstate`) and re-scans automatically |
 
 ---
@@ -60,6 +61,7 @@ A browser extension that automatically scans webpages for images and enables bat
 2. **Click the Image Grabber icon** to open the side panel
 3. **Enable Auto** — Toggle "Auto" to continuously collect images as the page loads
 4. **Or click Scan** — Manually trigger a one-time full-page scan
+5. **Manual Pick** — Click 🎯 to enter pick mode, hover to highlight images, click to collect
 5. **Filter** — Set minimum width/height, select image type, choose sort order
 6. **Switch views** — Toggle between grid (▦) and list (☰) layout
 7. **Select** — Click images to select, or use All / None buttons
@@ -70,7 +72,7 @@ A browser extension that automatically scans webpages for images and enables bat
 
 ## Privacy
 
-- Required permissions: `activeTab`, `tabs`, `storage`, `downloads`, `scripting`, `sidePanel`
+- Required permissions: `storage`, `downloads`, `sidePanel`
 - All image processing runs locally in your browser, no external data uploads
 - No analytics, user tracking or remote data collection
 - All cached image data is stored only in your browser local storage
