@@ -1,6 +1,5 @@
 # Image Grabber
-
-[English](README.md) | [中文](README_zh.md) | [Español](README_es.md) | [Deutsch](README_de.md) | [日本語](README_ja.md) | [Français](README_fr.md)
+[English](../README.md) | [中文](README_zh.md) | Español | [Deutsch](README_de.md) | [日本語](README_ja.md) | [Français](README_fr.md)
 
 Una extensión de navegador que escanea automáticamente las páginas web en busca de imágenes y permite la descarga por lotes con un solo clic.
 
@@ -13,7 +12,7 @@ Una extensión de navegador que escanea automáticamente las páginas web en bus
 | Función | Descripción |
 |---------|-------------|
 | 🔍 **Detección inteligente de imágenes** | Escanea `<img>`, CSS `background-image`, `<video poster>`, `<source srcset>` y SVG `<image>` |
-| 🤖 **Recolección automática** | Monitoreo en tiempo real mediante MutationObserver — las nuevas imágenes se recopilan automáticamente mientras navegas |
+| 🤖 **Recolección automática** | Recopila imágenes cargadas en la página — img, fondo CSS, póster de video, srcset, SVG |
 | 📋 **Vista de cuadrícula y lista** | Alterna entre la vista de cuadrícula de miniaturas y la vista de tabla compacta |
 | 🔎 **Filtrar y ordenar** | Filtra por dimensiones mínimas y tipo de imagen (JPG, PNG, GIF, WebP, SVG); ordena por tamaño o nombre |
 | ✅ **Selección por lotes** | Seleccionar todo, deseleccionar todo o elegir imágenes individuales para operaciones en lote |
@@ -76,6 +75,16 @@ Una extensión de navegador que escanea automáticamente las páginas web en bus
 - Todo el procesamiento de imágenes se ejecuta localmente en tu navegador, sin subida de datos externos
 - Sin analíticas, sin rastreo de usuarios, sin recopilación de datos remotos
 - Todos los datos de imágenes en caché se almacenan solo en el almacenamiento local de tu navegador
+
+---
+
+## Aviso de derechos de autor
+
+Esta extensión solo proporciona capacidades de visualización y descarga de recursos de imagen locales para la clasificación y referencia personal sin conexión del usuario. Todas las imágenes, ilustraciones y materiales gráficos de las páginas web están protegidos por derechos de autor y leyes de propiedad intelectual. Los usuarios no deben usar imágenes descargadas en lote para producción comercial, republicación no autorizada o rastreo masivo.
+
+## Aviso de rastreo
+
+No use esta herramienta para capturar recursos de imagen de sitios web con protección de derechos de autor, mecanismos anti-rastreo o restricciones claras de uso de contenido.
 
 ---
 

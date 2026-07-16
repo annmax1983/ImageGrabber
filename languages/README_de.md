@@ -1,6 +1,5 @@
 # Image Grabber
-
-[English](README.md) | [中文](README_zh.md) | [Español](README_es.md) | [Deutsch](README_de.md) | [日本語](README_ja.md) | [Français](README_fr.md)
+[English](../README.md) | [中文](README_zh.md) | [Español](README_es.md) | Deutsch | [日本語](README_ja.md) | [Français](README_fr.md)
 
 Eine Browser-Erweiterung, die Webseiten automatisch nach Bildern durchsucht und den Batch-Download mit einem Klick ermöglicht.
 
@@ -13,7 +12,7 @@ Eine Browser-Erweiterung, die Webseiten automatisch nach Bildern durchsucht und 
 | Funktion | Beschreibung |
 |----------|-------------|
 | 🔍 **Intelligente Bilderkennung** | Scannt `<img>`, CSS `background-image`, `<video poster>`, `<source srcset>` und SVG `<image>` |
-| 🤖 **Automatische Sammlung** | Echtzeitüberwachung über MutationObserver — neue Bilder werden automatisch beim Browsen gesammelt |
+| 🤖 **Automatische Sammlung** | Sammelt Bilder auf der Seite — img, CSS-Hintergrund, Video-Poster, srcset, SVG |
 | 📋 **Raster- und Listenansicht** | Wechsle zwischen Miniaturansicht-Raster und kompakter Tabellenansicht |
 | 🔎 **Filtern & Sortieren** | Filtere nach Mindestgröße und Bildtyp (JPG, PNG, GIF, WebP, SVG); sortiere nach Größe oder Name |
 | ✅ **Batch-Auswahl** | Alle auswählen, Auswahl aufheben oder einzelne Bilder für Massenoperationen auswählen |
@@ -76,6 +75,16 @@ Eine Browser-Erweiterung, die Webseiten automatisch nach Bildern durchsucht und 
 - Alle Bildverarbeitung läuft lokal in deinem Browser, keine externen Datenuploads
 - Keine Analysen, kein Tracking, keine Datensammlung
 - Alle zwischengespeicherten Bilddaten werden nur im lokalen Speicher deines Browsers gespeichert
+
+---
+
+## Urheberrechtlicher Haftungsausschluss
+
+Diese Erweiterung bietet nur lokale Bildressourcen-Ansicht und Download-Funktionen für die persönliche Offline-Sortierung und Referenz des Benutzers. Alle Bilder, Illustrationen und Grafikmaterialien auf Webseiten unterliegen dem Urheberrecht und dem geistigen Eigentumsgesetz. Massenhaft heruntergeladene Bilder dürfen nicht für kommerzielle Produktion, unbefugte Weitergabe oder Massen-Crawling verwendet werden.
+
+## Crawling-Hinweis
+
+Verwenden Sie dieses Tool nicht, um Bildressourcen von Webseiten mit Urheberrechtsschutz, Anti-Crawl-Mechanismen oder klaren Inhaltsbeschränkungen massenhaft zu erfassen.
 
 ---
 

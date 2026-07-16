@@ -1,6 +1,5 @@
 # Image Grabber
-
-[English](README.md) | [中文](README_zh.md) | [Español](README_es.md) | [Deutsch](README_de.md) | [日本語](README_ja.md) | [Français](README_fr.md)
+[English](../README.md) | [中文](README_zh.md) | [Español](README_es.md) | [Deutsch](README_de.md) | [日本語](README_ja.md) | Français
 
 Une extension de navigateur qui analyse automatiquement les pages web pour trouver des images et permet le téléchargement par lot en un clic.
 
@@ -13,7 +12,7 @@ Une extension de navigateur qui analyse automatiquement les pages web pour trouv
 | Fonctionnalité | Description |
 |----------------|-------------|
 | 🔍 **Détection intelligente des images** | Analyse `<img>`, CSS `background-image>`, `<video poster>`, `<source srcset>` et SVG `<image>` |
-| 🤖 **Collecte automatique** | Surveillance en temps réel via MutationObserver — les nouvelles images sont collectées automatiquement pendant la navigation |
+| 🤖 **Collecte automatique** | Collecte les images chargées sur la page — img, arrière-plan CSS, poster vidéo, srcset, SVG |
 | 📋 **Vue grille et liste** | Basculez entre la vue grille de miniatures et la vue tableau compacte |
 | 🔎 **Filtrer et trier** | Filtrez par dimensions minimales et type d'image (JPG, PNG, GIF, WebP, SVG) ; triez par taille ou nom |
 | ✅ **Sélection par lot** | Tout sélectionner, tout désélectionner ou choisir des images individuelles pour des opérations groupées |
@@ -76,6 +75,16 @@ Une extension de navigateur qui analyse automatiquement les pages web pour trouv
 - Tout le traitement des images s'exécute localement dans votre navigateur, aucun téléchargement de données externe
 - Aucune analyse, aucun suivi utilisateur, aucune collecte de données
 - Toutes les données d'images en cache sont stockées uniquement dans le stockage local de votre navigateur
+
+---
+
+## Avis de droit d'auteur
+
+Cette extension ne fournit que des capacités de visualisation et de téléchargement de ressources d'image locales pour le tri et la référence personnels hors ligne. Toutes les images, illustrations et ressources graphiques des pages web sont protégées par le droit d'auteur et la propriété intellectuelle. Les utilisateurs ne doivent pas utiliser les images téléchargées en lot pour la production commerciale, la republication non autorisée ou le crawling massif.
+
+## Rappel sur le crawling
+
+N'utilisez pas cet outil pour capturer des ressources d'image de sites web avec protection des droits d'auteur, mécanismes anti-crawling ou restrictions claires sur l'utilisation du contenu.
 
 ---
 
