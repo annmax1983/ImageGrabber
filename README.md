@@ -4,7 +4,7 @@
 
 A browser extension that collects images from webpages and enables batch download with one click.
 
-> Chromium-based · Manifest V3 · Zero tracking · Side Panel UI
+> Chromium-based · Manifest V3 · No tracking · Side Panel UI
 
 ---
 

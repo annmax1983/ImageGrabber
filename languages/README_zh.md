@@ -3,7 +3,7 @@
 
 一款浏览器扩展，自动扫描网页中的图片并支持一键批量下载。
 
-> 基于 Chromium · Manifest V3 · 零追踪 · 侧边栏界面
+> 基于 Chromium · Manifest V3 · 无追踪 · 侧边栏界面
 
 ---
 
