@@ -20,7 +20,6 @@ Una extensión de navegador que escanea automáticamente las páginas web en bus
 | ⬇️ **Descarga individual** | Descarga las imágenes seleccionadas una por una en una carpeta `ImageGrabber/` |
 | 📦 **Descarga ZIP por lotes** | Empaqueta todas las imágenes seleccionadas en un solo archivo ZIP (con JSZip) |
 | 💾 **Estado persistente** | Las listas de imágenes sobreviven a los reinicios del service worker mediante `chrome.storage.local` |
-| 🎯 **Selección manual** | Modo de captura por clic — resalta al pasar el ratón, clic para recopilar |
 | 🔄 **Compatibilidad con SPA** | Detecta la navegación en aplicaciones de una sola página (`pushState` / `replaceState` / `popstate`) y reescanea automáticamente |
 
 ---
@@ -60,7 +59,6 @@ Una extensión de navegador que escanea automáticamente las páginas web en bus
 2. **Haz clic en el icono de Image Grabber** para abrir el panel lateral
 3. **Activa Auto** — Alterna "Auto" para recopilar imágenes continuamente mientras se carga la página
 4. **O haz clic en Escanear** — Inicia un escaneo manual de toda la página
-5. **Selección manual** — Haz clic en 🎯 para entrar al modo de captura, pasa el ratón para resaltar, clic para recopilar
 5. **Filtra** — Establece ancho/alto mínimo, selecciona tipo de imagen, elige el orden
 6. **Cambia vistas** — Alterna entre la disposición de cuadrícula (▦) y lista (☰)
 7. **Selecciona** — Haz clic en las imágenes para seleccionarlas, o usa los botones Todas / Ninguna
@@ -102,4 +100,4 @@ Copyright © 2026 Image Grabber. Todos los derechos reservados.
 
 Si Image Grabber te resulta útil, ¡considera invitarme a un café!
 
-**[👉 Haz clic aquí para apoyar](https://www.creem.io/payment/prod_4LTHdgvsMSURUjevX47qHE)**
+**[👉 Haz clic aquí para apoyar](https://ko-fi.com/annmax?ref=imagegrabber)**

@@ -20,7 +20,6 @@ Eine Browser-Erweiterung, die Webseiten automatisch nach Bildern durchsucht und 
 | ⬇️ **Einzeldownload** | Lade ausgewählte Bilder einzeln in einen `ImageGrabber/`-Ordner herunter |
 | 📦 **ZIP-Batch-Download** | Packe alle ausgewählten Bilder in eine einzelne ZIP-Datei (mit JSZip) |
 | 💾 **Dauerhafter Zustand** | Bildlisten überleben Service-Worker-Neustarts über `chrome.storage.local` |
-| 🎯 **Manuelle Auswahl** | Klick-Sammelmodus — Hover zum Hervorheben, Klick zum Sammeln einzelner Bilder |
 | 🔄 **SPA-Unterstützung** | Erkennt Single-Page-App-Navigation (`pushState` / `replaceState` / `popstate`) und scannt automatisch erneut |
 
 ---
@@ -60,7 +59,6 @@ Eine Browser-Erweiterung, die Webseiten automatisch nach Bildern durchsucht und 
 2. **Klicke auf das Image-Grabber-Symbol**, um die Seitenleiste zu öffnen
 3. **Auto aktivieren** — Schalte "Auto" ein, um Bilder beim Laden der Seite kontinuierlich zu sammeln
 4. **Oder klicke auf Scannen** — Starte einen manuellen Vollseiten-Scan
-5. **Manuelle Auswahl** — Klicke 🎯 für den Auswahlmodus, hover zum Hervorheben, klicke zum Sammeln
 5. **Filtern** — Setze minimale Breite/Höhe, wähle den Bildtyp und die Sortierreihenfolge
 6. **Ansicht wechseln** — Wechsle zwischen Raster- (▦) und Listenlayout (☰)
 7. **Auswählen** — Klicke auf Bilder zur Auswahl, oder verwende die Alle / Keine Buttons
@@ -102,4 +100,4 @@ Copyright © 2026 Image Grabber. Alle Rechte vorbehalten.
 
 Wenn dir Image Grabber hilft, erwäge, mir einen Kaffee auszugeben!
 
-**[👉 Klicke hier zum Unterstützen](https://www.creem.io/payment/prod_4LTHdgvsMSURUjevX47qHE)**
+**[👉 Klicke hier zum Unterstützen](https://ko-fi.com/annmax?ref=imagegrabber)**
