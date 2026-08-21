@@ -76,6 +76,13 @@ Une extension de navigateur qui analyse automatiquement les pages web pour trouv
 
 ---
 
+---
+
+## Avis sur le code source
+
+> ⚠️ **Ce dépôt ne publie pas le code source.** Il contient uniquement la documentation d'utilisation, les notes de mise à jour et les ressources d'assistance. L'extension est distribuée exclusivement via le Chrome Web Store. Aucun package d'installation hors ligne ni code source pour les utilisateurs finaux n'est fourni.
+
+
 ## Avis de droit d'auteur
 
 Cette extension ne fournit que des capacités de visualisation et de téléchargement de ressources d'image locales pour le tri et la référence personnels hors ligne. Toutes les images, illustrations et ressources graphiques des pages web sont protégées par le droit d'auteur et la propriété intellectuelle. Les utilisateurs ne doivent pas utiliser les images téléchargées en lot pour la production commerciale, la republication non autorisée ou le crawling massif.

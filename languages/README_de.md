@@ -76,6 +76,13 @@ Eine Browser-Erweiterung, die Webseiten automatisch nach Bildern durchsucht und 
 
 ---
 
+---
+
+## Hinweis zum Quellcode
+
+> ⚠️ **Dieses Repository veröffentlicht keinen Quellcode.** Es enthält nur Nutzerdokumentation, Versionshinweise und Support-Ressourcen. Die Erweiterung wird ausschließlich über den Chrome Web Store vertrieben. Es werden keine Offline-Installationspakete oder Quellcodes für Endbenutzer bereitgestellt.
+
+
 ## Urheberrechtlicher Haftungsausschluss
 
 Diese Erweiterung bietet nur lokale Bildressourcen-Ansicht und Download-Funktionen für die persönliche Offline-Sortierung und Referenz des Benutzers. Alle Bilder, Illustrationen und Grafikmaterialien auf Webseiten unterliegen dem Urheberrecht und dem geistigen Eigentumsgesetz. Massenhaft heruntergeladene Bilder dürfen nicht für kommerzielle Produktion, unbefugte Weitergabe oder Massen-Crawling verwendet werden.

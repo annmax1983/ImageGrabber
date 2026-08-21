@@ -76,6 +76,13 @@ Una extensión de navegador que escanea automáticamente las páginas web en bus
 
 ---
 
+---
+
+## Aviso de código fuente
+
+> ⚠️ **Este repositorio no publica el código fuente.** Contiene únicamente documentación de uso, notas de versión y recursos de soporte. La extensión se distribuye exclusivamente a través de Chrome Web Store. No se proporcionan paquetes de instalación sin conexión ni código fuente para usuarios finales.
+
+
 ## Aviso de derechos de autor
 
 Esta extensión solo proporciona capacidades de visualización y descarga de recursos de imagen locales para la clasificación y referencia personal sin conexión del usuario. Todas las imágenes, ilustraciones y materiales gráficos de las páginas web están protegidos por derechos de autor y leyes de propiedad intelectual. Los usuarios no deben usar imágenes descargadas en lote para producción comercial, republicación no autorizada o rastreo masivo.
