@@ -1,33 +1,59 @@
 # Image Grabber
+
 [English](../README.md) | [中文](README_zh.md) | [Español](README_es.md) | Deutsch | [日本語](README_ja.md) | [Français](README_fr.md)
 
-Eine Browser-Erweiterung, die Webseiten automatisch nach Bildern durchsucht und den Batch-Download mit einem Klick ermöglicht.
+Eine Browser-Erweiterung, die Bilder von Webseiten sammelt und den Batch-Download mit einem Klick ermöglicht.
 
-> Chromium-basiert · Manifest V3 · Kein Tracking · Seitenleisten-Benutzeroberfläche
+> Chromium-basiert · Manifest V3 · Kein Tracking · Side Panel UI
 
 ---
 
 ## Funktionen
 
+### Kostenlose Funktionen
+
 | Funktion | Beschreibung |
-|----------|-------------|
+|----------|--------------|
 | 🔍 **Intelligente Bilderkennung** | Scannt `<img>`, CSS `background-image`, `<video poster>`, `<source srcset>` und SVG `<image>` |
-| 🤖 **Automatische Sammlung** | Sammelt Bilder auf der Seite — img, CSS-Hintergrund, Video-Poster, srcset, SVG |
-| 📋 **Raster- und Listenansicht** | Wechsle zwischen Miniaturansicht-Raster und kompakter Tabellenansicht |
-| 🔎 **Filtern & Sortieren** | Filtere nach Mindestgröße und Bildtyp (JPG, PNG, GIF, WebP, SVG); sortiere nach Größe oder Name |
-| ✅ **Batch-Auswahl** | Alle auswählen, Auswahl aufheben oder einzelne Bilder für Massenoperationen auswählen |
-| 🔍 **Lightbox-Vorschau** | Klicke auf ein Bild zur Vollbildansicht mit Tastaturnavigation (← → Esc) |
-| ⬇️ **Einzeldownload** | Lade ausgewählte Bilder einzeln in einen `ImageGrabber/`-Ordner herunter |
-| 📦 **ZIP-Batch-Download** | Packe alle ausgewählten Bilder in eine einzelne ZIP-Datei (mit JSZip) |
-| 💾 **Dauerhafter Zustand** | Bildlisten überleben Service-Worker-Neustarts über `chrome.storage.local` |
-| 🔄 **SPA-Unterstützung** | Erkennt Single-Page-App-Navigation (`pushState` / `replaceState` / `popstate`) und scannt automatisch erneut |
+| 🤖 **Auto-Sammlung** | Sammelt Bilder kontinuierlich während die Seite lädt (MutationObserver + Idle Callback) |
+| 📋 **Raster- & Listenansicht** | Zwischen Miniaturansicht-Raster und kompakter Tabellenansicht wechseln |
+| 🔎 **Filtern & Sortieren** | Nach Mindestabmessungen und Bildtyp filtern; nach Breite/Höhe/Name sortieren |
+| ✅ **Batch-Download** | Einzelner Batch-Download bis zu **30 Bilder** |
+| 🔍 **Lightbox-Vorschau** | Vollbild-Vorschau mit Tastaturnavigation (← → Esc) |
+| ⬇️ **Batch-Download** | Ausgewählte Bilder in den Ordner `ImageGrabber/` herunterladen |
+| 💾 **Dauerhafter Zustand** | Bildlisten überleben Service Worker Neustarts |
+| 🔄 **SPA-Unterstützung** | Automatischer Re-Scan bei SPA-Navigation (`pushState` / `replaceState` / `popstate`) |
+
+### Premium-Funktionen (Lizenz erforderlich)
+
+| Funktion | Beschreibung |
+|----------|--------------|
+| ⭐ **Unbegrenzte Auswahl** | Kein 30-Bilder-Limit — so viele auswählen und herunterladen wie gewünscht |
+| 🔬 **pHash-Deduplizierung** | Perceptual Hash erkennt doppelte/ähnliche Bilder selbst von verschiedenen URLs |
+| 🔄 **Formatkonvertierung** | Beim Download konvertieren: WebP → JPG, PNG oder jedes unterstützte Format |
+| 🗜️ **Bildkompression** | Qualität und maximale Breite anpassen, um Dateigröße zu reduzieren |
+| ⭐ **Erweiterter Download** | Ein-Klick-Pipeline: Deduplizieren → Konvertieren → Komprimieren → Download |
+
+---
+
+## Kostenlos vs. Premium
+
+| | Kostenlos | Premium |
+|---|:---:|:---:|
+| Bilderscannen & Browsen | ✅ Unbegrenzt | ✅ Unbegrenzt |
+| Batch-Download-Limit | 30 Bilder pro Batch | Unbegrenzt |
+| Standard-Download (Originalformat) | ✅ | ✅ |
+| pHash-Deduplizierung | — | ✅ |
+| Formatkonvertierung (WebP→JPG/PNG) | — | ✅ |
+| Bildkompression | — | ✅ |
+| Erweiterte Download-Pipeline | — | ✅ |
 
 ---
 
 ## Vorschau
 
 <p align="center">
-  <img src="imgs/de.png" alt="Image Grabber Symbol">
+  <img src="imgs/en.png" alt="Image Grabber Symbol" >
 </p>
 
 ---
@@ -36,9 +62,9 @@ Eine Browser-Erweiterung, die Webseiten automatisch nach Bildern durchsucht und 
 
 | Browser | Status |
 |---------|--------|
-| Google Chrome | ✅ Vollständig unterstützt (Seitenleiste) |
-| Microsoft Edge | ✅ Vollständig unterstützt (Seitenleiste) |
-| Andere Chromium-basierte Browser | ✅ Unterstützt (Popup-Modus) |
+| Google Chrome | ✅ Vollständig unterstützt (Side Panel) |
+| Microsoft Edge | ✅ Vollständig unterstützt (Side Panel) |
+| Andere Chromium-basierte Browser | ✅ Unterstützt (Popup-Fallback) |
 
 ---
 
@@ -49,47 +75,55 @@ Eine Browser-Erweiterung, die Webseiten automatisch nach Bildern durchsucht und 
    - **Edge**: `edge://extensions/`
 2. Aktiviere den **Entwicklermodus** (Schalter oben rechts)
 3. Klicke auf **Entpackte Erweiterung laden** und wähle den Projektordner
-4. Klicke auf das Image-Grabber-Symbol in der Symbolleiste, um die Seitenleiste zu öffnen
+4. Klicke auf das Image Grabber-Symbol in deiner Toolbar, um das Side Panel zu öffnen
 
 ---
 
 ## Verwendung
 
-1. **Beliebige Webseite besuchen** — Das Content-Script wird automatisch auf allen Seiten ausgeführt
-2. **Klicke auf das Image-Grabber-Symbol**, um die Seitenleiste zu öffnen
-3. **Auto aktivieren** — Schalte "Auto" ein, um Bilder beim Laden der Seite kontinuierlich zu sammeln
-4. **Oder klicke auf Scannen** — Starte einen manuellen Vollseiten-Scan
-5. **Filtern** — Setze minimale Breite/Höhe, wähle den Bildtyp und die Sortierreihenfolge
-6. **Ansicht wechseln** — Wechsle zwischen Raster- (▦) und Listenlayout (☰)
-7. **Auswählen** — Klicke auf Bilder zur Auswahl, oder verwende die Alle / Keine Buttons
-8. **Vorschau** — Klicke auf ein Bild, um die Lightbox zu öffnen, navigiere mit Pfeiltasten
-9. **Herunterladen** — Verwende ⬇️ für einzelne Dateien oder 📦 für ein ZIP-Archiv
+1. **Beliebige Webseite besuchen** — Das Content Script sammelt Bilder von der aktuellen Seite
+2. **Auf das Image Grabber-Symbol klicken**, um das Side Panel zu öffnen
+3. **Auto aktivieren** — Schalte „Auto" um, um Bilder kontinuierlich während des Seitenladevorgangs zu sammeln
+4. **Oder auf Scan klicken** — Manuell einen einmaligen Vollseiten-Scan auslösen
+5. **Filtern** — Mindestbreite/-höhe einstellen, Bildtyp wählen, Sortierreihenfolge wählen
+6. **Ansichten wechseln** — Zwischen Raster (▦) und Listen (☰) Layout umschalten
+7. **Auswählen** — Bilder anklicken zum Auswählen (bis zu 30 für kostenlose Nutzer)
+8. **Vorschau** — Auf ein beliebiges Bild klicken, um die Lightbox zu öffnen
+9. **Download** — ⬇️ für Standard-Download, oder ⭐ für erweiterten Download (Premium)
+
+### Erweiterter Download (Premium)
+
+1. Hole deinen Lizenzschlüssel von [VKT Preise](https://annmax1983.com/pricing.html)
+2. Öffne die Einstellungen (⚙️ Zahnradsymbol) → gib deinen Lizenzschlüssel ein
+3. Konfiguriere Ausgabeformat, Qualität und Deduplizierungsoptionen
+4. Wähle Bilder aus und klicke auf den ⭐ Erweiterter Download-Button
+5. Die Pipeline: Deduplizieren (falls aktiviert) → Format konvertieren → Komprimieren → Download
 
 ---
 
 ## Datenschutz
 
 - Benötigte Berechtigungen: `storage`, `downloads`, `sidePanel`
-- Alle Bildverarbeitung läuft lokal in deinem Browser, keine externen Datenuploads
-- Keine Analysen, kein Tracking, keine Datensammlung
-- Alle zwischengespeicherten Bilddaten werden nur im lokalen Speicher deines Browsers gespeichert
+- Die gesamte Bildverarbeitung läuft **lokal** in deinem Browser — keine externen Datenuploads
+- Keine Analytik, kein Nutzertracking, keine Remote-Datensammlung
+- Bilddaten werden nur im lokalen Browser-Speicher abgelegt
+- Die Lizenzvalidierung sendet nur einen Geräte-Fingerprint-Hash (hardwarebasiert, keine persönlichen Daten)
 
 ---
 
----
+## Urheberrechtshinweis
 
-## Hinweis zum Quellcode
-
-> ⚠️ **Dieses Repository veröffentlicht keinen Quellcode.** Es enthält nur Nutzerdokumentation, Versionshinweise und Support-Ressourcen. Die Erweiterung wird ausschließlich über den Chrome Web Store vertrieben. Es werden keine Offline-Installationspakete oder Quellcodes für Endbenutzer bereitgestellt.
-
-
-## Urheberrechtlicher Haftungsausschluss
-
-Diese Erweiterung bietet nur lokale Bildressourcen-Ansicht und Download-Funktionen für die persönliche Offline-Sortierung und Referenz des Benutzers. Alle Bilder, Illustrationen und Grafikmaterialien auf Webseiten unterliegen dem Urheberrecht und dem geistigen Eigentumsgesetz. Massenhaft heruntergeladene Bilder dürfen nicht für kommerzielle Produktion, unbefugte Weitergabe oder Massen-Crawling verwendet werden.
+Diese Erweiterung bietet nur lokale Bildressourcen-Ansicht und Download-Funktionen für die persönliche Offline-Sortierung und Referenz. Alle Bilder, Illustrationen und grafischen Materialien auf Webseiten unterliegen dem Urheberrecht und dem geistigen Eigentum. Nutzer dürfen batch-downloaded Bilder nicht für kommerzielle Produktion, unbefugte Weiterveröffentlichung, Sekundärverbreitung, massenhaftes Crawling oder andere verletzende Handlungen verwenden. Alle zivil- und strafrechtlichen Folgen aus missbräuchlicher Nutzung trägt allein der Nutzer.
 
 ## Crawling-Hinweis
 
-Verwenden Sie dieses Tool nicht, um Bildressourcen von Webseiten mit Urheberrechtsschutz, Anti-Crawl-Mechanismen oder klaren Inhaltsbeschränkungen massenhaft zu erfassen.
+Verwende dieses Tool nicht, um Bildressourcen massenhaft von Websites mit Urheberrechtsschutz, Anti-Crawl-Mechanismen oder klaren Inhaltsnutzungsbeschränckungen zu erfassen. Bitte halte dich an die Website-Zugriffsregeln und lokalen Gesetze beim Scannen von Seitenbildern.
+
+---
+
+## Quellcode-Hinweis
+
+> ⚠️ **Dieses Repository veröffentlicht keinen Quellcode.** Es enthält nur Nutzerdokumentation, Versionshinweise und Support-Ressourcen. Die Erweiterung wird ausschließlich über den Chrome Web Store vertrieben. Es werden keine Offline-Installationspakete oder Endbenutzer-Quellcodes bereitgestellt.
 
 ---
 
@@ -103,8 +137,8 @@ Copyright © 2026 Image Grabber. Alle Rechte vorbehalten.
 
 ---
 
-## ❤️ Unterstütze den Entwickler
+## ❤️ Den Entwickler unterstützen
 
-Wenn dir Image Grabber hilft, erwäge, mir einen Kaffee auszugeben!
+Wenn dir Image Grabber hilft, kannst du mir gerne einen Kaffee ausgeben!
 
-**[👉 Klicke hier zum Unterstützen](https://ko-fi.com/annmax?ref=imagegrabber)**
+**[👉 Hier unterstützen](https://ko-fi.com/annmax?ref=imagegrabber)**
