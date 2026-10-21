@@ -15,16 +15,17 @@
 | Fonctionnalité | Description |
 |---------|-------------|
 | 🔍 **Détection intelligente des images** | Analyse les `<img>` (y compris les attributs `data-src` / de chargement différé), `srcset` (choisit le plus grand candidat), CSS `background-image` (en ligne, `::before` et `::after`), `<video poster>`, `<source srcset>` et les images SVG `<image>` |
+| 💎 **Détection des originaux** | Repère les originaux haute résolution exposés dans la page (attributs `data-*` de chargement différé, liens d'image parents, candidats `<picture>` / `srcset`) et vérifie leurs dimensions réelles avant utilisation ; à défaut d'original plus grand confirmé, l'image affichée est utilisée. Désactivable via l'interrupteur **Original** |
 | 🤖 **Collecte automatique** | Collecte en continu les images pendant le chargement de la page (MutationObserver + idle callback) |
 | 📋 **Vue grille et liste** | Basculez entre la grille de miniatures et la vue tableau compacte |
 | 🔎 **Filtrage et tri** | Filtrez par dimensions minimales et type d'image ; triez par largeur, hauteur ou nom de fichier |
 | 🎯 **Sélection manuelle** | Cliquez directement sur un élément de la page pour capturer son image |
 | 🖼️ **Prévisualisation plein écran** | Aperçu en taille réelle avec navigation clavier (← → Esc), téléchargement et copie d'URL |
 | 🔗 **Copier les URLs** | Copie dans le presse-papiers les URLs des images sélectionnées (ou de toutes celles filtrées) |
-| 📥 **Téléchargement par lot (30 max par lot)** | Les téléchargements passent par le moteur de téléchargement du navigateur : les cookies de session, l'User-Agent et le Referer sont donc gérés automatiquement — les images protégées contre le hotlink ou réservées à une session connectée sont bien enregistrées |
+| 📥 **Téléchargement par lot (30 max par lot)** | Chaque image est récupérée dans la page de l'extension avec les cookies et le `Referer` de la page, puis transmise au moteur de téléchargement sous forme de blob — les images protégées contre le hotlink ou réservées à une session connectée sont enregistrées comme le vrai fichier, pas comme une page 403. Gardez le panneau ouvert jusqu'à la fin du lot |
 | 📊 **Rapport de résultat** | À la fin d'un lot, une notification indique combien de fichiers ont réussi et combien ont échoué |
 | 💾 **Persistance des données** | Les listes d'images et vos marques « supprimé » survivent aux rechargements de page et aux redémarrages du service worker |
-| 🔄 **Support SPA** | Re-scan automatique lors de la navigation SPA (`pushState` / `replaceState` / `popstate`) |
+| 🔄 **Support SPA** | Détecte les navigations réelles et `pushState` / `replaceState` / `popstate` ; les images de la page précédente sont effacées et la nouvelle vue est ré-analysée automatiquement |
 
 ### Fonctionnalités Premium (licence requise)
 
@@ -32,22 +33,9 @@
 |---------|-------------|
 | ⭐ **Sélection illimitée** | Pas de limite de 30 images — sélectionnez et téléchargez autant que vous voulez |
 | 🔬 **Dédoublonnage pHash** | Le hash perceptuel détecte les images en double/similaires même à partir d'URLs différentes |
-| 🔄 **Conversion de format** | Convertissez au téléchargement : WebP → JPG, PNG ou tout format supporté |
-| 🗜️ **Compression d'images** | Ajustez la qualité et la largeur maximale pour réduire la taille des fichiers |
-| 🚀 **Pipeline de téléchargement avancé** | Pipeline en un clic : dédoublonnage → conversion → compression → téléchargement |
-
----
-
-### Nouveautés de la version 2.0.7
-
-- **Nom et description pensés pour la recherche** — le nom contient désormais le mot-clé exact *Image Downloader* et la description commence par les termes réellement recherchés (dans les 6 langues).
-- **SEO de la documentation et du site** — première ligne du README et métadonnées de la page officielle (description, carte de partage) réécrites.
-
-### Nouveautés de la version 2.0.6
-
-- **Les téléchargements protégés sont désormais réellement enregistrés** — les requêtes d'image du panneau transmettent le `Referer` de la page via une règle `declarativeNetRequest` à portée de session, mais le moteur de téléchargement du navigateur ne le fait pas : sur les sites protégés contre le hotlink, un téléchargement pouvait donc signaler un succès alors que le fichier enregistré n'était qu'une page d'erreur 403. L'image est maintenant récupérée à l'intérieur du panneau de l'extension (avec les cookies et le `Referer` de la page), puis transmise au moteur de téléchargement sous forme de blob, de sorte que les images protégées et celles visibles uniquement après connexion soient enregistrées comme la vraie image.
-- **Décompte honnête des réussites et des échecs** — la notification de fin attend désormais que chaque téléchargement soit réellement terminé et indique les chiffres réels, au lieu de compter ceux qui ont simplement été lancés.
-- **Téléchargement avancé corrigé sur les sites protégés** — la chaîne dédupliquer → convertir → compresser ne parvenait pas à charger dans un canvas les images protégées contre le hotlink. Chaque image est désormais lue via la même requête authentifiée, de sorte que la déduplication pHash et la conversion de format fonctionnent à nouveau ; un fichier qui ne peut pas être réencodé est téléchargé dans sa version d'origine au lieu d'être abandonné.
+| 🔄 **Conversion de format** | Convertissez au téléchargement en JPG, PNG ou WebP. Les formats sources GIF, SVG, AVIF et autres sont conservés tels quels au lieu d'être réencodés avec perte |
+| 🗜️ **Compression d'images** | Ajustez la qualité et la largeur maximale pour réduire la taille des fichiers. Avec le format **Original** et sans redimensionnement, les octets d'origine sont téléchargés sans modification |
+| 🚀 **Pipeline de téléchargement avancé** | Pipeline en un clic : dédoublonnage → conversion/redimensionnement (uniquement sur demande) → téléchargement |
 
 ---
 
@@ -117,7 +105,7 @@
 7. **Sélectionnez** — Cliquez sur les images pour les sélectionner (30 max pour les utilisateurs gratuits)
 8. **Prévisualisez** — Cliquez sur une image pour ouvrir l'aperçu plein écran
 9. **Copiez** — Utilisez le bouton copier pour placer les URLs des images sélectionnées dans le presse-papiers
-10. **Téléchargez** — Cliquez sur ⬇️ pour le téléchargement de base, ou ⭐ pour le téléchargement avancé (Premium). Une notification indique combien de fichiers ont été téléchargés et combien ont échoué
+10. **Téléchargez** — Cliquez sur ⬇️ pour le téléchargement de base, ou ⭐ pour le téléchargement avancé (Premium). Une notification indique combien de fichiers ont été téléchargés et combien ont échoué. Les téléchargements sont effectués par la page du panneau ; gardez-la ouverte jusqu'à la fin du lot
 
 ### Téléchargement avancé (Premium)
 
@@ -125,7 +113,9 @@
 2. Ouvrez les Paramètres (⚙️ icône engrenage) → saisissez votre clé de licence
 3. Configurez le format de sortie, la qualité et les options de dédoublonnage
 4. Sélectionnez les images et cliquez sur le bouton ⭐ Téléchargement avancé
-5. Le pipeline va : dédoublonner (si activé) → convertir le format → compresser → télécharger
+5. Le pipeline va : dédoublonner (si activé) → convertir/redimensionner (uniquement si un format ou une largeur max est choisi) → télécharger
+
+Les cibles de conversion sont limitées à JPG, PNG et WebP. GIF, SVG, AVIF, BMP et autres formats sont téléchargés dans leur format d'origine (signalés comme dégradés si vous avez demandé une conversion). Choisir **Original** sans largeur maximale télécharge les octets source sans réencodage, quel que soit le curseur de qualité.
 
 ---
 
@@ -134,6 +124,9 @@
 - Permissions requises : `storage`, `downloads`, `sidePanel`, `declarativeNetRequest`
 - La permission d'hôte `<all_urls>` est nécessaire pour détecter et télécharger les images hébergées sur n'importe quel domaine
 - `declarativeNetRequest` sert uniquement à définir l'en-tête `Referer`. La règle est active tant qu'un panneau affiche les images d'un onglet (pour que les aperçus se chargent sur les sites protégés contre le hotlink) et pendant un lot de téléchargements (pour que le fichier enregistré soit la vraie image, pas une image d'erreur). Elle est limitée aux domaines d'images actuellement affichés et retirée à la fermeture du panneau, au changement d'onglet ou lors d'une navigation.
+- Tant que la règle est active, elle s'applique aux requêtes vers ces domaines d'images, pas seulement aux requêtes de l'extension : une requête de la page vers le même domaine d'image pendant un lot portera aussi le `Referer` de la page. La règle est limitée à la session et au domaine ; elle ne réécrit pas les en-têtes de façon permanente
+- La navigation SPA est détectée localement en comparant `location.href`. Aucun historique de navigation n'est lu, enregistré ou transmis
+- La détection des originaux sonde localement les URLs candidates avec des chargements d'image temporaires ; ces requêtes vont directement à l'hôte des images (le même hôte qui sert déjà les images de la page). Seules les dimensions sont lues — aucun contenu d'image n'est envoyé ni stocké, et les résultats vérifiés restent dans le stockage local. Désactivable via l'interrupteur **Original**
 - Tout le traitement des images se fait **en local** dans votre navigateur — aucun envoi de données externes
 - Pas d'analytics, pas de suivi utilisateur, pas de collecte de données distantes
 - Les données images sont stockées uniquement dans le stockage local de votre navigateur
@@ -153,7 +146,7 @@ N'utilisez pas cet outil pour extraire massivement des ressources images de site
 
 ## Avis sur le code source
 
-> ⚠️ **Ce dépôt ne publie pas le code source.** Il contient uniquement la documentation d'utilisation, les notes de version et les ressources d'assistance. L'extension est distribuée exclusivement via le Chrome Web Store. Aucun package d'installation hors ligne ni code source destiné aux utilisateurs finaux n'est fourni.
+Ce dépôt contient le code source complet de l'extension : le manifest, les scripts de contenu, le service worker, toutes les interfaces, les fichiers de langue et le script de build. L'extension est également distribuée via le Chrome Web Store.
 
 ---
 
@@ -163,7 +156,7 @@ Copyright © 2026 Image Grabber. Tous droits réservés.
 
 ---
 
-> **Note :** Ce dépôt est destiné à la **présentation du projet uniquement**. Il ne contient pas le code source complet, le manifest, les icônes ou les scripts de build. Le code source complet ne sera **pas** publié ici.
+> **Note :** Le code source est fourni dans ce dépôt par souci de transparence. `npm install && npm run build` génère le package dans `dist/` et le ZIP dans `publish/`.
 
 ---
 

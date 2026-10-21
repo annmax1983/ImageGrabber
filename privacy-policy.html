@@ -1,214 +1,377 @@
 <!DOCTYPE html>
-<html lang="en" data-page-node-id="3oAHsge7o2SkuZN8kDUZfF">
-<head data-page-node-id="cfmxktw4c9OMqA4ZEeGLwP">
-  <meta charset="UTF-8" data-page-node-id="DxIiRegOi0eDfdGdRn5zYM">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="pJjORDTbHmGncWHGiJQE5H">
-  <title>Image Grabber - Privacy Policy</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: #f8f9fa; color: #333; line-height: 1.7; padding: 40px 20px;
-    }
-    .container {
-      max-width: 680px; margin: 0 auto; background: white;
-      border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); padding: 40px 32px;
-    }
-    h1 { font-size: 24px; color: #4CAF50; margin-bottom: 8px; }
-    .updated { font-size: 13px; color: #80868b; margin-bottom: 24px; }
-    h2 { font-size: 18px; color: #202124; margin: 24px 0 8px; }
-    p { margin-bottom: 12px; }
-    ul { margin: 8px 0 12px 20px; }
-    li { margin-bottom: 6px; }
-    .highlight {
-      background: #e8f5e9; border-left: 4px solid #4CAF50;
-      padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0;
-    }
-    .footer {
-      margin-top: 32px; padding-top: 16px; border-top: 1px solid #e8eaed;
-      font-size: 13px; color: #80868b; text-align: center;
-    }
-    .footer a { color: #4CAF50; text-decoration: none; }
-    .footer a:hover { text-decoration: underline; }
-  </style>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image Grabber — Privacy Policy</title>
+<meta name="description" content="Image Grabber privacy policy: what is stored on your device, when the extension uses the network, and how to delete your data.">
+<link rel="icon" href="assets/icon128.png">
+<style>
+:root{
+  --accent:#0f766e;
+  --accent-2:#14b8a6;
+  --bg:#f5f8fc;
+  --surface:#ffffff;
+  --ink:#20304a;
+  --body:#4b5870;
+  --muted:#64718a;
+  --line:#e2e8f2;
+  --tint:#eef3fb;
+  --tint:color-mix(in srgb, var(--accent) 8%, #ffffff);
+  --tint-strong:#e5edfa;
+  --tint-strong:color-mix(in srgb, var(--accent) 14%, #ffffff);
+  --shadow:0 18px 45px rgba(32,48,74,.10);
+  --shadow-soft:0 8px 24px rgba(32,48,74,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  margin:0;
+  color:var(--body);
+  background:radial-gradient(900px 420px at 100% -8%, color-mix(in srgb, var(--accent-2) 12%, #ffffff) 0%, rgba(255,255,255,0) 70%), var(--bg);
+  font-family:"Segoe UI Variable Text","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{display:block;max-width:100%}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+button,select{font:inherit}
+[hidden]{display:none !important}
+::selection{background:color-mix(in srgb, var(--accent) 22%, #ffffff);color:var(--ink)}
+:focus-visible{outline:2px solid color-mix(in srgb, var(--accent) 55%, #ffffff);outline-offset:3px}
+.wrap{width:min(1120px, calc(100% - 40px));margin:0 auto}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.topbar-inner{display:flex;align-items:center;gap:18px;height:70px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--ink);font-size:16px;font-weight:750;letter-spacing:-.015em;white-space:nowrap}
+.brand:hover{text-decoration:none}
+.brand img{width:32px;height:32px;border-radius:9px;background:#fff;border:1px solid var(--line)}
+.nav-links{display:flex;align-items:center;gap:20px;margin-left:auto;font-size:13.5px;font-weight:650}
+.nav-links a{color:var(--muted)}
+.nav-links a:hover{color:var(--accent);text-decoration:none}
+.top-actions{display:flex;align-items:center;gap:9px;margin-left:auto}
+.nav-links + .top-actions{margin-left:0}
+.icon-btn{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--muted)}
+.icon-btn:hover{color:var(--accent);border-color:color-mix(in srgb, var(--accent) 26%, var(--line));text-decoration:none}
+.lang{
+  appearance:none;-webkit-appearance:none;
+  border:1px solid var(--line);
+  background-color:#fff;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364718a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 10px center;
+  background-size:12px;
+  color:var(--ink);
+  border-radius:10px;
+  padding:9px 32px 9px 11px;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  max-width:150px;
+}
+.lang:hover{border-color:color-mix(in srgb, var(--accent) 26%, var(--line))}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 20px;border-radius:12px;border:1px solid transparent;font-weight:700;font-size:14.5px;line-height:1.2;transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 12px 26px color-mix(in srgb, var(--accent) 26%, transparent)}
+.btn-primary:hover{background:color-mix(in srgb, var(--accent) 90%, var(--ink));box-shadow:0 15px 30px color-mix(in srgb, var(--accent) 30%, transparent)}
+.btn-secondary{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-secondary:hover{border-color:color-mix(in srgb, var(--accent) 28%, var(--line))}
+.btn-quiet{background:transparent;color:var(--muted);padding:0 8px}
+.btn-quiet:hover{color:var(--accent)}
+.site-footer{margin-top:48px;border-top:1px solid var(--line);background:rgba(255,255,255,.8);padding:32px 0}
+.footer-inner{display:flex;flex-wrap:wrap;gap:20px 32px;align-items:center;justify-content:space-between}
+.footer-brand{display:flex;align-items:center;gap:11px;color:var(--ink);font-size:14px;font-weight:700}
+.footer-brand img{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:#fff}
+.footer-brand .copy{display:block;color:var(--muted);font-size:12px;font-weight:500;line-height:1.4;margin-top:1px}
+.footer-links{display:flex;flex-wrap:wrap;gap:9px 18px;align-items:center;font-size:13px;font-weight:600}
+.footer-links a{color:var(--muted)}
+.footer-links a:hover{color:var(--accent);text-decoration:none}
+@media (max-width:900px){
+  .nav-links{display:none}
+  .topbar-inner{height:62px}
+  .wrap{width:calc(100% - 32px)}
+}
+@media (max-width:560px){
+  .brand span{display:none}
+  .lang{max-width:124px}
+  .site-footer{padding:26px 0}
+  .footer-inner{align-items:flex-start;flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none !important;animation:none !important}
+}
+
+.policy-hero{padding:42px 0 8px}
+.policy-hero-card{position:relative;overflow:hidden;background:linear-gradient(135deg,#ffffff 0%, color-mix(in srgb, var(--accent) 7%, #ffffff) 58%, color-mix(in srgb, var(--accent-2) 16%, #ffffff) 100%);border:1px solid var(--line);border-radius:26px;padding:42px 46px 36px;box-shadow:var(--shadow)}
+.policy-hero-card::after{content:"";position:absolute;width:360px;height:360px;right:-110px;top:-160px;border-radius:50%;border:1px solid color-mix(in srgb, var(--accent) 22%, #ffffff);box-shadow:0 0 0 48px color-mix(in srgb, var(--accent) 5%, transparent);pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.72);border:1px solid color-mix(in srgb, var(--accent) 22%, var(--line));color:var(--accent);font-size:11.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+.policy-hero h1{position:relative;z-index:1;margin:16px 0 0;color:var(--ink);font-size:clamp(34px,4.4vw,50px);line-height:1.06;letter-spacing:-.035em;font-weight:800}
+.policy-hero h1 .h1-sub{color:var(--accent);font-weight:780}
+.summary{position:relative;z-index:1;max-width:860px;margin:16px 0 20px;color:var(--body);font-size:15.5px;line-height:1.75}
+.summary strong{color:var(--ink);font-weight:700}
+.chips{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.8);color:var(--ink);font-size:12.5px;font-weight:650}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-2)}
+.updated{position:relative;z-index:1;display:flex;align-items:center;gap:7px;margin:18px 0 0;color:var(--muted);font-size:12.5px;font-weight:550}
+.updated svg{color:var(--accent)}
+.policy-layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:28px;align-items:start;padding:32px 0 38px}
+.toc{position:sticky;top:92px;max-height:calc(100vh - 120px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow-soft)}
+.toc-title{margin:2px 0 10px;color:var(--ink);font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+#p-toc{display:grid;gap:2px}
+#p-toc a{display:grid;grid-template-columns:24px minmax(0,1fr);gap:7px;align-items:baseline;padding:7px 9px;border-radius:9px;border:1px solid transparent;color:var(--muted);font-size:12.8px;line-height:1.38}
+#p-toc a span{color:color-mix(in srgb, var(--accent) 58%, var(--muted));font-size:10px;font-weight:800;letter-spacing:.06em}
+#p-toc a:hover{background:var(--tint);color:var(--ink);text-decoration:none}
+#p-toc a.active{background:var(--tint);border-color:color-mix(in srgb, var(--accent) 18%, var(--line));color:var(--ink)}
+#p-toc a.active span{color:var(--accent)}
+.policy-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 32px;box-shadow:var(--shadow-soft)}
+.policy-card + .policy-card{margin-top:15px}
+.policy-card h2{display:flex;align-items:baseline;gap:11px;margin:0 0 16px;color:var(--ink);font-size:21px;line-height:1.3;letter-spacing:-.015em;font-weight:760}
+.policy-num{flex:none;padding:3px 7px;border-radius:7px;background:var(--tint);color:var(--accent);font-size:10.5px;font-weight:800;letter-spacing:.06em}
+.policy-body{color:var(--body);font-size:15px;line-height:1.75;overflow-wrap:anywhere}
+.policy-body p{margin:0 0 14px}
+.policy-body p:last-child{margin-bottom:0}
+.policy-body strong{color:var(--ink);font-weight:700}
+.policy-body em{color:var(--body)}
+.policy-body a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.policy-body a:hover{color:color-mix(in srgb, var(--accent) 80%, var(--ink))}
+.policy-body code{display:inline;padding:1px 6px;border:1px solid var(--line);border-radius:6px;background:#f3f6fb;color:var(--ink);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86em}
+.policy-body ul{display:grid;gap:8px;margin:0 0 15px;padding:0;list-style:none}
+.policy-body ul:last-child{margin-bottom:0}
+.policy-body li{position:relative;padding-left:21px}
+.policy-body li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--accent-2)}
+.policy-body h3{margin:21px 0 8px;color:var(--ink);font-size:15.5px;line-height:1.4;font-weight:750}
+.policy-body h3:first-child{margin-top:0}
+.policy-body .note{margin:15px 0 0;padding:13px 15px;border-left:3px solid var(--accent);border-radius:10px;background:var(--tint);color:var(--body);font-size:13.5px;line-height:1.65}
+.table-wrap{margin:15px 0;overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+.policy-body table{width:100%;min-width:480px;border-collapse:collapse;font-size:13.5px;line-height:1.55}
+.policy-body th{padding:10px 13px;border-bottom:1px solid var(--line);background:#f4f7fc;color:var(--ink);text-align:left;font-weight:700}
+.policy-body td{padding:10px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+.policy-body th:first-child,.policy-body td:first-child{min-width:150px}
+.policy-body tr:last-child td{border-bottom:none}
+.policy-body table code{white-space:nowrap}
+@media (max-width:900px){
+  .policy-hero{padding:26px 0 4px}
+  .policy-hero-card{padding:30px 24px 28px;border-radius:22px}
+  .policy-layout{grid-template-columns:1fr;gap:16px;padding:22px 0 30px}
+  .toc{position:static;max-height:none;padding:14px}
+  #p-toc{grid-template-columns:1fr 1fr}
+  .policy-card{padding:23px 20px}
+  .policy-card h2{font-size:19px}
+}
+@media (max-width:600px){
+  #p-toc{grid-template-columns:1fr}
+  .policy-card{padding:21px 17px}
+  .policy-body{font-size:14.5px}
+}
+</style>
 </head>
-<body data-page-node-id="6Qnco3xtCNNFvabmdQKm9g">
-<div class="container" data-page-node-id="Zj2F512flAvPws2qwLb2so">
-  <h1 id="pageTitle" data-page-node-id="iOUvLN5pdsCF3ZwwUq390d"></h1>
-  <div class="updated" id="updated" data-page-node-id="S3LBcY2Sb1jecxwzAmfSHw"></div>
-  <div class="highlight" id="highlight" data-page-node-id="RAdiRWT3fTw1uAf3tRHhH5"></div>
-  <h2 id="hCollection" data-page-node-id="iGo6tpkDfcrvjE7ISVpo66"></h2>
-  <p id="pCollection" data-page-node-id="qfVDzxs5w329p4qtBasvaP"></p>
-  <ul id="listCollection" data-page-node-id="6bks9AGtUaeHvnBcnSooq5"></ul>
-  <h2 id="hStorage" data-page-node-id="KlTt2CRvkdtoJDBODCjcoY"></h2>
-  <p id="pStorage" data-page-node-id="9LiS2Vh9kGFJa3wl8IPQlU"></p>
-  <ul id="listStorage" data-page-node-id="mr1kG6xK8hHAlARKXhpBfX"></ul>
-  <p id="pStorageNote" data-page-node-id="w3UWDEUqZAwPFzKrPGftnI"></p>
-  <h2 id="hPermissions" data-page-node-id="2nqFmYJqzSIHaACAOep1gO"></h2>
-  <ul id="listPermissions" data-page-node-id="hHxus5F0mezkQjN9zKYEYF"></ul>
-  <p id="pPermissions" data-page-node-id="K2oG3uxqwmClbP6ehE5Dmj"></p>
-  <h2 id="hDownloads" data-page-node-id="a0W8khNg108NhzfWZdzz6Z"></h2>
-  <ul id="listDownloads" data-page-node-id="55Bvnzm7IZME9U9tRGEQyC"></ul>
-  <h2 id="hThirdParty" data-page-node-id="0kkMmIGvd9y0wGwfrGYTtm"></h2>
-  <p id="pThirdParty" data-page-node-id="fPiJ3zaWtio9javi4aeOKa"></p>
-  <h2 id="hChanges" data-page-node-id="yD2yksw5l6IsG8AH71LRcG"></h2>
-  <p id="pChanges" data-page-node-id="dhcWkIfAiYlkAu66oYLHBA"></p>
-  <h2 id="hContact" data-page-node-id="Tu8ZYjGzgnr2CN33uJ9GrE"></h2>
-  <p id="pContact" data-page-node-id="tyxDca24FOB2ktKy6uQPpU"></p>
-  <div class="footer" id="footer" data-page-node-id="cLuuGuR7KMHjHZjLv3F93z"></div>
-</div>
-
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html"><img src="assets/icon128.png" alt="" width="32" height="32"><span>Image Grabber</span></a>
+    <div class="top-actions">
+      <a class="icon-btn" href="https://github.com/annmax1983/ImageGrabber" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.05-.01-1.9-2.78.62-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.4 9.4 0 0 1 12 5.96c.85 0 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg></a>
+      <select class="lang" id="p-lang" aria-label="Language"><option value="en">English</option><option value="zh">简体中文</option><option value="ja">日本語</option><option value="de">Deutsch</option><option value="es">Español</option><option value="fr">Français</option></select>
+      <a class="icon-btn" href="index.html" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v10h12V10"/></svg></a>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="policy-hero">
+    <div class="wrap">
+      <div class="policy-hero-card">
+        <span class="eyebrow" id="p-eyebrow">Privacy Policy</span>
+        <h1><span id="p-h1">Image Grabber</span> <span class="h1-sub" id="p-h1-sub">Privacy Policy</span></h1>
+        <p class="summary" id="p-summary">Image scanning and processing run in your browser; the extension does not collect or share personal data. It downloads images directly from their original URLs when you ask, and contacts the licence server only for an optional Premium licence. No analytics, no account.</p>
+        <div class="chips" id="p-chips"><span class="chip">Runs on your device</span><span class="chip">No analytics</span><span class="chip">No account</span><span class="chip">Licence optional</span></div>
+        <p class="updated"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="p-updated">Last updated: October 2026</span></p>
+      </div>
+    </div>
+  </section>
+  <div class="wrap policy-layout">
+    <aside class="toc">
+      <p class="toc-title" id="p-toc-title">On this page</p>
+      <nav id="p-toc" aria-label="On this page">
+<a href="#section-1"><span>01</span>Data Collection</a>
+<a href="#section-2"><span>02</span>Data Storage</a>
+<a href="#section-3"><span>03</span>Permissions</a>
+<a href="#section-4"><span>04</span>Image Downloads</a>
+<a href="#section-5"><span>05</span>Third-Party Services</a>
+<a href="#section-6"><span>06</span>Data retention &amp; deletion</a>
+<a href="#section-7"><span>07</span>Changes to this policy</a>
+<a href="#section-8"><span>08</span>Contact</a>
+      </nav>
+    </aside>
+    <div id="p-sections">
+<article class="policy-card" id="section-1"><h2><span class="policy-num">01</span>Data Collection</h2><div class="policy-body"><p>Image Grabber does <strong>not</strong> collect any of the following:</p><ul><li>Personal identification information</li><li>Browsing history or URLs visited</li><li>Usage analytics or telemetry</li><li>Cookies or tracking identifiers</li><li>Image content or file data</li></ul></div></article>
+<article class="policy-card" id="section-2"><h2><span class="policy-num">02</span>Data Storage</h2><div class="policy-body"><p>Image Grabber stores the following data <strong>locally in your browser</strong> using the Chrome Storage API:</p><ul><li><strong>Collected image URLs</strong> — URLs of images found on web pages you visit while the extension is active</li><li><strong>Page metadata</strong> — the page URL and title of each tab where images were collected</li><li><strong>Removal records</strong> — URLs you have manually removed, so they stay excluded after re-scans</li><li><strong>User preferences</strong> — filter settings, auto-collect toggle state, view mode</li><li><strong>License data</strong> — the license key you entered and its activation status</li></ul><p>Local data stays on your device except for the optional licence fields described under Third-Party Services; uninstalling deletes the local copy.</p></div></article>
+<article class="policy-card" id="section-3"><h2><span class="policy-num">03</span>Permissions</h2><div class="policy-body"><ul><li><strong>storage</strong> — Required to save collected image URLs and user preferences locally</li><li><strong>downloads</strong> — Required to download selected images to your computer</li><li><strong>sidePanel</strong> — Required to display the image gallery in Chrome's side panel</li><li><strong>declarativeNetRequest</strong> — Required to set the Referer header for image previews and downloads on hotlink-protected sites. Rules apply only while a panel shows images from a tab or during a download batch, are scoped to the image domains on screen, and are removed when the panel closes, you switch tabs, or the page navigates.</li><li><strong>host_permissions (&lt;all_urls&gt;)</strong> — Required to scan web pages for images. When auto-collect is enabled, the extension scans continuously as the page loads; otherwise it only scans on manual trigger.</li></ul><p>Image Grabber does <strong>not</strong> use these permissions to read personal data, track activity, or transmit content to external servers.</p></div></article>
+<article class="policy-card" id="section-4"><h2><span class="policy-num">04</span>Image Downloads</h2><div class="policy-body"><ul><li>Images are fetched directly from their original source URLs</li><li>Downloads are saved locally to your computer's ImageGrabber/ folder</li><li>No image data is sent to any third-party server</li><li>All download processing runs locally in your browser</li></ul></div></article>
+<article class="policy-card" id="section-5"><h2><span class="policy-num">05</span>Third-Party Services</h2><div class="policy-body"><p>Image Grabber does not use analytics or advertising services. Images are downloaded directly from their original source URLs; those websites may see your IP address and request metadata under their own policies. The only connection to the developer is the optional Premium licence check at <code>api.annmax1983.com</code>, which carries your licence key, a random install identifier and basic browser metadata — never images, page content or browsing history. Our licence server records the IP address of these requests solely for rate limiting and abuse prevention — never for profiling, advertising, or sharing with third parties.</p></div></article>
+<article class="policy-card" id="section-6"><h2><span class="policy-num">06</span>Data retention &amp; deletion</h2><div class="policy-body"><p>Your settings and content stay in your browser until you delete them in the extension or uninstall it. Uninstalling removes the extension's local data. Nothing is retained on our servers, because your content is never sent to them.</p></div></article>
+<article class="policy-card" id="section-7"><h2><span class="policy-num">07</span>Changes to this policy</h2><div class="policy-body"><p>If this policy changes, the revised version will be published on this page with a new date. Material changes will be noted in the extension's release notes.</p></div></article>
+<article class="policy-card" id="section-8"><h2><span class="policy-num">08</span>Contact</h2><div class="policy-body"><p>Questions about this policy? Email <a href="mailto:support@annmax1983.com">support@annmax1983.com</a> or open an issue on <a href="https://github.com/annmax1983/ImageGrabber" target="_blank" rel="noopener">GitHub</a>.</p></div></article>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="assets/icon128.png" alt="" width="30" height="30">
+      <div>Image Grabber<span class="copy">© 2026 Image Grabber</span></div>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="index.html" id="p-footer-home">Home</a>
+      <a href="privacy-policy.html" id="p-footer-privacy">Privacy Policy</a>
+      <a href="https://github.com/annmax1983/ImageGrabber" target="_blank" rel="noopener" id="p-footer-github">GitHub</a>
+      <a href="https://annmax1983.com/extensions/imagegrabber" target="_blank" rel="noopener" id="p-footer-site">Website</a>
+      <a href="mailto:support@annmax1983.com" id="p-footer-email">Email</a>
+    </nav>
+  </div>
+</footer>
 <script>
-const I18N = {
-  en: {
-    title: '🔒 Privacy Policy — Image Grabber',
-    updated: 'Last updated: September 2026',
-    highlight: '<strong>Image Grabber does not collect, store, transmit, or share any personal data.</strong><br>All image scanning and processing runs entirely in your browser. The only network request is the optional Premium license check described under “Third-Party Services”.',
-    hCollection: 'Data Collection', pCollection: 'Image Grabber does <strong>not</strong> collect any of the following:',
-    listCollection: ['Personal identification information', 'Browsing history or URLs visited', 'Usage analytics or telemetry', 'Cookies or tracking identifiers', 'Image content or file data'],
-    hStorage: 'Data Storage', pStorage: 'Image Grabber stores the following data <strong>locally in your browser</strong> using the Chrome Storage API:',
-    listStorage: ['<strong>Collected image URLs</strong> — URLs of images found on web pages you visit while the extension is active', '<strong>Page metadata</strong> — the page URL and title of each tab where images were collected', '<strong>Removal records</strong> — URLs you have manually removed, so they stay excluded after re-scans', '<strong>User preferences</strong> — filter settings, auto-collect toggle state, view mode', '<strong>License data</strong> — the license key you entered and its activation status'],
-    pStorageNote: 'This data never leaves your browser and is automatically deleted when you uninstall the extension.',
-    hPermissions: 'Permissions',
-    listPermissions: ['<strong>storage</strong> — Required to save collected image URLs and user preferences locally', '<strong>downloads</strong> — Required to download selected images to your computer', '<strong>sidePanel</strong> — Required to display the image gallery in Chrome\'s side panel', '<strong>declarativeNetRequest</strong> — Required to set the Referer header when downloading images from hotlink-protected sites. Rules apply only during a download batch and are removed immediately after.', '<strong>host_permissions (&lt;all_urls&gt;)</strong> — Required to scan web pages for images. When auto-collect is enabled, the extension scans continuously as the page loads; otherwise it only scans on manual trigger.'],
-    pPermissions: 'Image Grabber does <strong>not</strong> use these permissions to read personal data, track activity, or transmit content to external servers.',
-    hDownloads: 'Image Downloads',
-    listDownloads: ['Images are fetched directly from their original source URLs', 'Downloads are saved locally to your computer\'s ImageGrabber/ folder', 'No image data is sent to any third-party server', 'All download processing runs locally in your browser'],
-    hThirdParty: 'Third-Party Services', pThirdParty: 'Image Grabber does <strong>not</strong> connect to any third-party servers, APIs, or analytics services. All image processing runs <strong>locally</strong> within the extension. The only exception is the optional Premium license: free features make no network request at all; with a license, the extension contacts our license server (<code>api.annmax1983.com</code>) only to activate it, to re-verify it at most once every 2 hours when you open the extension, and to release it. These requests carry your license key, a random install identifier, and basic browser metadata (browser name/version, browser language, time zone, user agent) — never your images, page content, or browsing history. Our license server records the IP address of these requests solely for rate limiting and abuse prevention — never for profiling, advertising, or sharing with third parties.',
-    hChanges: 'Changes to This Policy', pChanges: 'Any changes to this privacy policy will be reflected on this page with an updated date.',
-    hContact: 'Contact', pContact: 'If you have questions about this privacy policy, please open an issue on <a href="https://github.com/annmax1983/ImageGrabber">GitHub</a>.',
-    footer: 'Image Grabber &copy; 2026. Your privacy is respected by design.'
-  },
-  zh: {
-    title: '🔒 隐私条款 — Image Grabber',
-    updated: '最后更新：2026 年 9 月',
-    highlight: '<strong>Image Grabber 不收集、存储、传输或共享任何个人数据。</strong><br>所有图片扫描和处理均在您的浏览器本地完成。唯一的网络请求是可选的付费授权检查（详见“第三方服务”一节）。',
-    hCollection: '数据收集', pCollection: 'Image Grabber <strong>不会</strong>收集以下任何信息：',
-    listCollection: ['个人身份信息', '浏览历史或访问的网址', '使用分析或遥测数据', 'Cookie 或跟踪标识符', '图片内容或文件数据'],
-    hStorage: '数据存储', pStorage: 'Image Grabber 使用 Chrome Storage API 将以下数据<strong>存储在您的浏览器本地</strong>：',
-    listStorage: ['<strong>采集的图片 URL</strong> — 您访问网页时发现的图片链接', '<strong>页面信息</strong> — 每个采集图片的标签页的页面 URL 和标题', '<strong>删除记录</strong> — 您手动移除的图片 URL，用于重新扫描时保持排除状态', '<strong>用户偏好</strong> — 筛选设置、自动采集开关、视图模式', '<strong>授权数据</strong> — 您输入的授权密钥及其激活状态'],
-    pStorageNote: '这些数据不会离开您的浏览器，卸载扩展时会自动删除。',
-    hPermissions: '权限说明',
-    listPermissions: ['<strong>storage</strong> — 用于在本地保存采集的图片 URL 和用户偏好', '<strong>downloads</strong> — 用于将选中的图片下载到您的电脑', '<strong>sidePanel</strong> — 用于在浏览器侧边栏中展示图片库', '<strong>declarativeNetRequest</strong> — 用于下载防盗链站点图片时设置 Referer 请求头。规则仅在下载批次期间生效，批次结束后立即移除。', '<strong>host_permissions (&lt;all_urls&gt;)</strong> — 用于扫描网页中的图片。开启自动采集后，扩展会随页面加载持续扫描；关闭时仅手动触发扫描。'],
-    pPermissions: 'Image Grabber <strong>不会</strong>使用这些权限读取个人数据、追踪活动或向外部服务器传输内容。',
-    hDownloads: '图片下载',
-    listDownloads: ['图片直接从原始源 URL 获取', '下载的图片保存在您电脑的 ImageGrabber/ 文件夹中', '不会将任何图片数据发送到第三方服务器', '所有下载处理均在您的浏览器本地完成'],
-    hThirdParty: '第三方服务', pThirdParty: 'Image Grabber <strong>不会</strong>连接任何第三方服务器、API 或分析服务。所有图片处理均在扩展<strong>本地</strong>完成。唯一例外是可选的付费授权：免费功能不发起任何网络请求；激活授权后，扩展仅联系授权服务器（<code>api.annmax1983.com</code>）完成激活、复验（打开扩展时每 2 小时最多一次）与解绑。这些请求仅携带授权密钥、随机安装标识和基础浏览器元数据（浏览器名称/版本、浏览器语言、时区、User-Agent），绝不包含您的图片、页面内容或浏览历史。 授权服务器会记录这些请求的 IP 地址，仅用于限速与防滥用，不用于画像或广告，也不会共享给第三方。',
-    hChanges: '条款变更', pChanges: '本隐私条款的任何变更将在本页面上更新并注明日期。',
-    hContact: '联系方式', pContact: '如果您对本隐私条款有任何疑问，请在 <a href="https://github.com/annmax1983/ImageGrabber">GitHub</a> 上提交 Issue。',
-    footer: 'Image Grabber &copy; 2026。您的隐私是我们的设计原则。'
-  },
-  ja: {
-    title: '🔒 プライバシーポリシー — Image Grabber',
-    updated: '最終更新：2026年9月',
-    highlight: '<strong>Image Grabber は個人データを収集、保存、送信、共有しません。</strong><br>すべての画像スキャンと処理はブラウザ内でローカルに実行されます。唯一のネットワーク通信は、任意のプレミアムライセンス確認です（「サードパーティサービス」を参照）。',
-    hCollection: 'データの収集', pCollection: 'Image Grabber は以下のデータを<strong>収集しません</strong>：',
-    listCollection: ['個人識別情報', '閲覧履歴またはアクセスしたURL', '使用分析またはテレメトリ', 'Cookieまたは追跡識別子', '画像コンテンツまたはファイルデータ'],
-    hStorage: 'データの保存', pStorage: 'Image Grabber は Chrome Storage API を使用して、以下のデータを<strong>ブラウザ内にローカル保存</strong>します：',
-    listStorage: ['<strong>収集した画像URL</strong> — アクティブなタブで訪問したウェブページから発見された画像のURL', '<strong>ページ情報</strong> — 画像を収集した各タブのページURLとタイトル', '<strong>削除記録</strong> — 手動で削除した画像URL。再スキャン時に除外状態を維持します', '<strong>ユーザー設定</strong> — フィルタ設定、自動収集トグル状態、表示モード', '<strong>ライセンスデータ</strong> — 入力したライセンスキーとその有効化状態'],
-    pStorageNote: 'このデータはブラウザから外に出ず、拡張機能をアンインストールすると自動的に削除されます。',
-    hPermissions: '権限の説明',
-    listPermissions: ['<strong>storage</strong> — 収集した画像URLとユーザー設定をローカルに保存するために必要', '<strong>downloads</strong> — 選択した画像をパソコンにダウンロードするために必要', '<strong>sidePanel</strong> — ブラウザのサイドパネルに画像ギャラリーを表示するために必要', '<strong>declarativeNetRequest</strong> — ホットリンク保護されたサイトから画像をダウンロードする際に Referer ヘッダーを設定するために必要です。ルールはダウンロードバッチ中のみ適用され、終了後すぐに削除されます。', '<strong>host_permissions (&lt;all_urls&gt;)</strong> — ウェブページの画像をスキャンするために必要。自動収集が有効な場合、ページ読み込み中に継続的にスキャンします。無効な場合は手動トリガー時のみスキャンします。'],
-    pPermissions: 'Image Grabber はこれらの権限を使用して個人データの読み取り、活動の追跡、外部サーバーへのデータ送信は<strong>行いません</strong>。',
-    hDownloads: '画像のダウンロード',
-    listDownloads: ['画像は元のソースURLから直接取得されます', 'ダウンロードされた画像はパソコンの ImageGrabber/ フォルダに保存されます', '画像データがサードパーティサーバーに送信されることはありません', 'すべてのダウンロード処理はブラウザ内でローカルに実行されます'],
-    hThirdParty: 'サードパーティサービス', pThirdParty: 'Image Grabber はサードパーティのサーバー、API、分析サービスに<strong>接続しません</strong>。すべての画像処理は拡張機能<strong>内でローカルに</strong>実行されます。唯一の例外は任意のプレミアムライセンスです：無料機能は一切ネットワーク通信を行いません。ライセンスがある場合、拡張機能はライセンスサーバー（<code>api.annmax1983.com</code>）にのみ接続し、有効化・再確認（拡張機能を開いたとき、2時間に最大1回）・解除を行います。これらの通信に含まれるのはライセンスキー、ランダムなインストール識別子、基本的なブラウザーメタデータ（ブラウザー名/バージョン、言語、タイムゾーン、User-Agent）のみで、画像・ページ内容・閲覧履歴は含まれません。 ライセンスサーバーはこれらのリクエストの IP アドレスを、レート制限と不正利用防止のみを目的として記録します。プロファイリング、広告、第三者提供には一切使用しません。',
-    hChanges: 'ポリシーの変更', pChanges: '本プライバシーポリシーの変更は、このページに更新日付とともに反映されます。',
-    hContact: 'お問い合わせ', pContact: '本プライバシーポリシーに関するご質問は、<a href="https://github.com/annmax1983/ImageGrabber">GitHub</a> で Issue を作成してください。',
-    footer: 'Image Grabber &copy; 2026。あなたのプライバシーは設計の原則です。'
-  },
-  de: {
-    title: '🔒 Datenschutzrichtlinie — Image Grabber',
-    updated: 'Letzte Aktualisierung: September 2026',
-    highlight: '<strong>Image Grabber erfasst, speichert, übermittelt oder teilt keine personenbezogenen Daten.</strong><br>Alle Bildverarbeitung läuft lokal in Ihrem Browser. Die einzige Netzwerkanfrage ist die optionale Premium-Lizenzprüfung (siehe „Dienste von Drittanbietern“).',
-    hCollection: 'Datenerfassung', pCollection: 'Image Grabber erfasst <strong>keine</strong> der folgenden Daten:',
-    listCollection: ['Persönliche Identifikationsinformationen', 'Browserverlauf oder besuchte URLs', 'Nutzungsanalysen oder Telemetrie', 'Cookies oder Tracking-Kennungen', 'Bildinhalte oder Dateidaten'],
-    hStorage: 'Datenspeicherung', pStorage: 'Image Grabber speichert die folgenden Daten <strong>lokal in Ihrem Browser</strong> über die Chrome Storage API:',
-    listStorage: ['<strong>Gesammelte Bild-URLs</strong> — URLs von Bildern auf besuchten Webseiten', '<strong>Seiteninformationen</strong> — Seiten-URL und Titel jedes Tabs, in dem Bilder gesammelt wurden', '<strong>Löschprotokolle</strong> — URLs, die Sie manuell entfernt haben, um sie bei erneuten Scans ausgeschlossen zu halten', '<strong>Benutzereinstellungen</strong> — Filtereinstellungen, Auto-Sammeln-Status, Ansichtsmodus', '<strong>Lizenzdaten</strong> — der eingegebene Lizenzschlüssel und sein Aktivierungsstatus'],
-    pStorageNote: 'Diese Daten verlassen Ihren Browser nie und werden beim Deinstallieren automatisch gelöscht.',
-    hPermissions: 'Berechtigungen',
-    listPermissions: ['<strong>storage</strong> — Erforderlich, um gesammelte Bild-URLs und Einstellungen lokal zu speichern', '<strong>downloads</strong> — Erforderlich, um ausgewählte Bilder herunterzuladen', '<strong>sidePanel</strong> — Erforderlich, um die Bildergalerie in der Seitenleiste anzuzeigen', '<strong>declarativeNetRequest</strong> — Erforderlich, um beim Herunterladen von Bildern von Hotlink-geschützten Websites den Referer-Header zu setzen. Regeln gelten nur während eines Download-Stapels und werden danach sofort entfernt.', '<strong>host_permissions (&lt;all_urls&gt;)</strong> — Erforderlich, um Webseiten nach Bildern zu scannen. Bei aktiviertem Auto-Sammeln scannt die Erweiterung beim Laden der Seite kontinuierlich; sonst nur auf manuellen Auslöser.'],
-    pPermissions: 'Image Grabber verwendet diese Berechtigungen <strong>nicht</strong>, um personenbezogene Daten zu lesen oder zu übermitteln.',
-    hDownloads: 'Bild-Downloads',
-    listDownloads: ['Bilder werden direkt von ihrer Original-URL geladen', 'Downloads werden lokal in Ihrem ImageGrabber/ Ordner gespeichert', 'Keine Bilddaten werden an Dritte gesendet', 'Die gesamte Download-Verarbeitung erfolgt lokal in Ihrem Browser'],
-    hThirdParty: 'Dienste von Drittanbietern', pThirdParty: 'Image Grabber verbindet sich <strong>nicht</strong> mit Servern, APIs oder Analysediensten Dritter. Die gesamte Bildverarbeitung erfolgt <strong>lokal in der Erweiterung</strong>. Die einzige Ausnahme ist die optionale Premium-Lizenz: Kostenlose Funktionen senden keine Netzwerkanfrage; mit einer Lizenz kontaktiert die Erweiterung unseren Lizenzserver (<code>api.annmax1983.com</code>) ausschließlich zum Aktivieren, zum Nachprüfen (höchstens einmal alle 2 Stunden beim Öffnen der Erweiterung) und zum Freigeben. Diese Anfragen enthalten den Lizenzschlüssel, eine zufällige Installationskennung und grundlegende Browser-Metadaten (Browser-Name/-Version, Browsersprache, Zeitzone, User-Agent) — niemals Ihre Bilder, Seiteninhalte oder den Browserverlauf. Unser Lizenzserver protokolliert die IP-Adresse dieser Anfragen ausschließlich zur Ratenbegrenzung und Missbrauchsabwehr – niemals für Profiling, Werbung oder Weitergabe an Dritte.',
-    hChanges: 'Änderungen dieser Richtlinie', pChanges: 'Änderungen werden auf dieser Seite mit aktualisiertem Datum angezeigt.',
-    hContact: 'Kontakt', pContact: 'Bei Fragen erstellen Sie bitte ein Issue auf <a href="https://github.com/annmax1983/ImageGrabber">GitHub</a>.',
-    footer: 'Image Grabber &copy; 2026. Ihre Vollständig Privat ist unser Designprinzip.'
-  },
-  es: {
-    title: '🔒 Política de Privacidad — Image Grabber',
-    updated: 'Última actualización: septiembre de 2026',
-    highlight: '<strong>Image Grabber no recopila, almacena, transmite ni comparte datos personales.</strong><br>Todo el procesamiento se realiza localmente en su navegador. La única solicitud de red es la verificación opcional de la licencia Premium (véase «Servicios de Terceros»).',
-    hCollection: 'Recopilación de Datos', pCollection: 'Image Grabber <strong>no</strong> recopila ninguna de las siguientes informaciones:',
-    listCollection: ['Información de identificación personal', 'Historial de navegación o URLs visitadas', 'Analíticas de uso o telemetría', 'Cookies o identificadores de seguimiento', 'Contenido de imágenes o datos de archivos'],
-    hStorage: 'Almacenamiento de Datos', pStorage: 'Image Grabber almacena los siguientes datos <strong>localmente en su navegador</strong> usando la API de Chrome Storage:',
-    listStorage: ['<strong>URLs de imágenes recopiladas</strong> — URLs de imágenes encontradas en las páginas que visita', '<strong>Información de página</strong> — URL y título de cada pestaña donde se recopilaron imágenes', '<strong>Registros de eliminación</strong> — URLs que ha eliminado manualmente, para mantenerlas excluidas en nuevos escaneos', '<strong>Preferencias del usuario</strong> — configuración de filtros, estado de auto-recolección, modo de vista', '<strong>Datos de licencia</strong> — la clave de licencia introducida y su estado de activación'],
-    pStorageNote: 'Estos datos nunca salen de su navegador y se eliminan automáticamente al desinstalar.',
-    hPermissions: 'Permisos',
-    listPermissions: ['<strong>storage</strong> — Requerido para guardar URLs y preferencias localmente', '<strong>downloads</strong> — Requerido para descargar imágenes seleccionadas', '<strong>sidePanel</strong> — Requerido para mostrar la galería en el panel lateral', '<strong>declarativeNetRequest</strong> — Requerido para establecer el encabezado Referer al descargar imágenes de sitios con protección de enlaces. Las reglas solo se aplican durante un lote de descarga y se eliminan inmediatamente después.', '<strong>host_permissions (&lt;all_urls&gt;)</strong> — Requerido para escanear páginas web en busca de imágenes. Cuando la auto-recolección está activada, la extensión escanea continuamente mientras la página carga; de lo contrario solo escanea al activar manualmente.'],
-    pPermissions: 'Image Grabber <strong>no</strong> usa estos permisos para leer datos personales ni transmitir contenido.',
-    hDownloads: 'Descarga de Imágenes',
-    listDownloads: ['Las imágenes se obtienen directamente de sus URLs originales', 'Las descargas se guardan localmente en su carpeta ImageGrabber/', 'No se envían datos de imágenes a terceros', 'Todo el procesamiento de descargas se realiza localmente en su navegador'],
-    hThirdParty: 'Servicios de Terceros', pThirdParty: 'Image Grabber <strong>no</strong> se conecta a servidores de terceros, APIs ni servicios de análisis. Todo el procesamiento de imágenes se realiza <strong>localmente</strong> en la extensión. La única excepción es la licencia Premium opcional: las funciones gratuitas no realizan ninguna petición de red; con una licencia, la extensión contacta con nuestro servidor de licencias (<code>api.annmax1983.com</code>) solo para activarla, reverificarla (como máximo una vez cada 2 horas al abrir la extensión) y liberarla. Esas peticiones incluyen tu clave de licencia, un identificador de instalación aleatorio y metadatos básicos del navegador (nombre/versión, idioma, zona horaria, User-Agent) — nunca tus imágenes, el contenido de las páginas ni el historial de navegación. Nuestro servidor de licencias registra la dirección IP de estas solicitudes únicamente para limitar la tasa de peticiones y evitar abusos; nunca para elaborar perfiles, publicidad ni compartirla con terceros.',
-    hChanges: 'Cambios en Esta Política', pChanges: 'Cualquier cambio se reflejará en esta página con la fecha actualizada.',
-    hContact: 'Contacto', pContact: 'Si tiene preguntas, abra un issue en <a href="https://github.com/annmax1983/ImageGrabber">GitHub</a>.',
-    footer: 'Image Grabber &copy; 2026. Su privacidad es nuestro principio de diseño.'
-  },
-  fr: {
-    title: '🔒 Politique de Confidentialité — Image Grabber',
-    updated: 'Dernière mise à jour : septembre 2026',
-    highlight: '<strong>Image Grabber ne collecte, ne stocke, ne transmet ni ne partage de données personnelles.</strong><br>Tout le traitement s\'effectue localement dans votre navigateur. La seule requête réseau est la vérification facultative de la licence Premium (voir « Services Tiers »).',
-    hCollection: 'Collecte de Données', pCollection: 'Image Grabber ne collecte <strong>aucune</strong> des données suivantes :',
-    listCollection: ['Informations d\'identification personnelle', 'Historique de navigation ou URLs visitées', 'Analyses d\'utilisation ou télémétrie', 'Cookies ou identifiants de suivi', 'Contenu d\'images ou données de fichiers'],
-    hStorage: 'Stockage des Données', pStorage: 'Image Grabber stocke les données suivantes <strong>localement dans votre navigateur</strong> via l\'API Chrome Storage :',
-    listStorage: ['<strong>URLs d\'images collectées</strong> — URLs des images trouvées sur les pages visitées', '<strong>Informations de page</strong> — URL et titre de chaque onglet où des images ont été collectées', '<strong>Enregistrements de suppression</strong> — URLs que vous avez supprimées manuellement, pour les maintenir exclues lors des nouveaux scans', '<strong>Préférences utilisateur</strong> — paramètres de filtre, état de collecte automatique, mode d\'affichage', '<strong>Données de licence</strong> — la clé de licence saisie et son état d\'activation'],
-    pStorageNote: 'Ces données ne quittent jamais votre navigateur et sont supprimées lors de la désinstallation.',
-    hPermissions: 'Permissions',
-    listPermissions: ['<strong>storage</strong> — Requis pour enregistrer les URLs et préférences localement', '<strong>downloads</strong> — Requis pour télécharger les images sélectionnées', '<strong>sidePanel</strong> — Requis pour afficher la galerie dans le panneau latéral', '<strong>declarativeNetRequest</strong> — Requis pour définir l\'en-tête Referer lors du téléchargement d\'images depuis des sites protégés contre le hotlink. Les règles ne s\'appliquent que pendant un lot de téléchargement et sont supprimées immédiatement après.', '<strong>host_permissions (&lt;all_urls&gt;)</strong> — Requis pour scanner les pages web. Lorsque la collecte automatique est activée, l\'extension scanne en continu pendant le chargement de la page ; sinon uniquement sur déclenchement manuel.'],
-    pPermissions: 'Image Grabber n\'utilise <strong>pas</strong> ces permissions pour lire des données personnelles ou transmettre du contenu.',
-    hDownloads: 'Téléchargement d\'Images',
-    listDownloads: ['Les images sont récupérées directement depuis leurs URLs sources', 'Les téléchargements sont sauvegardés localement dans votre dossier ImageGrabber/', 'Aucune donnée d\'image n\'est envoyée à des tiers', 'Tout le traitement des téléchargements s\'effectue localement dans votre navigateur'],
-    hThirdParty: 'Services Tiers', pThirdParty: 'Image Grabber ne se connecte <strong>pas</strong> à des serveurs tiers, des API ou des services d\'analyse. Tout le traitement des images s\'effectue <strong>localement</strong> dans l\'extension. La seule exception est la licence Premium facultative : les fonctions gratuites n\'émettent aucune requête réseau ; avec une licence, l\'extension contacte notre serveur de licences (<code>api.annmax1983.com</code>) uniquement pour l\'activer, la revérifier (au plus une fois toutes les 2 heures à l\'ouverture de l\'extension) et la libérer. Ces requêtes contiennent votre clé de licence, un identifiant d\'installation aléatoire et des métadonnées navigateur de base (nom/version, langue, fuseau horaire, User-Agent) — jamais vos images, le contenu des pages ni votre historique de navigation. Notre serveur de licences enregistre l\'adresse IP de ces requêtes uniquement pour limiter le débit et prévenir les abus — jamais pour du profilage, de la publicité ou un partage avec des tiers.',
-    hChanges: 'Modifications de Cette Politique', pChanges: 'Toute modification sera reflétée sur cette page avec la date mise à jour.',
-    hContact: 'Contact', pContact: 'Pour toute question, ouvrez une issue sur <a href="https://github.com/annmax1983/ImageGrabber">GitHub</a>.',
-    footer: 'Image Grabber &copy; 2026. Votre vie privée est notre principe de conception.'
+const MODEL = {"langs":{"en":{"summary":"Image scanning and processing run in your browser; the extension does not collect or share personal data. It downloads images directly from their original URLs when you ask, and contacts the licence server only for an optional Premium licence. No analytics, no account.","sections":[{"t":"Data Collection","html":"\u003cp\u003eImage Grabber does \u003cstrong\u003enot\u003c/strong\u003e collect any of the following:\u003c/p\u003e\u003cul\u003e\u003cli\u003ePersonal identification information\u003c/li\u003e\u003cli\u003eBrowsing history or URLs visited\u003c/li\u003e\u003cli\u003eUsage analytics or telemetry\u003c/li\u003e\u003cli\u003eCookies or tracking identifiers\u003c/li\u003e\u003cli\u003eImage content or file data\u003c/li\u003e\u003c/ul\u003e"},{"t":"Data Storage","html":"\u003cp\u003eImage Grabber stores the following data \u003cstrong\u003elocally in your browser\u003c/strong\u003e using the Chrome Storage API:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eCollected image URLs\u003c/strong\u003e — URLs of images found on web pages you visit while the extension is active\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePage metadata\u003c/strong\u003e — the page URL and title of each tab where images were collected\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eRemoval records\u003c/strong\u003e — URLs you have manually removed, so they stay excluded after re-scans\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eUser preferences\u003c/strong\u003e — filter settings, auto-collect toggle state, view mode\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eLicense data\u003c/strong\u003e — the license key you entered and its activation status\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eLocal data stays on your device except for the optional licence fields described under Third-Party Services; uninstalling deletes the local copy.\u003c/p\u003e"},{"t":"Permissions","html":"\u003cul\u003e\u003cli\u003e\u003cstrong\u003estorage\u003c/strong\u003e — Required to save collected image URLs and user preferences locally\u003c/li\u003e\u003cli\u003e\u003cstrong\u003edownloads\u003c/strong\u003e — Required to download selected images to your computer\u003c/li\u003e\u003cli\u003e\u003cstrong\u003esidePanel\u003c/strong\u003e — Required to display the image gallery in Chrome's side panel\u003c/li\u003e\u003cli\u003e\u003cstrong\u003edeclarativeNetRequest\u003c/strong\u003e — Required to set the Referer header for image previews and downloads on hotlink-protected sites. Rules apply only while a panel shows images from a tab or during a download batch, are scoped to the image domains on screen, and are removed when the panel closes, you switch tabs, or the page navigates.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ehost_permissions (&lt;all_urls&gt;)\u003c/strong\u003e — Required to scan web pages for images. When auto-collect is enabled, the extension scans continuously as the page loads; otherwise it only scans on manual trigger.\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eImage Grabber does \u003cstrong\u003enot\u003c/strong\u003e use these permissions to read personal data, track activity, or transmit content to external servers.\u003c/p\u003e"},{"t":"Image Downloads","html":"\u003cul\u003e\u003cli\u003eImages are fetched directly from their original source URLs\u003c/li\u003e\u003cli\u003eDownloads are saved locally to your computer's ImageGrabber/ folder\u003c/li\u003e\u003cli\u003eNo image data is sent to any third-party server\u003c/li\u003e\u003cli\u003eAll download processing runs locally in your browser\u003c/li\u003e\u003c/ul\u003e"},{"t":"Third-Party Services","html":"\u003cp\u003eImage Grabber does not use analytics or advertising services. Images are downloaded directly from their original source URLs; those websites may see your IP address and request metadata under their own policies. The only connection to the developer is the optional Premium licence check at \u003ccode\u003eapi.annmax1983.com\u003c/code\u003e, which carries your licence key, a random install identifier and basic browser metadata — never images, page content or browsing history. Our licence server records the IP address of these requests solely for rate limiting and abuse prevention — never for profiling, advertising, or sharing with third parties.\u003c/p\u003e"},{"t":"Data retention & deletion","html":"\u003cp\u003eYour settings and content stay in your browser until you delete them in the extension or uninstall it. Uninstalling removes the extension's local data. Nothing is retained on our servers, because your content is never sent to them.\u003c/p\u003e"},{"t":"Changes to this policy","html":"\u003cp\u003eIf this policy changes, the revised version will be published on this page with a new date. Material changes will be noted in the extension's release notes.\u003c/p\u003e"},{"t":"Contact","html":"\u003cp\u003eQuestions about this policy? Email \u003ca href=\"mailto:support@annmax1983.com\"\u003esupport@annmax1983.com\u003c/a\u003e or open an issue on \u003ca href=\"https://github.com/annmax1983/ImageGrabber\" target=\"_blank\" rel=\"noopener\"\u003eGitHub\u003c/a\u003e.\u003c/p\u003e"}]},"zh":{"summary":"图片扫描与处理都在浏览器内完成；扩展不会收集或共享个人数据。只有在你主动下载时，它才会从图片的原始网址下载，并且仅在验证可选的付费授权时连接授权服务器。没有统计，也没有账号。","sections":[{"t":"数据收集","html":"\u003cp\u003eImage Grabber \u003cstrong\u003e不会\u003c/strong\u003e收集以下任何信息：\u003c/p\u003e\u003cul\u003e\u003cli\u003e个人身份信息\u003c/li\u003e\u003cli\u003e浏览历史或访问的网址\u003c/li\u003e\u003cli\u003e使用分析或遥测数据\u003c/li\u003e\u003cli\u003eCookie 或跟踪标识符\u003c/li\u003e\u003cli\u003e图片内容或文件数据\u003c/li\u003e\u003c/ul\u003e"},{"t":"数据存储","html":"\u003cp\u003eImage Grabber 使用 Chrome Storage API 将以下数据\u003cstrong\u003e存储在您的浏览器本地\u003c/strong\u003e：\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003e采集的图片 URL\u003c/strong\u003e — 您访问网页时发现的图片链接\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e页面信息\u003c/strong\u003e — 每个采集图片的标签页的页面 URL 和标题\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e删除记录\u003c/strong\u003e — 您手动移除的图片 URL，用于重新扫描时保持排除状态\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e用户偏好\u003c/strong\u003e — 筛选设置、自动采集开关、视图模式\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e授权数据\u003c/strong\u003e — 您输入的授权密钥及其激活状态\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e除“第三方服务”中所述的可选授权字段外，这些数据都留在你的设备上；卸载扩展会删除本地副本。\u003c/p\u003e"},{"t":"权限说明","html":"\u003cul\u003e\u003cli\u003e\u003cstrong\u003estorage\u003c/strong\u003e — 用于在本地保存采集的图片 URL 和用户偏好\u003c/li\u003e\u003cli\u003e\u003cstrong\u003edownloads\u003c/strong\u003e — 用于将选中的图片下载到您的电脑\u003c/li\u003e\u003cli\u003e\u003cstrong\u003esidePanel\u003c/strong\u003e — 用于在浏览器侧边栏中展示图片库\u003c/li\u003e\u003cli\u003e\u003cstrong\u003edeclarativeNetRequest\u003c/strong\u003e — 用于在防盗链站点显示缩略图/灯箱和下载图片时设置 Referer 请求头。规则仅在面板展示某标签页图片期间或下载批次期间生效，只作用于当前屏幕上的图片域名，并在关闭面板、切换标签页或页面跳转时移除。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ehost_permissions (&lt;all_urls&gt;)\u003c/strong\u003e — 用于扫描网页中的图片。开启自动采集后，扩展会随页面加载持续扫描；关闭时仅手动触发扫描。\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eImage Grabber \u003cstrong\u003e不会\u003c/strong\u003e使用这些权限读取个人数据、追踪活动或向外部服务器传输内容。\u003c/p\u003e"},{"t":"图片下载","html":"\u003cul\u003e\u003cli\u003e图片直接从原始源 URL 获取\u003c/li\u003e\u003cli\u003e下载的图片保存在您电脑的 ImageGrabber/ 文件夹中\u003c/li\u003e\u003cli\u003e不会将任何图片数据发送到第三方服务器\u003c/li\u003e\u003cli\u003e所有下载处理均在您的浏览器本地完成\u003c/li\u003e\u003c/ul\u003e"},{"t":"第三方服务","html":"\u003cp\u003eImage Grabber 不使用统计分析或广告服务。图片会直接从原始来源网址下载；这些网站可能依据自己的隐私政策看到你的 IP 地址和请求信息。与开发者的唯一连接是位于 \u003ccode\u003eapi.annmax1983.com\u003c/code\u003e 的可选付费授权校验，请求只包含授权密钥、随机安装标识和基本浏览器信息，绝不包含图片、页面内容或浏览历史。授权服务器记录这些请求的 IP 地址，仅用于限速和防滥用，不用于画像、广告，也不会共享给第三方。\u003c/p\u003e"},{"t":"数据保留与删除","html":"\u003cp\u003e你的设置和内容保存在浏览器中，直到你在扩展内删除它们或卸载扩展。卸载会清除扩展的本地数据。我们的服务器不保留任何内容，因为你的内容从不会发送到那里。\u003c/p\u003e"},{"t":"政策变更","html":"\u003cp\u003e如果本政策发生变更，修订后的版本会发布在本页并更新日期。重要变更会在扩展的版本说明中注明。\u003c/p\u003e"},{"t":"联系我们","html":"\u003cp\u003e对本政策有疑问？请发邮件至 \u003ca href=\"mailto:support@annmax1983.com\"\u003esupport@annmax1983.com\u003c/a\u003e，或在 \u003ca href=\"https://github.com/annmax1983/ImageGrabber\" target=\"_blank\" rel=\"noopener\"\u003eGitHub\u003c/a\u003e 提交 issue。\u003c/p\u003e"}]},"ja":{"summary":"画像のスキャンと処理はブラウザ内で行われ、個人データの収集や共有はありません。ダウンロードを指示したときに元の URL から画像を取得し、任意の Premium ライセンスを確認するときだけライセンスサーバーへ接続します。分析もアカウントもありません。","sections":[{"t":"データの収集","html":"\u003cp\u003eImage Grabber は以下のデータを\u003cstrong\u003e収集しません\u003c/strong\u003e：\u003c/p\u003e\u003cul\u003e\u003cli\u003e個人識別情報\u003c/li\u003e\u003cli\u003e閲覧履歴またはアクセスしたURL\u003c/li\u003e\u003cli\u003e使用分析またはテレメトリ\u003c/li\u003e\u003cli\u003eCookieまたは追跡識別子\u003c/li\u003e\u003cli\u003e画像コンテンツまたはファイルデータ\u003c/li\u003e\u003c/ul\u003e"},{"t":"データの保存","html":"\u003cp\u003eImage Grabber は Chrome Storage API を使用して、以下のデータを\u003cstrong\u003eブラウザ内にローカル保存\u003c/strong\u003eします：\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003e収集した画像URL\u003c/strong\u003e — アクティブなタブで訪問したウェブページから発見された画像のURL\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eページ情報\u003c/strong\u003e — 画像を収集した各タブのページURLとタイトル\u003c/li\u003e\u003cli\u003e\u003cstrong\u003e削除記録\u003c/strong\u003e — 手動で削除した画像URL。再スキャン時に除外状態を維持します\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eユーザー設定\u003c/strong\u003e — フィルタ設定、自動収集トグル状態、表示モード\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eライセンスデータ\u003c/strong\u003e — 入力したライセンスキーとその有効化状態\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e「第三者サービス」に記載された任意のライセンス情報を除き、これらのデータは端末内に保持されます。拡張機能をアンインストールするとローカルコピーは削除されます。\u003c/p\u003e"},{"t":"権限の説明","html":"\u003cul\u003e\u003cli\u003e\u003cstrong\u003estorage\u003c/strong\u003e — 収集した画像URLとユーザー設定をローカルに保存するために必要\u003c/li\u003e\u003cli\u003e\u003cstrong\u003edownloads\u003c/strong\u003e — 選択した画像をパソコンにダウンロードするために必要\u003c/li\u003e\u003cli\u003e\u003cstrong\u003esidePanel\u003c/strong\u003e — ブラウザのサイドパネルに画像ギャラリーを表示するために必要\u003c/li\u003e\u003cli\u003e\u003cstrong\u003edeclarativeNetRequest\u003c/strong\u003e — ホットリンク保護されたサイトでプレビューとダウンロードを行う際に Referer ヘッダーを設定するために必要です。ルールはパネルがタブの画像を表示している間、またはダウンロードバッチ中のみ適用され、画面上の画像ドメインに限定され、パネルを閉じる・タブを切り替える・ページが遷移した時点で削除されます。\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ehost_permissions (&lt;all_urls&gt;)\u003c/strong\u003e — ウェブページの画像をスキャンするために必要。自動収集が有効な場合、ページ読み込み中に継続的にスキャンします。無効な場合は手動トリガー時のみスキャンします。\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eImage Grabber はこれらの権限を使用して個人データの読み取り、活動の追跡、外部サーバーへのデータ送信は\u003cstrong\u003e行いません\u003c/strong\u003e。\u003c/p\u003e"},{"t":"画像のダウンロード","html":"\u003cul\u003e\u003cli\u003e画像は元のソースURLから直接取得されます\u003c/li\u003e\u003cli\u003eダウンロードされた画像はパソコンの ImageGrabber/ フォルダに保存されます\u003c/li\u003e\u003cli\u003e画像データがサードパーティサーバーに送信されることはありません\u003c/li\u003e\u003cli\u003eすべてのダウンロード処理はブラウザ内でローカルに実行されます\u003c/li\u003e\u003c/ul\u003e"},{"t":"サードパーティサービス","html":"\u003cp\u003eImage Grabber は分析や広告のサービスを利用しません。画像は元の URL から直接ダウンロードされ、そのサイトは独自のポリシーに基づいて IP アドレスやリクエスト情報を確認できます。開発者への接続は、\u003ccode\u003eapi.annmax1983.com\u003c/code\u003e での任意の Premium ライセンス確認だけです。送信されるのはライセンスキー、ランダムなインストール識別子、基本的なブラウザ情報のみで、画像、ページ内容、閲覧履歴は含まれません。ライセンスサーバーはこれらのリクエストの IP アドレスを、レート制限と不正防止のみに記録します。プロファイリング、広告、第三者提供には使用しません。\u003c/p\u003e"},{"t":"データの保存期間と削除","html":"\u003cp\u003e設定とコンテンツは、拡張機能内で削除するかアンインストールするまでブラウザに保存されます。アンインストールすると拡張機能のローカルデータは削除されます。コンテンツがサーバーへ送信されることはないため、当方のサーバーには何も保持されません。\u003c/p\u003e"},{"t":"ポリシーの変更","html":"\u003cp\u003eこのポリシーを変更する場合は、改訂版をこのページに新しい日付で掲載します。重要な変更は拡張機能のリリースノートにも記載します。\u003c/p\u003e"},{"t":"お問い合わせ","html":"\u003cp\u003eこのポリシーについてのご質問は、\u003ca href=\"mailto:support@annmax1983.com\"\u003esupport@annmax1983.com\u003c/a\u003e へメールするか、\u003ca href=\"https://github.com/annmax1983/ImageGrabber\" target=\"_blank\" rel=\"noopener\"\u003eGitHub\u003c/a\u003e で issue を作成してください。\u003c/p\u003e"}]},"de":{"summary":"Scannen und Verarbeiten von Bildern laufen im Browser; die Erweiterung erfasst oder teilt keine persönlichen Daten. Sie lädt Bilder auf deine Anforderung direkt von ihren Original-URLs und kontaktiert den Lizenzserver nur für eine optionale Premium-Lizenz. Keine Analyse, kein Konto.","sections":[{"t":"Datenerfassung","html":"\u003cp\u003eImage Grabber erfasst \u003cstrong\u003ekeine\u003c/strong\u003e der folgenden Daten:\u003c/p\u003e\u003cul\u003e\u003cli\u003ePersönliche Identifikationsinformationen\u003c/li\u003e\u003cli\u003eBrowserverlauf oder besuchte URLs\u003c/li\u003e\u003cli\u003eNutzungsanalysen oder Telemetrie\u003c/li\u003e\u003cli\u003eCookies oder Tracking-Kennungen\u003c/li\u003e\u003cli\u003eBildinhalte oder Dateidaten\u003c/li\u003e\u003c/ul\u003e"},{"t":"Datenspeicherung","html":"\u003cp\u003eImage Grabber speichert die folgenden Daten \u003cstrong\u003elokal in Ihrem Browser\u003c/strong\u003e über die Chrome Storage API:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eGesammelte Bild-URLs\u003c/strong\u003e — URLs von Bildern auf besuchten Webseiten\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eSeiteninformationen\u003c/strong\u003e — Seiten-URL und Titel jedes Tabs, in dem Bilder gesammelt wurden\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eLöschprotokolle\u003c/strong\u003e — URLs, die Sie manuell entfernt haben, um sie bei erneuten Scans ausgeschlossen zu halten\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eBenutzereinstellungen\u003c/strong\u003e — Filtereinstellungen, Auto-Sammeln-Status, Ansichtsmodus\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eLizenzdaten\u003c/strong\u003e — der eingegebene Lizenzschlüssel und sein Aktivierungsstatus\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eDiese Daten bleiben auf deinem Gerät – mit Ausnahme der optionalen Lizenzfelder, die unter „Drittanbieterdienste“ beschrieben sind. Beim Deinstallieren wird die lokale Kopie gelöscht.\u003c/p\u003e"},{"t":"Berechtigungen","html":"\u003cul\u003e\u003cli\u003e\u003cstrong\u003estorage\u003c/strong\u003e — Erforderlich, um gesammelte Bild-URLs und Einstellungen lokal zu speichern\u003c/li\u003e\u003cli\u003e\u003cstrong\u003edownloads\u003c/strong\u003e — Erforderlich, um ausgewählte Bilder herunterzuladen\u003c/li\u003e\u003cli\u003e\u003cstrong\u003esidePanel\u003c/strong\u003e — Erforderlich, um die Bildergalerie in der Seitenleiste anzuzeigen\u003c/li\u003e\u003cli\u003e\u003cstrong\u003edeclarativeNetRequest\u003c/strong\u003e — Erforderlich, um bei Hotlink-geschützten Websites den Referer-Header für Vorschauen und Downloads zu setzen. Regeln gelten nur, während ein Panel Bilder eines Tabs anzeigt, oder während eines Download-Stapels, sind auf die sichtbaren Bild-Domains begrenzt und werden beim Schließen des Panels, beim Tabwechsel oder bei Navigation entfernt.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ehost_permissions (&lt;all_urls&gt;)\u003c/strong\u003e — Erforderlich, um Webseiten nach Bildern zu scannen. Bei aktiviertem Auto-Sammeln scannt die Erweiterung beim Laden der Seite kontinuierlich; sonst nur auf manuellen Auslöser.\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eImage Grabber verwendet diese Berechtigungen \u003cstrong\u003enicht\u003c/strong\u003e, um personenbezogene Daten zu lesen oder zu übermitteln.\u003c/p\u003e"},{"t":"Bild-Downloads","html":"\u003cul\u003e\u003cli\u003eBilder werden direkt von ihrer Original-URL geladen\u003c/li\u003e\u003cli\u003eDownloads werden lokal in Ihrem ImageGrabber/ Ordner gespeichert\u003c/li\u003e\u003cli\u003eKeine Bilddaten werden an Dritte gesendet\u003c/li\u003e\u003cli\u003eDie gesamte Download-Verarbeitung erfolgt lokal in Ihrem Browser\u003c/li\u003e\u003c/ul\u003e"},{"t":"Dienste von Drittanbietern","html":"\u003cp\u003eImage Grabber verwendet keine Analyse- oder Werbedienste. Bilder werden direkt von ihren ursprünglichen URLs geladen; diese Websites können deine IP-Adresse und Anfrageinformationen nach ihren eigenen Richtlinien sehen. Die einzige Verbindung zum Entwickler ist die optionale Premium-Lizenzprüfung bei \u003ccode\u003eapi.annmax1983.com\u003c/code\u003e. Sie überträgt Lizenzschlüssel, eine zufällige Installationskennung und grundlegende Browserdaten – niemals Bilder, Seiteninhalte oder den Browserverlauf. Unser Lizenzserver speichert die IP-Adresse dieser Anfragen ausschließlich zur Ratenbegrenzung und Missbrauchsabwehr – nie für Profiling, Werbung oder Weitergabe an Dritte.\u003c/p\u003e"},{"t":"Aufbewahrung und Löschung","html":"\u003cp\u003eDeine Einstellungen und Inhalte bleiben im Browser, bis du sie in der Erweiterung löschst oder sie deinstallierst. Beim Deinstallieren werden die lokalen Daten der Erweiterung entfernt. Auf unseren Servern wird nichts aufbewahrt, weil deine Inhalte nie dorthin gesendet werden.\u003c/p\u003e"},{"t":"Änderungen dieser Erklärung","html":"\u003cp\u003eWenn sich diese Erklärung ändert, wird die überarbeitete Fassung mit einem neuen Datum auf dieser Seite veröffentlicht. Wesentliche Änderungen werden in den Versionshinweisen der Erweiterung genannt.\u003c/p\u003e"},{"t":"Kontakt","html":"\u003cp\u003eFragen zu dieser Erklärung? Schreib an \u003ca href=\"mailto:support@annmax1983.com\"\u003esupport@annmax1983.com\u003c/a\u003e oder öffne ein Issue auf \u003ca href=\"https://github.com/annmax1983/ImageGrabber\" target=\"_blank\" rel=\"noopener\"\u003eGitHub\u003c/a\u003e.\u003c/p\u003e"}]},"es":{"summary":"El escaneo y el procesamiento de imágenes se ejecutan en tu navegador; la extensión no recopila ni comparte datos personales. Descarga las imágenes directamente desde sus URL originales cuando se lo pides y solo contacta con el servidor de licencias para una licencia Premium opcional. Sin analíticas ni cuenta.","sections":[{"t":"Recopilación de Datos","html":"\u003cp\u003eImage Grabber \u003cstrong\u003eno\u003c/strong\u003e recopila ninguna de las siguientes informaciones:\u003c/p\u003e\u003cul\u003e\u003cli\u003eInformación de identificación personal\u003c/li\u003e\u003cli\u003eHistorial de navegación o URLs visitadas\u003c/li\u003e\u003cli\u003eAnalíticas de uso o telemetría\u003c/li\u003e\u003cli\u003eCookies o identificadores de seguimiento\u003c/li\u003e\u003cli\u003eContenido de imágenes o datos de archivos\u003c/li\u003e\u003c/ul\u003e"},{"t":"Almacenamiento de Datos","html":"\u003cp\u003eImage Grabber almacena los siguientes datos \u003cstrong\u003elocalmente en su navegador\u003c/strong\u003e usando la API de Chrome Storage:\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eURLs de imágenes recopiladas\u003c/strong\u003e — URLs de imágenes encontradas en las páginas que visita\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eInformación de página\u003c/strong\u003e — URL y título de cada pestaña donde se recopilaron imágenes\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eRegistros de eliminación\u003c/strong\u003e — URLs que ha eliminado manualmente, para mantenerlas excluidas en nuevos escaneos\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePreferencias del usuario\u003c/strong\u003e — configuración de filtros, estado de auto-recolección, modo de vista\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eDatos de licencia\u003c/strong\u003e — la clave de licencia introducida y su estado de activación\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eEstos datos permanecen en tu dispositivo, salvo los campos opcionales de licencia descritos en «Servicios de terceros». Al desinstalar se elimina la copia local.\u003c/p\u003e"},{"t":"Permisos","html":"\u003cul\u003e\u003cli\u003e\u003cstrong\u003estorage\u003c/strong\u003e — Requerido para guardar URLs y preferencias localmente\u003c/li\u003e\u003cli\u003e\u003cstrong\u003edownloads\u003c/strong\u003e — Requerido para descargar imágenes seleccionadas\u003c/li\u003e\u003cli\u003e\u003cstrong\u003esidePanel\u003c/strong\u003e — Requerido para mostrar la galería en el panel lateral\u003c/li\u003e\u003cli\u003e\u003cstrong\u003edeclarativeNetRequest\u003c/strong\u003e — Requerido para establecer el encabezado Referer en vistas previas y descargas de sitios con protección de enlaces. Las reglas solo se aplican mientras un panel muestra imágenes de una pestaña o durante un lote de descarga, se limitan a los dominios de imagen en pantalla y se eliminan al cerrar el panel, cambiar de pestaña o navegar.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ehost_permissions (&lt;all_urls&gt;)\u003c/strong\u003e — Requerido para escanear páginas web en busca de imágenes. Cuando la auto-recolección está activada, la extensión escanea continuamente mientras la página carga; de lo contrario solo escanea al activar manualmente.\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eImage Grabber \u003cstrong\u003eno\u003c/strong\u003e usa estos permisos para leer datos personales ni transmitir contenido.\u003c/p\u003e"},{"t":"Descarga de Imágenes","html":"\u003cul\u003e\u003cli\u003eLas imágenes se obtienen directamente de sus URLs originales\u003c/li\u003e\u003cli\u003eLas descargas se guardan localmente en su carpeta ImageGrabber/\u003c/li\u003e\u003cli\u003eNo se envían datos de imágenes a terceros\u003c/li\u003e\u003cli\u003eTodo el procesamiento de descargas se realiza localmente en su navegador\u003c/li\u003e\u003c/ul\u003e"},{"t":"Servicios de Terceros","html":"\u003cp\u003eImage Grabber no utiliza servicios de analítica ni publicidad. Las imágenes se descargan directamente de sus URL de origen; esos sitios pueden ver tu dirección IP y datos de la solicitud según sus propias políticas. La única conexión con el desarrollador es la comprobación opcional de la licencia Premium en \u003ccode\u003eapi.annmax1983.com\u003c/code\u003e, que envía la clave de licencia, un identificador de instalación aleatorio y metadatos básicos del navegador; nunca imágenes, contenido de páginas ni historial. Nuestro servidor de licencias registra la IP de estas solicitudes solo para limitar la tasa y evitar abusos, nunca para perfilado, publicidad ni cesión a terceros.\u003c/p\u003e"},{"t":"Conservación y eliminación de datos","html":"\u003cp\u003eTus ajustes y contenidos permanecen en el navegador hasta que los elimines en la extensión o la desinstales. Al desinstalarla se borran los datos locales de la extensión. No conservamos nada en nuestros servidores porque tus contenidos nunca se envían allí.\u003c/p\u003e"},{"t":"Cambios en esta política","html":"\u003cp\u003eSi esta política cambia, la versión revisada se publicará en esta página con una nueva fecha. Los cambios importantes se indicarán en las notas de la versión de la extensión.\u003c/p\u003e"},{"t":"Contacto","html":"\u003cp\u003e¿Preguntas sobre esta política? Escribe a \u003ca href=\"mailto:support@annmax1983.com\"\u003esupport@annmax1983.com\u003c/a\u003e o abre un issue en \u003ca href=\"https://github.com/annmax1983/ImageGrabber\" target=\"_blank\" rel=\"noopener\"\u003eGitHub\u003c/a\u003e.\u003c/p\u003e"}]},"fr":{"summary":"L'analyse et le traitement des images s'exécutent dans votre navigateur ; l'extension ne collecte ni ne partage de données personnelles. Elle télécharge les images directement depuis leurs URL d'origine lorsque vous le demandez et ne contacte le serveur de licences que pour une licence Premium facultative. Aucune analyse, aucun compte.","sections":[{"t":"Collecte de Données","html":"\u003cp\u003eImage Grabber ne collecte \u003cstrong\u003eaucune\u003c/strong\u003e des données suivantes :\u003c/p\u003e\u003cul\u003e\u003cli\u003eInformations d'identification personnelle\u003c/li\u003e\u003cli\u003eHistorique de navigation ou URLs visitées\u003c/li\u003e\u003cli\u003eAnalyses d'utilisation ou télémétrie\u003c/li\u003e\u003cli\u003eCookies ou identifiants de suivi\u003c/li\u003e\u003cli\u003eContenu d'images ou données de fichiers\u003c/li\u003e\u003c/ul\u003e"},{"t":"Stockage des Données","html":"\u003cp\u003eImage Grabber stocke les données suivantes \u003cstrong\u003elocalement dans votre navigateur\u003c/strong\u003e via l'API Chrome Storage :\u003c/p\u003e\u003cul\u003e\u003cli\u003e\u003cstrong\u003eURLs d'images collectées\u003c/strong\u003e — URLs des images trouvées sur les pages visitées\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eInformations de page\u003c/strong\u003e — URL et titre de chaque onglet où des images ont été collectées\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eEnregistrements de suppression\u003c/strong\u003e — URLs que vous avez supprimées manuellement, pour les maintenir exclues lors des nouveaux scans\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ePréférences utilisateur\u003c/strong\u003e — paramètres de filtre, état de collecte automatique, mode d'affichage\u003c/li\u003e\u003cli\u003e\u003cstrong\u003eDonnées de licence\u003c/strong\u003e — la clé de licence saisie et son état d'activation\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eCes données restent sur votre appareil, à l'exception des champs de licence facultatifs décrits dans « Services tiers ». La désinstallation supprime la copie locale.\u003c/p\u003e"},{"t":"Permissions","html":"\u003cul\u003e\u003cli\u003e\u003cstrong\u003estorage\u003c/strong\u003e — Requis pour enregistrer les URLs et préférences localement\u003c/li\u003e\u003cli\u003e\u003cstrong\u003edownloads\u003c/strong\u003e — Requis pour télécharger les images sélectionnées\u003c/li\u003e\u003cli\u003e\u003cstrong\u003esidePanel\u003c/strong\u003e — Requis pour afficher la galerie dans le panneau latéral\u003c/li\u003e\u003cli\u003e\u003cstrong\u003edeclarativeNetRequest\u003c/strong\u003e — Requis pour définir l'en-tête Referer pour les aperçus et téléchargements sur des sites protégés contre le hotlink. Les règles ne s'appliquent que lorsqu'un panneau affiche les images d'un onglet ou pendant un lot de téléchargement, sont limitées aux domaines d'images affichés et sont supprimées à la fermeture du panneau, au changement d'onglet ou lors d'une navigation.\u003c/li\u003e\u003cli\u003e\u003cstrong\u003ehost_permissions (&lt;all_urls&gt;)\u003c/strong\u003e — Requis pour scanner les pages web. Lorsque la collecte automatique est activée, l'extension scanne en continu pendant le chargement de la page ; sinon uniquement sur déclenchement manuel.\u003c/li\u003e\u003c/ul\u003e\u003cp\u003eImage Grabber n'utilise \u003cstrong\u003epas\u003c/strong\u003e ces permissions pour lire des données personnelles ou transmettre du contenu.\u003c/p\u003e"},{"t":"Téléchargement d'Images","html":"\u003cul\u003e\u003cli\u003eLes images sont récupérées directement depuis leurs URLs sources\u003c/li\u003e\u003cli\u003eLes téléchargements sont sauvegardés localement dans votre dossier ImageGrabber/\u003c/li\u003e\u003cli\u003eAucune donnée d'image n'est envoyée à des tiers\u003c/li\u003e\u003cli\u003eTout le traitement des téléchargements s'effectue localement dans votre navigateur\u003c/li\u003e\u003c/ul\u003e"},{"t":"Services Tiers","html":"\u003cp\u003eImage Grabber n'utilise aucun service d'analyse ou de publicité. Les images sont téléchargées directement depuis leurs URL d'origine ; ces sites peuvent voir votre adresse IP et les données de la requête selon leurs propres politiques. La seule connexion au développeur est la vérification facultative de la licence Premium sur \u003ccode\u003eapi.annmax1983.com\u003c/code\u003e. Elle transmet la clé de licence, un identifiant d'installation aléatoire et des métadonnées de navigateur de base — jamais les images, le contenu des pages ou l'historique. Notre serveur de licences enregistre l'adresse IP de ces requêtes uniquement pour limiter le débit et prévenir les abus, jamais pour le profilage, la publicité ou le partage avec des tiers.\u003c/p\u003e"},{"t":"Conservation et suppression des données","html":"\u003cp\u003eVos réglages et contenus restent dans le navigateur jusqu'à ce que vous les supprimiez dans l'extension ou que vous la désinstalliez. La désinstallation efface les données locales de l'extension. Rien n'est conservé sur nos serveurs, car vos contenus ne leur sont jamais envoyés.\u003c/p\u003e"},{"t":"Modifications de cette politique","html":"\u003cp\u003eSi cette politique change, la version révisée sera publiée sur cette page avec une nouvelle date. Les changements importants seront signalés dans les notes de version de l'extension.\u003c/p\u003e"},{"t":"Contact","html":"\u003cp\u003eDes questions sur cette politique ? Écrivez à \u003ca href=\"mailto:support@annmax1983.com\"\u003esupport@annmax1983.com\u003c/a\u003e ou ouvrez un ticket sur \u003ca href=\"https://github.com/annmax1983/ImageGrabber\" target=\"_blank\" rel=\"noopener\"\u003eGitHub\u003c/a\u003e.\u003c/p\u003e"}]}},"staticOnly":false};
+const UI_ALL = {"en":{"privacyTitle":"Privacy Policy","home":"Home","onThisPage":"On this page","lastUpdated":"Last updated: October 2026","chips":["Runs on your device","No analytics","No account","Licence optional"],"permissionsTitle":"Permissions","permissionsIntro":"The extension requests only these permissions:","retentionTitle":"Data retention & deletion","retentionBody":"Your settings and content stay in your browser until you delete them in the extension or uninstall it. Uninstalling removes the extension's local data. Nothing is retained on our servers, because your content is never sent to them.","syncCaveat":"If you enabled a feature that uses your browser account's sync, a copy may remain in that account. You can manage or remove it in your browser's sync settings.","changesTitle":"Changes to this policy","changesBody":"If this policy changes, the revised version will be published on this page with a new date. Material changes will be noted in the extension's release notes.","contactTitle":"Contact","contactBody":"Questions about this policy? Email \u003ca href=\"mailto:support@annmax1983.com\"\u003esupport@annmax1983.com\u003c/a\u003e or open an issue on \u003ca href=\"{github}\" target=\"_blank\" rel=\"noopener\"\u003eGitHub\u003c/a\u003e.","footerHome":"Home","footerGithub":"GitHub","footerSite":"Website","footerEmail":"Email","index":{"navFeatures":"Features","navPlans":"Free & Premium","navPrivacy":"Privacy","navSupport":"Support","eyebrow":"Chrome & Edge extension","badgeFree":"Free + Premium","badgeLocal":"Runs locally","badgeNoTrack":"No tracking","badgeBrowsers":"Chrome & Edge","ctaGet":"Get the extension","ctaPrivacy":"Privacy policy","ctaSource":"View source","featuresTitle":"Everything it does","featuresLead":"The core features at a glance.","moreTitle":"Also included","proLabel":"Premium","freeLabel":"Free","premiumLabel":"Premium","planTitle":"Free vs Premium","planLead":"The free tier is a complete tool, not a trial. Premium is optional.","privacyTitle":"Private by design","privacyLead":"Your data stays on your device. No account, no analytics, no tracking. Read exactly what is stored and when the extension uses the network.","privacyPoints":["Local processing","No account","Optional licence"],"privacyCta":"Read the privacy policy","supportEyebrow":"Support the developer","supportHint":"If this extension helps you, you can buy me a coffee.","footerMore":"More extensions","footerPrivacy":"Privacy","footerGithub":"GitHub","footerSite":"Website"}},"zh":{"privacyTitle":"隐私政策","home":"首页","onThisPage":"本页目录","lastUpdated":"最后更新：2026 年 10 月","chips":["在你的设备上运行","无统计追踪","无需账号","授权可选"],"permissionsTitle":"权限说明","permissionsIntro":"扩展只请求以下权限：","retentionTitle":"数据保留与删除","retentionBody":"你的设置和内容保存在浏览器中，直到你在扩展内删除它们或卸载扩展。卸载会清除扩展的本地数据。我们的服务器不保留任何内容，因为你的内容从不会发送到那里。","syncCaveat":"如果你启用了使用浏览器账号同步的功能，该账号中可能保留一份副本，可在浏览器的同步设置中管理或删除。","changesTitle":"政策变更","changesBody":"如果本政策发生变更，修订后的版本会发布在本页并更新日期。重要变更会在扩展的版本说明中注明。","contactTitle":"联系我们","contactBody":"对本政策有疑问？请发邮件至 \u003ca href=\"mailto:support@annmax1983.com\"\u003esupport@annmax1983.com\u003c/a\u003e，或在 \u003ca href=\"{github}\" target=\"_blank\" rel=\"noopener\"\u003eGitHub\u003c/a\u003e 提交 issue。","footerHome":"首页","footerGithub":"GitHub","footerSite":"官网","footerEmail":"邮件","index":{"navFeatures":"功能","navPlans":"免费与高级版","navPrivacy":"隐私","navSupport":"支持","eyebrow":"Chrome 与 Edge 扩展","badgeFree":"免费 + 高级版","badgeLocal":"本地运行","badgeNoTrack":"无追踪","badgeBrowsers":"Chrome 与 Edge","ctaGet":"获取扩展","ctaPrivacy":"隐私政策","ctaSource":"查看源码","featuresTitle":"全部功能","featuresLead":"核心功能一览。","moreTitle":"还包括","proLabel":"高级版","freeLabel":"免费版","premiumLabel":"高级版","planTitle":"免费版与高级版","planLead":"免费版是完整工具，不是试用版。高级功能完全可选。","privacyTitle":"隐私优先","privacyLead":"你的数据留在设备上。无需账号，没有统计，没有追踪。了解具体存储了什么，以及扩展何时联网。","privacyPoints":["本地处理","无需账号","授权可选"],"privacyCta":"阅读隐私政策","supportEyebrow":"支持开发者","supportHint":"如果这个扩展对你有帮助，可以请我喝杯咖啡。","footerMore":"更多扩展","footerPrivacy":"隐私","footerGithub":"GitHub","footerSite":"官网"}},"ja":{"privacyTitle":"プライバシーポリシー","home":"ホーム","onThisPage":"目次","lastUpdated":"最終更新：2026年10月","chips":["端末上で動作","分析なし","アカウント不要","ライセンスは任意"],"permissionsTitle":"権限","permissionsIntro":"この拡張機能が要求する権限は次のとおりです：","retentionTitle":"データの保存期間と削除","retentionBody":"設定とコンテンツは、拡張機能内で削除するかアンインストールするまでブラウザに保存されます。アンインストールすると拡張機能のローカルデータは削除されます。コンテンツがサーバーへ送信されることはないため、当方のサーバーには何も保持されません。","syncCaveat":"ブラウザのアカウント同期を使う機能を有効にした場合、そのアカウントにコピーが残ることがあります。ブラウザの同期設定から管理・削除できます。","changesTitle":"ポリシーの変更","changesBody":"このポリシーを変更する場合は、改訂版をこのページに新しい日付で掲載します。重要な変更は拡張機能のリリースノートにも記載します。","contactTitle":"お問い合わせ","contactBody":"このポリシーについてのご質問は、\u003ca href=\"mailto:support@annmax1983.com\"\u003esupport@annmax1983.com\u003c/a\u003e へメールするか、\u003ca href=\"{github}\" target=\"_blank\" rel=\"noopener\"\u003eGitHub\u003c/a\u003e で issue を作成してください。","footerHome":"ホーム","footerGithub":"GitHub","footerSite":"公式サイト","footerEmail":"メール","index":{"navFeatures":"機能","navPlans":"無料とPremium","navPrivacy":"プライバシー","navSupport":"サポート","eyebrow":"Chrome & Edge 拡張機能","badgeFree":"無料 + Premium","badgeLocal":"端末上で動作","badgeNoTrack":"トラッキングなし","badgeBrowsers":"Chrome & Edge","ctaGet":"拡張機能を入手","ctaPrivacy":"プライバシーポリシー","ctaSource":"ソースを見る","featuresTitle":"すべての機能","featuresLead":"主な機能を一覧で。","moreTitle":"その他の機能","proLabel":"Premium","freeLabel":"無料版","premiumLabel":"Premium","planTitle":"無料版とPremium","planLead":"無料版は試用版ではなく、完成したツールです。Premium は任意です。","privacyTitle":"プライバシー優先","privacyLead":"データは端末上に残ります。アカウント、分析、トラッキングはありません。何が保存され、いつ通信するかを確認できます。","privacyPoints":["端末内で処理","アカウント不要","ライセンスは任意"],"privacyCta":"プライバシーポリシーを読む","supportEyebrow":"開発者を支援","supportHint":"この拡張機能が役に立ったら、コーヒーをごちそうしてください。","footerMore":"他の拡張機能","footerPrivacy":"プライバシー","footerGithub":"GitHub","footerSite":"公式サイト"}},"de":{"privacyTitle":"Datenschutzerklärung","home":"Startseite","onThisPage":"Auf dieser Seite","lastUpdated":"Zuletzt aktualisiert: Oktober 2026","chips":["Läuft auf deinem Gerät","Keine Analyse","Kein Konto","Lizenz optional"],"permissionsTitle":"Berechtigungen","permissionsIntro":"Die Erweiterung fordert nur diese Berechtigungen an:","retentionTitle":"Aufbewahrung und Löschung","retentionBody":"Deine Einstellungen und Inhalte bleiben im Browser, bis du sie in der Erweiterung löschst oder sie deinstallierst. Beim Deinstallieren werden die lokalen Daten der Erweiterung entfernt. Auf unseren Servern wird nichts aufbewahrt, weil deine Inhalte nie dorthin gesendet werden.","syncCaveat":"Wenn du eine Funktion mit der Kontosynchronisierung deines Browsers aktiviert hast, kann eine Kopie in diesem Konto verbleiben. Du kannst sie in den Synchronisierungseinstellungen deines Browsers verwalten oder löschen.","changesTitle":"Änderungen dieser Erklärung","changesBody":"Wenn sich diese Erklärung ändert, wird die überarbeitete Fassung mit einem neuen Datum auf dieser Seite veröffentlicht. Wesentliche Änderungen werden in den Versionshinweisen der Erweiterung genannt.","contactTitle":"Kontakt","contactBody":"Fragen zu dieser Erklärung? Schreib an \u003ca href=\"mailto:support@annmax1983.com\"\u003esupport@annmax1983.com\u003c/a\u003e oder öffne ein Issue auf \u003ca href=\"{github}\" target=\"_blank\" rel=\"noopener\"\u003eGitHub\u003c/a\u003e.","footerHome":"Startseite","footerGithub":"GitHub","footerSite":"Website","footerEmail":"E-Mail","index":{"navFeatures":"Funktionen","navPlans":"Free & Premium","navPrivacy":"Datenschutz","navSupport":"Support","eyebrow":"Chrome- und Edge-Erweiterung","badgeFree":"Free + Premium","badgeLocal":"Läuft lokal","badgeNoTrack":"Kein Tracking","badgeBrowsers":"Chrome & Edge","ctaGet":"Erweiterung holen","ctaPrivacy":"Datenschutzerklärung","ctaSource":"Quellcode ansehen","featuresTitle":"Alle Funktionen","featuresLead":"Die wichtigsten Funktionen im Überblick.","moreTitle":"Außerdem","proLabel":"Premium","freeLabel":"Free","premiumLabel":"Premium","planTitle":"Free vs. Premium","planLead":"Die kostenlose Version ist ein vollständiges Werkzeug, keine Testversion. Premium ist optional.","privacyTitle":"Privat by Design","privacyLead":"Deine Daten bleiben auf deinem Gerät. Kein Konto, keine Analyse, kein Tracking. Lies genau, was gespeichert wird und wann die Erweiterung das Netz nutzt.","privacyPoints":["Lokale Verarbeitung","Kein Konto","Lizenz optional"],"privacyCta":"Datenschutzerklärung lesen","supportEyebrow":"Unterstütze die Entwicklung","supportHint":"Wenn dir die Erweiterung hilft, spendier mir einen Kaffee.","footerMore":"Weitere Erweiterungen","footerPrivacy":"Datenschutz","footerGithub":"GitHub","footerSite":"Website"}},"es":{"privacyTitle":"Política de privacidad","home":"Inicio","onThisPage":"En esta página","lastUpdated":"Última actualización: octubre de 2026","chips":["Se ejecuta en tu dispositivo","Sin analíticas","Sin cuenta","Licencia opcional"],"permissionsTitle":"Permisos","permissionsIntro":"La extensión solo solicita estos permisos:","retentionTitle":"Conservación y eliminación de datos","retentionBody":"Tus ajustes y contenidos permanecen en el navegador hasta que los elimines en la extensión o la desinstales. Al desinstalarla se borran los datos locales de la extensión. No conservamos nada en nuestros servidores porque tus contenidos nunca se envían allí.","syncCaveat":"Si activaste una función que usa la sincronización de la cuenta del navegador, puede quedar una copia en esa cuenta. Puedes gestionarla o eliminarla en los ajustes de sincronización del navegador.","changesTitle":"Cambios en esta política","changesBody":"Si esta política cambia, la versión revisada se publicará en esta página con una nueva fecha. Los cambios importantes se indicarán en las notas de la versión de la extensión.","contactTitle":"Contacto","contactBody":"¿Preguntas sobre esta política? Escribe a \u003ca href=\"mailto:support@annmax1983.com\"\u003esupport@annmax1983.com\u003c/a\u003e o abre un issue en \u003ca href=\"{github}\" target=\"_blank\" rel=\"noopener\"\u003eGitHub\u003c/a\u003e.","footerHome":"Inicio","footerGithub":"GitHub","footerSite":"Sitio web","footerEmail":"Correo","index":{"navFeatures":"Funciones","navPlans":"Gratis y Premium","navPrivacy":"Privacidad","navSupport":"Apoyo","eyebrow":"Extensión para Chrome y Edge","badgeFree":"Gratis + Premium","badgeLocal":"Se ejecuta en local","badgeNoTrack":"Sin rastreo","badgeBrowsers":"Chrome y Edge","ctaGet":"Obtener la extensión","ctaPrivacy":"Política de privacidad","ctaSource":"Ver el código","featuresTitle":"Todo lo que hace","featuresLead":"Las funciones principales de un vistazo.","moreTitle":"También incluye","proLabel":"Premium","freeLabel":"Gratis","premiumLabel":"Premium","planTitle":"Gratis vs Premium","planLead":"La versión gratuita es una herramienta completa, no una prueba. Premium es opcional.","privacyTitle":"Privacidad por diseño","privacyLead":"Tus datos se quedan en tu dispositivo. Sin cuenta, sin analíticas y sin rastreo. Consulta qué se guarda y cuándo usa la red la extensión.","privacyPoints":["Procesamiento local","Sin cuenta","Licencia opcional"],"privacyCta":"Leer la política de privacidad","supportEyebrow":"Apoya al desarrollador","supportHint":"Si la extensión te resulta útil, invítame a un café.","footerMore":"Más extensiones","footerPrivacy":"Privacidad","footerGithub":"GitHub","footerSite":"Sitio web"}},"fr":{"privacyTitle":"Politique de confidentialité","home":"Accueil","onThisPage":"Sur cette page","lastUpdated":"Dernière mise à jour : octobre 2026","chips":["Fonctionne sur votre appareil","Aucune analyse","Sans compte","Licence facultative"],"permissionsTitle":"Autorisations","permissionsIntro":"L'extension ne demande que ces autorisations :","retentionTitle":"Conservation et suppression des données","retentionBody":"Vos réglages et contenus restent dans le navigateur jusqu'à ce que vous les supprimiez dans l'extension ou que vous la désinstalliez. La désinstallation efface les données locales de l'extension. Rien n'est conservé sur nos serveurs, car vos contenus ne leur sont jamais envoyés.","syncCaveat":"Si vous avez activé une fonction qui utilise la synchronisation du compte de votre navigateur, une copie peut subsister dans ce compte. Vous pouvez la gérer ou la supprimer dans les réglages de synchronisation du navigateur.","changesTitle":"Modifications de cette politique","changesBody":"Si cette politique change, la version révisée sera publiée sur cette page avec une nouvelle date. Les changements importants seront signalés dans les notes de version de l'extension.","contactTitle":"Contact","contactBody":"Des questions sur cette politique ? Écrivez à \u003ca href=\"mailto:support@annmax1983.com\"\u003esupport@annmax1983.com\u003c/a\u003e ou ouvrez un ticket sur \u003ca href=\"{github}\" target=\"_blank\" rel=\"noopener\"\u003eGitHub\u003c/a\u003e.","footerHome":"Accueil","footerGithub":"GitHub","footerSite":"Site web","footerEmail":"E-mail","index":{"navFeatures":"Fonctionnalités","navPlans":"Gratuit et Premium","navPrivacy":"Confidentialité","navSupport":"Soutien","eyebrow":"Extension Chrome et Edge","badgeFree":"Gratuit + Premium","badgeLocal":"Fonctionne en local","badgeNoTrack":"Aucun suivi","badgeBrowsers":"Chrome et Edge","ctaGet":"Obtenir l’extension","ctaPrivacy":"Politique de confidentialité","ctaSource":"Voir le code","featuresTitle":"Toutes les fonctionnalités","featuresLead":"Les fonctions essentielles en un coup d'œil.","moreTitle":"Également inclus","proLabel":"Premium","freeLabel":"Gratuit","premiumLabel":"Premium","planTitle":"Gratuit vs Premium","planLead":"La version gratuite est un outil complet, pas une version d'essai. Premium est facultatif.","privacyTitle":"Confidentiel par conception","privacyLead":"Vos données restent sur votre appareil. Sans compte, sans analyse, sans suivi. Découvrez ce qui est stocké et quand l'extension utilise le réseau.","privacyPoints":["Traitement local","Sans compte","Licence facultative"],"privacyCta":"Lire la politique de confidentialité","supportEyebrow":"Soutenir le développeur","supportHint":"Si l'extension vous aide, offrez-moi un café.","footerMore":"Plus d'extensions","footerPrivacy":"Confidentialité","footerGithub":"GitHub","footerSite":"Site web"}}};
+const CONFIG = {"name":"Image Grabber","github":"https://github.com/annmax1983/ImageGrabber","icon":"assets/icon128.png","site":"https://annmax1983.com/extensions/imagegrabber"};
+const LANG_KEY = "vkt-imagegrabber-lang";
+(function () {
+  "use strict";
+
+  var select = document.getElementById("p-lang");
+  var observer = null;
+  var ui = function (lang) { return UI_ALL[lang] || UI_ALL.en; };
+
+  function esc(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
-};
 
-function detectLang() {
-  const code = (navigator.language || 'en').split('-')[0].toLowerCase();
-  return I18N[code] ? code : 'en';
-}
+  function setText(id, value) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = value == null ? "" : value;
+  }
 
-function apply(t) {
-  document.title = t.title.replace(/🔒\s*/, '');
-  document.getElementById('pageTitle').textContent = t.title;
-  document.getElementById('updated').textContent = t.updated;
-  document.getElementById('highlight').innerHTML = t.highlight;
-  document.getElementById('hCollection').textContent = t.hCollection;
-  document.getElementById('pCollection').innerHTML = t.pCollection;
-  document.getElementById('listCollection').innerHTML = t.listCollection.map(i => '<li>' + i + '</li>').join('');
-  document.getElementById('hStorage').textContent = t.hStorage;
-  document.getElementById('pStorage').innerHTML = t.pStorage;
-  document.getElementById('listStorage').innerHTML = t.listStorage.map(i => '<li>' + i + '</li>').join('');
-  document.getElementById('pStorageNote').textContent = t.pStorageNote;
-  document.getElementById('hPermissions').textContent = t.hPermissions;
-  document.getElementById('listPermissions').innerHTML = t.listPermissions.map(i => '<li>' + i + '</li>').join('');
-  document.getElementById('pPermissions').innerHTML = t.pPermissions;
-  document.getElementById('hDownloads').textContent = t.hDownloads;
-  document.getElementById('listDownloads').innerHTML = t.listDownloads.map(i => '<li>' + i + '</li>').join('');
-  document.getElementById('hThirdParty').textContent = t.hThirdParty;
-  document.getElementById('pThirdParty').innerHTML = t.pThirdParty;
-  document.getElementById('hChanges').textContent = t.hChanges;
-  document.getElementById('pChanges').innerHTML = t.pChanges;
-  document.getElementById('hContact').textContent = t.hContact;
-  document.getElementById('pContact').innerHTML = t.pContact;
-  document.getElementById('footer').innerHTML = t.footer;
-  document.documentElement.lang = detectLang();
-}
+  function detect() {
+    var codes = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"];
+    for (var i = 0; i < codes.length; i++) {
+      var code = String(codes[i] || "").toLowerCase();
+      if (code.indexOf("zh") === 0) return "zh";
+      if (code.indexOf("ja") === 0) return "ja";
+      if (code.indexOf("de") === 0) return "de";
+      if (code.indexOf("es") === 0) return "es";
+      if (code.indexOf("fr") === 0) return "fr";
+      if (code.indexOf("en") === 0) return "en";
+    }
+    return "en";
+  }
 
-apply(I18N[detectLang()]);
+  function initToc() {
+    if (observer) observer.disconnect();
+    var links = Array.prototype.slice.call(document.querySelectorAll("#p-toc a"));
+    var cards = Array.prototype.slice.call(document.querySelectorAll(".policy-card"));
+    if (!links.length || !cards.length || typeof IntersectionObserver === "undefined") return;
+
+    function activate(id) {
+      links.forEach(function (link) {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+      });
+    }
+
+    observer = new IntersectionObserver(function (entries) {
+      var visible = entries.filter(function (entry) { return entry.isIntersecting; });
+      if (visible.length) activate(visible[0].target.id);
+    }, { rootMargin: "-18% 0px -68% 0px", threshold: [0, 1] });
+
+    cards.forEach(function (card) { observer.observe(card); });
+    if (links[0]) links[0].classList.add("active");
+  }
+
+  function render(lang) {
+    var data = MODEL.langs[lang];
+    if (!data) return;
+    var u = ui(lang);
+
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+    document.title = CONFIG.name + " — " + u.privacyTitle;
+
+    setText("p-home", u.home);
+    setText("p-eyebrow", u.privacyTitle);
+    setText("p-h1", CONFIG.name);
+    setText("p-h1-sub", u.privacyTitle);
+    setText("p-updated", u.lastUpdated);
+    setText("p-toc-title", u.onThisPage);
+
+    var summary = document.getElementById("p-summary");
+    if (summary) summary.innerHTML = data.summary || "";
+
+    var chips = document.getElementById("p-chips");
+    if (chips) {
+      chips.innerHTML = u.chips.map(function (chip) {
+        return '<span class="chip">' + esc(chip) + "</span>";
+      }).join("");
+    }
+
+    setText("p-footer-home", u.footerHome);
+    setText("p-footer-privacy", u.privacyTitle);
+    setText("p-footer-github", u.footerGithub);
+    setText("p-footer-site", u.footerSite);
+    setText("p-footer-email", u.footerEmail || "Email");
+
+    var toc = document.getElementById("p-toc");
+    var sections = document.getElementById("p-sections");
+    if (!toc || !sections) return;
+    toc.innerHTML = "";
+    sections.innerHTML = "";
+
+    data.sections.forEach(function (section, index) {
+      var number = String(index + 1).padStart(2, "0");
+      var id = "section-" + (index + 1);
+
+      var link = document.createElement("a");
+      link.href = "#" + id;
+      link.innerHTML = "<span>" + number + "</span>" + esc(section.t);
+      toc.appendChild(link);
+
+      var card = document.createElement("article");
+      card.className = "policy-card";
+      card.id = id;
+      card.innerHTML = '<h2><span class="policy-num">' + number + "</span>" + esc(section.t) + '</h2><div class="policy-body">' + section.html + "</div>";
+      sections.appendChild(card);
+    });
+
+    initToc();
+  }
+
+  function storedLang() {
+    try { return localStorage.getItem(LANG_KEY); } catch (error) { return null; }
+  }
+
+  function remember(lang) {
+    try { localStorage.setItem(LANG_KEY, lang); } catch (error) { /* storage can be blocked */ }
+  }
+
+  initToc();
+
+  if (select) {
+    var saved = storedLang();
+    var initial = saved && MODEL.langs[saved] ? saved : detect();
+    if (!MODEL.langs[initial]) initial = "en";
+    select.value = initial;
+    if (initial !== "en") render(initial);
+    select.addEventListener("change", function () {
+      remember(select.value);
+      render(select.value);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+})();
+
 </script>
 </body>
 </html>

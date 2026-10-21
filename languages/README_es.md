@@ -15,16 +15,17 @@
 | Funcionalidad | Descripción |
 |---------|-------------|
 | 🔍 **Detección inteligente de imágenes** | Escanea `<img>` (incluidos atributos `data-src` / de carga diferida), `srcset` (elige el candidato más grande), CSS `background-image` (en línea, `::before` y `::after`), `<video poster>`, `<source srcset>` e imágenes SVG `<image>` |
+| 💎 **Detección de originales** | Encuentra originales de mayor resolución expuestos en la página (atributos `data-*` de carga diferida, enlaces de imagen principales, candidatos de `<picture>` / `srcset`) y comprueba sus dimensiones reales antes de usarlos; si no se verifica un original mayor, se usa la imagen mostrada. Se puede desactivar con el interruptor **Original** |
 | 🤖 **Recopilación automática** | Recopila imágenes continuamente a medida que la página se carga (MutationObserver + idle callback) |
 | 📋 **Vista de cuadrícula y lista** | Alterna entre miniaturas en cuadrícula y vista de tabla compacta |
 | 🔎 **Filtrado y ordenación** | Filtra por dimensiones mínimas y tipo de imagen; ordena por ancho, alto o nombre de archivo |
 | 🎯 **Selección manual** | Haz clic directamente sobre un elemento de la página para capturar su imagen |
 | 🖼️ **Vista previa en lightbox** | Vista previa a tamaño completo con navegación por teclado (← → Esc), descarga y copia de URL |
 | 🔗 **Copiar URLs** | Copia al portapapeles las URLs de las imágenes seleccionadas (o de todas las filtradas) |
-| 📥 **Descarga por lotes (máx. 30 por lote)** | Las descargas usan el motor de descargas del propio navegador, por lo que las cookies de sesión, el User-Agent y el Referer se gestionan automáticamente — las imágenes con protección antienlace (hotlink) o restringidas a sesión iniciada se guardan correctamente |
+| 📥 **Descarga por lotes (máx. 30 por lote)** | Cada imagen se obtiene dentro de la página de la extensión con las cookies y el `Referer` de la página, y se entrega al motor de descargas como blob — las imágenes con protección antienlace o restringidas a sesión iniciada se guardan como el archivo real, no como una página 403. Mantén el panel abierto hasta que termine el lote |
 | 📊 **Informe de resultados** | Al terminar un lote, un aviso indica cuántos archivos se descargaron y cuántos fallaron |
 | 💾 **Estado persistente** | Las listas de imágenes y tus marcas de «eliminado» sobreviven a las recargas de página y a los reinicios del service worker |
-| 🔄 **Compatibilidad con SPA** | Re-escaneo automático en navegación SPA (`pushState` / `replaceState` / `popstate`) |
+| 🔄 **Compatibilidad con SPA** | Detecta navegaciones reales y `pushState` / `replaceState` / `popstate`; las imágenes de la página anterior se borran y la nueva vista se re-escanea automáticamente |
 
 ### Funcionalidades Premium (requieren licencia)
 
@@ -32,22 +33,9 @@
 |---------|-------------|
 | ⭐ **Selección ilimitada** | Sin límite de 30 imágenes — selecciona y descarga tantas como quieras |
 | 🔬 **Deduplicación por pHash** | El hash perceptivo detecta imágenes duplicadas/similares aunque tengan URLs distintas |
-| 🔄 **Conversión de formato** | Convierte al descargar: WebP → JPG, PNG o cualquier formato compatible |
-| 🗜️ **Compresión de imágenes** | Ajusta la calidad y el ancho máximo para reducir el tamaño del archivo |
-| 🚀 **Pipeline de descarga avanzada** | Pipeline con un clic: deduplicar → convertir → comprimir → descargar |
-
----
-
-### Novedades de la versión 2.0.7
-
-- **Nombre y descripción orientados a búsqueda** — el nombre incluye ahora la palabra clave *Image Downloader* y la descripción empieza por los términos que la gente busca (en los 6 idiomas).
-- **SEO de documentación y web** — primera línea del README y metadatos de la página oficial (descripción, tarjeta de compartir) reescritos.
-
-### Novedades de la versión 2.0.6
-
-- **Las descargas protegidas ahora se guardan de verdad** — las peticiones de imagen del panel incluyen el `Referer` de la página mediante una regla `declarativeNetRequest` de ámbito de sesión, pero el motor de descargas del navegador no lo hace: en sitios con protección antienlace una descarga podía indicar éxito mientras el archivo guardado era solo una página de error 403. Ahora la imagen se obtiene dentro del panel de la extensión (con las cookies y el `Referer` de la página) y se entrega al motor de descargas como blob, de modo que las imágenes protegidas y las visibles solo tras iniciar sesión se guardan como la imagen real.
-- **Recuento honesto de éxitos y fallos** — el aviso de finalización ahora espera a que cada descarga termine de verdad e informa de las cifras reales, en lugar de contar las que solo se habían iniciado.
-- **Descarga avanzada corregida en sitios protegidos** — la cadena deduplicar → convertir → comprimir no podía cargar en un canvas las imágenes con protección antienlace. Ahora cada imagen se lee mediante la misma petición autenticada, de modo que la deduplicación por pHash y la conversión de formato vuelven a funcionar; si un archivo no puede recodificarse, se descarga el original en lugar de descartarlo.
+| 🔄 **Conversión de formato** | Convierte al descargar a JPG, PNG o WebP. GIF, SVG, AVIF y otros formatos de origen se conservan tal cual en lugar de recodificarse con pérdida |
+| 🗜️ **Compresión de imágenes** | Ajusta la calidad y el ancho máximo para reducir el tamaño del archivo. Con formato **Original** y sin redimensionar, se descargan los bytes originales sin tocar |
+| 🚀 **Pipeline de descarga avanzada** | Pipeline con un clic: deduplicar → convertir/redimensionar (solo si se solicita) → descargar |
 
 ---
 
@@ -117,7 +105,7 @@
 7. **Selecciona** — Haz clic en las imágenes para seleccionar (hasta 30 para usuarios gratuitos)
 8. **Vista previa** — Haz clic en cualquier imagen para abrir el lightbox
 9. **Copia** — Usa el botón de copiar para poner las URLs de las imágenes seleccionadas en el portapapeles
-10. **Descarga** — Haz clic en ⬇️ para la descarga básica, o ⭐ para la descarga avanzada (premium). Un aviso informa de cuántos archivos se descargaron y cuántos fallaron
+10. **Descarga** — Haz clic en ⬇️ para la descarga básica, o ⭐ para la descarga avanzada (premium). Un aviso informa de cuántos archivos se descargaron y cuántos fallaron. Las descargas las realiza la página del panel, así que mantenlo abierto hasta que termine el lote
 
 ### Descarga avanzada (Premium)
 
@@ -125,7 +113,9 @@
 2. Abre Configuración (⚙️ icono de engranaje) → introduce tu clave de licencia
 3. Configura el formato de salida, la calidad y las opciones de deduplicación
 4. Selecciona las imágenes y haz clic en el botón ⭐ Descarga avanzada
-5. El pipeline hará: deduplicar (si está activado) → convertir formato → comprimir → descargar
+5. El pipeline hará: deduplicar (si está activado) → convertir/redimensionar (solo si elegiste un formato o un ancho máximo) → descargar
+
+Los destinos de conversión se limitan a JPG, PNG y WebP. GIF, SVG, AVIF, BMP y otros formatos se descargan en su formato original (se informan como degradados si solicitaste conversión). Elegir **Original** sin ancho máximo descarga los bytes de origen sin recodificar, independientemente del control de calidad.
 
 ---
 
@@ -134,6 +124,9 @@
 - Permisos requeridos: `storage`, `downloads`, `sidePanel`, `declarativeNetRequest`
 - Se requiere el permiso de host `<all_urls>` para detectar y descargar imágenes alojadas en cualquier dominio
 - `declarativeNetRequest` se usa únicamente para establecer la cabecera `Referer`. La regla está activa mientras un panel muestra imágenes de una pestaña (para que las vistas previas carguen en sitios con protección antienlace) y durante un lote de descargas (para que el archivo guardado sea la imagen real, no un marcador de error). Se limita a los dominios de imagen que aparecen en pantalla y se retira al cerrar el panel, cambiar de pestaña o navegar.
+- Mientras la regla está activa se aplica a las peticiones a esos dominios de imagen, no solo a las peticiones de la extensión: una petición de la página a ese mismo dominio durante un lote también llevará el `Referer` de la página. La regla es de sesión y por dominio; no reescribe cabeceras de forma permanente
+- La navegación SPA se detecta localmente comparando `location.href`. No se lee, registra ni envía ningún historial de navegación
+- La detección de originales sondea las URLs candidatas localmente con cargas de imagen temporales; esas peticiones van directamente al host de la imagen (el mismo host que ya sirve las imágenes de la página). Solo se leen dimensiones: no se sube ni se almacena contenido de imágenes, y los resultados verificados permanecen en el almacenamiento local. Se puede desactivar con el interruptor **Original**
 - Todo el procesamiento de imágenes se ejecuta **localmente** en tu navegador — sin subida de datos externos
 - Sin analíticas, sin rastreo de usuarios, ni recopilación remota de datos
 - Los datos de imágenes se almacenan solo en el almacenamiento local de tu navegador
@@ -153,7 +146,7 @@ No uses esta herramienta para capturar masivamente recursos de imagen de sitios 
 
 ## Aviso sobre el código fuente
 
-> ⚠️ **Este repositorio no publica código fuente.** Contiene únicamente documentación de uso, notas de lanzamiento y recursos de soporte. La extensión se distribuye exclusivamente a través de Chrome Web Store. No se proporcionan paquetes de instalación sin conexión ni código fuente para usuarios finales.
+Este repositorio contiene el código fuente completo de la extensión: el manifest, los scripts de contenido, el service worker, todas las interfaces, los archivos de idioma y el script de build. La extensión también se distribuye a través de Chrome Web Store.
 
 ---
 
@@ -163,7 +156,7 @@ Copyright © 2026 Image Grabber. Todos los derechos reservados.
 
 ---
 
-> **Nota:** Este repositorio es solo para **mostrar el proyecto**. No contiene el código fuente completo, el manifest, los iconos ni los scripts de build. El código fuente completo **no** se publicará aquí.
+> **Nota:** El código fuente se incluye en este repositorio por transparencia. `npm install && npm run build` genera el paquete en `dist/` y el ZIP en `publish/`.
 
 ---
 

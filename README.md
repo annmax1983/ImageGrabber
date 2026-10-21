@@ -15,16 +15,17 @@
 | Feature | Description |
 |---------|-------------|
 | 🔍 **Smart Image Detection** | Scans `<img>` (including `data-src` / lazy-load attributes), `srcset` (picks the largest candidate), CSS `background-image` (inline, `::before` and `::after`), `<video poster>`, `<source srcset>`, and SVG `<image>` |
+| 💎 **Original-Image Detection** | Finds higher-resolution originals exposed in the page (lazy-load `data-*` attributes, parent image links, `<picture>` / `srcset` candidates) and probes their real dimensions before use; falls back to the displayed image when no larger original is verified. Can be disabled with the **Original** toggle |
 | 🤖 **Auto Collect** | Continuously collects images as the page loads (MutationObserver + idle callback) |
 | 📋 **Grid & List View** | Switch between thumbnail grid and compact table view |
 | 🔎 **Filter & Sort** | Filter by minimum width/height and image type; sort by width, height or file name |
 | 🎯 **Manual Pick** | Click exact elements on a page to grab their image |
 | 🖼️ **Lightbox Preview** | Full-size preview with keyboard navigation (← → Esc), download and copy-URL actions |
 | 🔗 **Copy URLs** | Copy the selected image URLs (or all filtered ones) to the clipboard |
-| 📥 **Batch Download (30 max per batch)** | Downloads go through the browser's own download engine, so session cookies, User-Agent and Referer are handled automatically — images behind hotlink protection or login sessions save correctly |
+| 📥 **Batch Download (30 max per batch)** | Each image is fetched inside the extension page with the page's cookies and `Referer`, then handed to the browser's download engine as a blob — images behind hotlink protection or login sessions save as the real file, not a 403 page. Keep the panel open until the batch finishes |
 | 📊 **Download Result Report** | When a batch finishes, a toast reports how many files succeeded and how many failed |
 | 💾 **Persistent State** | Image lists and your "removed" marks survive page reloads and service worker restarts |
-| 🔄 **SPA Support** | Auto re-scan on SPA navigation (`pushState` / `replaceState` / `popstate`) |
+| 🔄 **SPA Support** | Detects real navigations and `pushState` / `replaceState` / `popstate`; the previous page's images are cleared and the new view is re-scanned automatically |
 
 ### Premium Features (License Required)
 
@@ -32,22 +33,9 @@
 |---------|-------------|
 | ⭐ **Unlimited Selection** | No 30-image limit — select and download as many as you want |
 | 🔬 **pHash Deduplication** | Perceptual hash detects duplicate/similar images even when their URLs differ |
-| 🔄 **Format Conversion** | Convert on download: WebP → JPG, PNG, or any supported format |
-| 🗜️ **Image Compression** | Adjust quality and max width to reduce file size |
-| 🚀 **Advanced Download Pipeline** | One-click pipeline: dedup → convert → compress → download |
-
----
-
-### What's New in 2.0.7
-
-- **Search-friendly name & description** — the extension name now contains the exact keyword *Image Downloader*, and the description leads with the search terms people actually type (all 6 languages).
-- **Docs & site SEO** — README intro lines and the official product page metadata (description, social share card) were rewritten for search.
-
-### What's New in 2.0.6
-
-- **Protected downloads now really save** — image requests from the panel carry the page's `Referer` via a session-scoped `declarativeNetRequest` rule, but the browser's own download engine does not. On hotlink-protected sites a download could therefore report success while the file on disk was just a 403 error page. Downloads now fetch the image inside the extension panel (with the page's cookies and `Referer`) and hand it to the download engine as a blob, so protected and login-only images save as the real image.
-- **Honest success/failure counts** — the completion toast now waits for every download to actually finish and reports the real numbers, instead of counting the ones that were merely started.
-- **Advanced Download fixed on protected sites** — the dedup → convert → compress pipeline could not read hotlink-protected images into a canvas. Each image is now read through the same authenticated fetch, so pHash deduplication and format conversion work again, and a file that cannot be re-encoded falls back to the original instead of being dropped.
+| 🔄 **Format Conversion** | Convert on download to JPG, PNG or WebP. GIF, SVG, AVIF and other source formats are kept as-is instead of being lossy re-encoded |
+| 🗜️ **Image Compression** | Adjust quality and max width to reduce file size. With **Original** format and no resizing, the original bytes are downloaded untouched |
+| 🚀 **Advanced Download Pipeline** | One-click pipeline: dedup → convert/resize (only when requested) → download |
 
 ---
 
@@ -117,7 +105,7 @@
 7. **Select** — Click images to select (up to 30 for free users)
 8. **Preview** — Click any image to open the lightbox
 9. **Copy** — Use the copy button to put selected image URLs on the clipboard
-10. **Download** — Click ⬇️ for a basic download, or ⭐ for Advanced Download (premium). A toast reports how many files were downloaded and how many failed
+10. **Download** — Click ⬇️ for a basic download, or ⭐ for Advanced Download (premium). A toast reports how many files were downloaded and how many failed. Downloads are fetched by the panel page, so keep the panel or tab open until the batch finishes
 
 ### Advanced Download (Premium)
 
@@ -125,7 +113,9 @@
 2. Open Settings (⚙️ gear icon) → enter your license key
 3. Configure output format, quality, and deduplication options
 4. Select images and click the ⭐ Advanced Download button
-5. The pipeline will: deduplicate (if enabled) → convert format → compress → download
+5. The pipeline will: deduplicate (if enabled) → convert/resize (only when you chose a format or a max width) → download
+
+Conversion targets are limited to JPG, PNG and WebP. GIF, SVG, AVIF, BMP and other formats are downloaded in their original format (reported as downgraded if you requested conversion). Choosing **Original** with no max width downloads the source bytes without re-encoding, regardless of the quality slider.
 
 ---
 
@@ -134,6 +124,9 @@
 - Required permissions: `storage`, `downloads`, `sidePanel`, `declarativeNetRequest`
 - Host permission `<all_urls>` is required to detect and download images hosted on any domain
 - `declarativeNetRequest` is used only to set the `Referer` header. The rule is active while a panel displays images from a tab (so previews load on hotlink-protected sites) and during a download batch (so the saved file is the real image, not an error placeholder). It is scoped to the image domains currently on screen, and removed when the panel closes, you switch tabs, or the page navigates
+- While that rule is active it applies to requests to those image domains, not only to the extension's own image fetches — a page request to the same image domain during a batch will also carry the page `Referer`. The rule is session-scoped and scoped by domain, not a persistent header rewrite
+- SPA navigation is detected locally by comparing `location.href`. No navigation history is read, recorded, or sent anywhere
+- Original-image detection probes candidate URLs locally with temporary image loads; those requests go directly to the image host (the same host already serving the page's images). Only dimensions are read — no image content is uploaded or stored, and the verified results stay in local storage. Disable it with the **Original** toggle
 - All image processing runs **locally** in your browser — no external data uploads
 - No analytics, user tracking, or remote data collection
 - Image data is stored only in your browser local storage
@@ -153,9 +146,7 @@ Do not use this tool to batch capture image resources from websites with copyrig
 
 ## Source Code Notice
 
-> ⚠️ **This repository does not publish source code.** It contains only usage documentation, release notes, and support resources. The extension is distributed exclusively through the Chrome Web Store. No offline installation packages or end-user source code are provided.
-
----
+This repository contains the full extension source: the manifest, content scripts, the service worker, all UI surfaces, locale files and the build script. The extension is also distributed through the Chrome Web Store.
 
 ## License
 
@@ -163,7 +154,7 @@ Copyright © 2026 Image Grabber. All rights reserved.
 
 ---
 
-> **Note:** This repository is for **project showcase purposes only**. It does not contain the full source code, manifest, icons, or build scripts. Full source code will **not** be published here.
+> **Note:** The source is provided in this repository for transparency. `npm install && npm run build` produces the package under `dist/` and the ZIP under `publish/`.
 
 ---
 
