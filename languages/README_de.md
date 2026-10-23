@@ -58,7 +58,7 @@
 ## Vorschau
 
 <p align="center">
-  <img src="../imgs/de.png" alt="Image Grabber Oberfläche" >
+  <img src="../screenshots/de.png" alt="Image Grabber Oberfläche" >
 </p>
 
 ---
@@ -85,12 +85,12 @@
 
 ## Installation
 
-1. Öffne die Erweiterungsseite deines Browsers:
-   - **Chrome**: `chrome://extensions/`
-   - **Edge**: `edge://extensions/`
-2. Aktiviere den **Entwicklermodus** (Schalter oben rechts)
-3. Klicke auf **Entpackte Erweiterung laden** und wähle den Projektordner
-4. Klicke auf das Image Grabber-Symbol in deiner Toolbar, um das Side Panel zu öffnen
+| Store | Link |
+|---|---|
+| Chrome Web Store | [In Chrome installieren](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
+| Microsoft Edge Add-ons | [In Edge installieren](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
+
+> Installieren Sie nur über die offiziellen Stores oben – meiden Sie Download-Seiten Dritter.
 
 ---
 
@@ -156,7 +156,7 @@ Copyright © 2026 Image Grabber. Alle Rechte vorbehalten.
 
 ---
 
-> **Hinweis:** Der Quellcode liegt aus Transparenzgründen in diesem Repository. `npm install && npm run build` erzeugt das Paket unter `dist/` und die ZIP-Datei unter `publish/`.
+> **Hinweis:** Der Quellcode liegt aus Transparenzgründen in diesem Repository.
 
 ---
 

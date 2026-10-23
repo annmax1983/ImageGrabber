@@ -58,7 +58,7 @@
 ## 预览
 
 <p align="center">
-  <img src="../imgs/zh.png" alt="图片抓取器界面" >
+  <img src="../screenshots/zh.png" alt="图片抓取器界面" >
 </p>
 
 ---
@@ -85,12 +85,12 @@
 
 ## 安装
 
-1. 打开浏览器扩展页面：
-   - **Chrome**：`chrome://extensions/`
-   - **Edge**：`edge://extensions/`
-2. 开启**开发者模式**（右上角开关）
-3. 点击**加载已解压的扩展程序**，选择项目文件夹
-4. 点击工具栏中的图片抓取器图标打开侧边栏
+| 商店 | 链接 |
+|---|---|
+| Chrome 应用商店 | [在 Chrome 中安装](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
+| Microsoft Edge 加载项 | [在 Edge 中安装](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
+
+> 请只通过上方官方商店安装，避免使用第三方下载站。
 
 ---
 
@@ -156,7 +156,7 @@ Copyright © 2026 Image Grabber. 保留所有权利。
 
 ---
 
-> **注意：** 源码在此仓库中公开以保持透明。执行 `npm install && npm run build` 会在 `dist/` 生成扩展包，并在 `publish/` 生成 ZIP。
+> **注意：** 源码在此仓库中公开以保持透明。
 
 ---
 

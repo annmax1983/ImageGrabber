@@ -58,7 +58,7 @@
 ## プレビュー
 
 <p align="center">
-  <img src="../imgs/ja.png" alt="Image Grabber の画面" >
+  <img src="../screenshots/ja.png" alt="Image Grabber の画面" >
 </p>
 
 ---
@@ -85,12 +85,12 @@
 
 ## インストール
 
-1. ブラウザの拡張機能ページを開きます：
-   - **Chrome**: `chrome://extensions/`
-   - **Edge**: `edge://extensions/`
-2. **デベロッパーモード**を有効にします（右上のトグル）
-3. **パッケージ化されていない拡張機能を読み込む**をクリックし、プロジェクトフォルダを選択します
-4. ツールバーのImage Grabberアイコンをクリックしてサイドパネルを開きます
+| ストア | リンク |
+|---|---|
+| Chrome ウェブストア | [Chrome に追加](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
+| Microsoft Edge アドオン | [Edge に追加](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
+
+> 上記の公式ストアからのみインストールしてください。第三者サイトの利用は避けてください。
 
 ---
 
@@ -156,7 +156,7 @@ Copyright © 2026 Image Grabber. All rights reserved.
 
 ---
 
-> **注意：** ソースコードは透明性のためにこのリポジトリで公開されています。`npm install && npm run build`で`dist/`にパッケージ、`publish/`にZIPが生成されます。
+> **注意：** ソースコードは透明性のためにこのリポジトリで公開されています。
 
 ---
 

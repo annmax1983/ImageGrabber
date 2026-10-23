@@ -58,7 +58,7 @@
 ## Preview
 
 <p align="center">
-  <img src="imgs/en.png" alt="Image Grabber Icon" >
+  <img src="screenshots/en.png" alt="Image Grabber Icon" >
 </p>
 
 ---
@@ -85,12 +85,12 @@
 
 ## Installation
 
-1. Open your browser's extension page:
-   - **Chrome**: `chrome://extensions/`
-   - **Edge**: `edge://extensions/`
-2. Enable **Developer mode** (top-right toggle)
-3. Click **Load unpacked** and select the project folder
-4. Click the Image Grabber icon in your toolbar to open the side panel
+| Store | Link |
+|---|---|
+| Chrome Web Store | [Install for Chrome](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
+| Microsoft Edge Add-ons | [Install for Edge](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
+
+> Install only from the official stores above — avoid third-party download sites.
 
 ---
 
@@ -154,7 +154,7 @@ Copyright © 2026 Image Grabber. All rights reserved.
 
 ---
 
-> **Note:** The source is provided in this repository for transparency. `npm install && npm run build` produces the package under `dist/` and the ZIP under `publish/`.
+> **Note:** The source is provided in this repository for transparency.
 
 ---
 
