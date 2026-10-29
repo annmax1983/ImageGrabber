@@ -4,7 +4,7 @@
 
 **Image Grabber** は Chrome / Edge 向けの無料画像ダウンローダー拡張機能です。Web ページをスキャンし、ワンクリックで画像を一括ダウンロードできます。
 
-> Chromium系ブラウザ対応 · Manifest V3 · トラッキングなし · サイドパネルUI
+> Chrome / Edge / Firefox · Manifest V3 · トラッキングなし · サイドパネル / ポップアップUI
 
 ---
 
@@ -69,7 +69,10 @@
 |---------|--------|
 | Google Chrome | ✅ 完全対応（サイドパネル） |
 | Microsoft Edge | ✅ 完全対応（サイドパネル） |
+| Mozilla Firefox | ✅ 完全対応 |
 | その他のChromium系ブラウザ | ✅ 対応（ポップアップフォールバック） |
+
+> **Firefox について：** Firefox には `sidePanel` API がないため、拡張機能は**ツールバーのポップアップ**として開きます。ポップアップには一覧/グリッド表示、フィルター、選択、ダウンロード、ライセンスキー入力という作業用の全機能が含まれ、まとめてダウンロードする場合は独立タブも利用できます。唯一の例外は **🎯 Manual Pick** で、これは Chrome / Edge のサイドパネル機能のため Firefox 版では提供されません。Firefox 版は `sidePanel` 権限を要求しません。まとめてダウンロードする間はポップアップまたはタブを開いたままにしてください（ダウンロードはそのページから実行されます）。
 
 ---
 
@@ -89,6 +92,7 @@
 |---|---|
 | Chrome ウェブストア | [Chrome に追加](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
 | Microsoft Edge アドオン | [Edge に追加](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
+| Firefox アドオン（AMO） | 🔜 審査中 — 公開後にリンクを追加します |
 
 > 上記の公式ストアからのみインストールしてください。第三者サイトの利用は避けてください。
 
@@ -121,7 +125,7 @@
 
 ## プライバシー
 
-- 必要な権限：`storage`、`downloads`、`sidePanel`、`declarativeNetRequest`
+- 必要な権限：`storage`、`downloads`、`sidePanel`、`declarativeNetRequest` （`sidePanel` は Chrome / Edge のみ。Firefox はこの権限を要求せず、ツールバーのポップアップで動作します）
 - 任意のドメインの画像を検出・ダウンロードするために、ホスト権限`<all_urls>`が必要です
 - `declarativeNetRequest`は`Referer`ヘッダーの設定にのみ使用されます。パネルがタブの画像を表示している間（直リンク保護されたサイトでもプレビューが読み込めるように）、およびダウンロードバッチの間（保存されるファイルがエラーのプレースホルダーではなく本来の実画像になるように）ルールが有効です。ルールは画面に表示されている画像のドメインに限定され、パネルを閉じる・タブを切り替える・ページが遷移した時点で削除されます
 - ルールが有効な間は、拡張機能自身の画像取得だけでなく、それらの画像ドメインへのリクエスト全般に適用されます。バッチ中にページから同じ画像ドメインへ送られるリクエストにもページの`Referer`が付きます。ルールはセッション単位・ドメイン単位で、ヘッダーを永続的に書き換えるものではありません
@@ -146,7 +150,7 @@
 
 ## ソースコードに関する注意
 
-このリポジトリには拡張機能の完全なソースコード（マニフェスト、コンテンツスクリプト、Service Worker、すべてのUI、言語ファイル、ビルドスクリプト）が含まれています。拡張機能はChrome Web Storeでも配布されています。
+このリポジトリには拡張機能の完全なソースコード（マニフェスト、コンテンツスクリプト、Service Worker、すべてのUI、言語ファイル、ビルドスクリプト）が含まれています。拡張機能はChrome Web Store、Microsoft Edgeアドオン、Firefoxアドオン（AMO）でも配布されています。
 
 ---
 

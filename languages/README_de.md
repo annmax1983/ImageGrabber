@@ -4,7 +4,7 @@
 
 **Image Grabber** ist ein kostenloser Bild-Downloader für Chrome und Edge: scannt jede Webseite und lädt alle Bilder mit einem Klick im Batch herunter.
 
-> Chromium-basiert · Manifest V3 · Kein Tracking · Side Panel UI
+> Chrome / Edge / Firefox · Manifest V3 · Kein Tracking · Side Panel / Popup UI
 
 ---
 
@@ -69,7 +69,10 @@
 |---------|--------|
 | Google Chrome | ✅ Vollständig unterstützt (Side Panel) |
 | Microsoft Edge | ✅ Vollständig unterstützt (Side Panel) |
+| Mozilla Firefox | ✅ Vollständig unterstützt |
 | Andere Chromium-basierte Browser | ✅ Unterstützt (Popup-Fallback) |
+
+> **Firefox-Hinweis:** Firefox kennt keine `sidePanel`-API, deshalb öffnet sich die Erweiterung als **Symbolleisten-Popup**. Das Popup enthält die komplette Arbeitsoberfläche (Raster-/Listenansicht, Filter, Auswahl, Downloads und Lizenzschlüssel-Eingabe) und kann für größere Stapel auch als eigener Tab geöffnet werden. Die einzige Ausnahme ist **🎯 Manual Pick**: das gehört zur Seitenleiste von Chrome / Edge und wird in der Firefox-Version daher nicht angeboten. Die Berechtigung `sidePanel` wird in der Firefox-Version nicht angefordert. Während eines Stapel-Downloads das Popup oder den Tab geöffnet lassen, da die Downloads von dieser Seite ausgeführt werden.
 
 ---
 
@@ -89,6 +92,7 @@
 |---|---|
 | Chrome Web Store | [In Chrome installieren](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
 | Microsoft Edge Add-ons | [In Edge installieren](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
+| Firefox-Add-ons (AMO) | 🔜 In Prüfung – Link folgt nach der Freigabe |
 
 > Installieren Sie nur über die offiziellen Stores oben – meiden Sie Download-Seiten Dritter.
 
@@ -121,7 +125,7 @@ Konvertierungsziele sind auf JPG, PNG und WebP begrenzt. GIF, SVG, AVIF, BMP und
 
 ## Datenschutz
 
-- Benötigte Berechtigungen: `storage`, `downloads`, `sidePanel`, `declarativeNetRequest`
+- Benötigte Berechtigungen: `storage`, `downloads`, `sidePanel`, `declarativeNetRequest` (`sidePanel` nur unter Chrome / Edge; Firefox fordert sie nicht an und nutzt ein Symbolleisten-Popup)
 - Die Host-Berechtigung `<all_urls>` ist erforderlich, um Bilder auf beliebigen Domains zu erkennen und herunterzuladen
 - `declarativeNetRequest` wird nur verwendet, um den `Referer`-Header zu setzen. Die Regel ist aktiv, während ein Panel Bilder eines Tabs anzeigt (damit Vorschauen auf Hotlink-geschützten Seiten laden) und während eines Download-Batches (damit die gespeicherte Datei das echte Bild ist, kein Fehler-Platzhalter). Sie ist auf die aktuell sichtbaren Bild-Domains begrenzt und wird beim Schließen des Panels, beim Tabwechsel oder bei Navigation entfernt.
 - Solange die Regel aktiv ist, gilt sie für Anfragen an diese Bild-Domains, nicht nur für die Bildabrufe der Erweiterung: Auch eine Seitenanfrage an dieselbe Bild-Domain während eines Batches trägt den `Referer` der Seite. Die Regel ist sitzungsgebunden und domainbezogen; sie schreibt Header nicht dauerhaft um
@@ -146,7 +150,7 @@ Verwende dieses Tool nicht, um Bildressourcen massenhaft von Websites mit Urhebe
 
 ## Quellcode-Hinweis
 
-Dieses Repository enthält den vollständigen Quellcode der Erweiterung: Manifest, Content Scripts, Service Worker, alle Oberflächen, Sprachdateien und das Build-Skript. Die Erweiterung wird außerdem über den Chrome Web Store vertrieben.
+Dieses Repository enthält den vollständigen Quellcode der Erweiterung: Manifest, Content Scripts, Service Worker, alle Oberflächen, Sprachdateien und das Build-Skript. Die Erweiterung wird außerdem über den Chrome Web Store, Microsoft Edge Add-ons und Firefox-Add-ons (AMO) vertrieben.
 
 ---
 

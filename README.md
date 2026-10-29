@@ -2,9 +2,9 @@
 
 [English](README.md) | [中文](languages/README_zh.md) | [Español](languages/README_es.md) | [Deutsch](languages/README_de.md) | [日本語](languages/README_ja.md) | [Français](languages/README_fr.md)
 
-**Image Grabber** is a free image downloader extension for Chrome & Edge that scans any webpage and batch-downloads its images in one click.
+**Image Grabber** is a free image downloader extension for Chrome, Edge & Firefox that scans any webpage and batch-downloads its images in one click.
 
-> Chromium-based · Manifest V3 · No tracking · Side Panel UI
+> Chrome · Edge · Firefox · Manifest V3 · No tracking · Side Panel on Chrome/Edge, popup on Firefox
 
 ---
 
@@ -24,7 +24,7 @@
 | 🔗 **Copy URLs** | Copy the selected image URLs (or all filtered ones) to the clipboard |
 | 📥 **Batch Download (30 max per batch)** | Each image is fetched inside the extension page with the page's cookies and `Referer`, then handed to the browser's download engine as a blob — images behind hotlink protection or login sessions save as the real file, not a 403 page. Keep the panel open until the batch finishes |
 | 📊 **Download Result Report** | When a batch finishes, a toast reports how many files succeeded and how many failed |
-| 💾 **Persistent State** | Image lists and your "removed" marks survive page reloads and service worker restarts |
+| 💾 **Persistent State** | Image lists and your "removed" marks survive page reloads and background restarts |
 | 🔄 **SPA Support** | Detects real navigations and `pushState` / `replaceState` / `popstate`; the previous page's images are cleared and the new view is re-scanned automatically |
 
 ### Premium Features (License Required)
@@ -65,11 +65,14 @@
 
 ## Supported Browsers
 
-| Browser | Status |
-|---------|--------|
-| Google Chrome | ✅ Fully supported (Side Panel) |
-| Microsoft Edge | ✅ Fully supported (Side Panel) |
-| Other Chromium-based browsers | ✅ Supported (Popup fallback) |
+| Browser | Status | UI |
+|---------|--------|----|
+| Google Chrome | ✅ Fully supported | Side Panel (popup fallback) |
+| Microsoft Edge | ✅ Fully supported | Side Panel (popup fallback) |
+| Mozilla Firefox | ✅ Fully supported — Manifest V3, Firefox 140+ (desktop) | Popup |
+| Other Chromium-based browsers | ✅ Supported | Popup fallback |
+
+> **Firefox note:** Firefox has no `sidePanel` API, so the extension opens as a **toolbar popup** instead of a side panel — that popup carries the whole working UI (grid/list browsing, filters, selection, downloads and the licence key entry) and it can also open as a detached tab for larger batches. The one exception is **🎯 Manual Pick**, which lives in the Chrome / Edge side panel and is therefore not offered in the Firefox build. The `sidePanel` permission is not declared in the Firefox build. Keep the popup or tab open while a batch downloads, because downloads are fetched from that page.
 
 ---
 
@@ -77,9 +80,9 @@
 
 | Surface | How it opens | What it offers |
 |---------|--------------|----------------|
-| **Side Panel** | Click the toolbar icon (Chrome / Edge) | Full UI, including the ⚙️ Settings panel where the license key is entered, plus 🎯 **Manual Pick** |
-| **Popup** | Opens automatically on browsers without the side-panel API, or if the side panel cannot be opened | Grid/list browsing, filters, selection and downloads |
-| **Detached tab** | Opens automatically as a fallback when the side panel cannot be used | Grid browsing, filters, selection and downloads |
+| **Side Panel** | Click the toolbar icon (Chrome / Edge only) | Full UI, including the ⚙️ Settings panel where the license key is entered, plus 🎯 **Manual Pick** |
+| **Popup** | Click the toolbar icon on Firefox (no side-panel API), or on Chromium browsers without side-panel support | Grid/list browsing, filters, selection, downloads and the licence key entry (🎯 Manual Pick stays side-panel only) |
+| **Detached tab** | Opens automatically as a fallback when neither the side panel nor the popup can be used | Grid browsing, filters, selection and downloads |
 
 ---
 
@@ -89,6 +92,7 @@
 |---|---|
 | Chrome Web Store | [Install for Chrome](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
 | Microsoft Edge Add-ons | [Install for Edge](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
+| Firefox Add-ons (AMO) | 🔜 Under review — link will be added once the listing is live |
 
 > Install only from the official stores above — avoid third-party download sites.
 
@@ -97,7 +101,7 @@
 ## Usage
 
 1. **Browse any webpage** — The content script collects images from the current page
-2. **Click the Image Grabber icon** to open the side panel
+2. **Click the Image Grabber icon** to open the panel (side panel on Chrome / Edge, popup on Firefox)
 3. **Enable Auto** — Toggle "Auto" to continuously collect images as the page loads
 4. **Or click Scan** — Manually trigger a one-time full-page scan
 5. **Filter** — Set minimum width/height, select image type, choose sort order
@@ -105,7 +109,7 @@
 7. **Select** — Click images to select (up to 30 for free users)
 8. **Preview** — Click any image to open the lightbox
 9. **Copy** — Use the copy button to put selected image URLs on the clipboard
-10. **Download** — Click ⬇️ for a basic download, or ⭐ for Advanced Download (premium). A toast reports how many files were downloaded and how many failed. Downloads are fetched by the panel page, so keep the panel or tab open until the batch finishes
+10. **Download** — Click ⬇️ for a basic download, or ⭐ for Advanced Download (premium). A toast reports how many files were downloaded and how many failed. Downloads are fetched by the panel page, so keep the panel, popup or tab open until the batch finishes
 
 ### Advanced Download (Premium)
 
@@ -121,7 +125,7 @@ Conversion targets are limited to JPG, PNG and WebP. GIF, SVG, AVIF, BMP and oth
 
 ## Privacy
 
-- Required permissions: `storage`, `downloads`, `sidePanel`, `declarativeNetRequest`
+- Required permissions: `storage`, `downloads`, `declarativeNetRequest` — plus `sidePanel` on Chrome and Edge only (Firefox has no side-panel API, so that permission is not requested there)
 - Host permission `<all_urls>` is required to detect and download images hosted on any domain
 - `declarativeNetRequest` is used only to set the `Referer` header. The rule is active while a panel displays images from a tab (so previews load on hotlink-protected sites) and during a download batch (so the saved file is the real image, not an error placeholder). It is scoped to the image domains currently on screen, and removed when the panel closes, you switch tabs, or the page navigates
 - While that rule is active it applies to requests to those image domains, not only to the extension's own image fetches — a page request to the same image domain during a batch will also carry the page `Referer`. The rule is session-scoped and scoped by domain, not a persistent header rewrite
@@ -146,7 +150,7 @@ Do not use this tool to batch capture image resources from websites with copyrig
 
 ## Source Code Notice
 
-This repository contains the full extension source: the manifest, content scripts, the service worker, all UI surfaces, locale files and the build script. The extension is also distributed through the Chrome Web Store.
+This repository contains the full extension source: the manifest, content scripts, the background script, all UI surfaces, locale files and the build script. The extension is also distributed through the Chrome Web Store, Microsoft Edge Add-ons and Firefox Add-ons (AMO).
 
 ## License
 

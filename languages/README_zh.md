@@ -4,7 +4,7 @@
 
 **Image Grabber** 是一款免费的网页图片下载器扩展（Chrome / Edge），自动扫描网页中的图片并支持一键批量下载。
 
-> 基于 Chromium · Manifest V3 · 无追踪 · 侧边栏界面
+> Chrome / Edge / Firefox · Manifest V3 · 无追踪 · 侧边面板 / 弹窗界面
 
 ---
 
@@ -69,7 +69,10 @@
 |--------|------|
 | Google Chrome | ✅ 完全支持（侧边栏） |
 | Microsoft Edge | ✅ 完全支持（侧边栏） |
+| Mozilla Firefox | ✅ 完全支持 |
 | 其他 Chromium 浏览器 | ✅ 支持（弹窗降级） |
+
+> **Firefox 说明：** Firefox 没有 `sidePanel` API，扩展以**工具栏弹窗**打开。弹窗包含完整工作界面（网格/列表浏览、筛选、选择、下载与授权密钥输入），也可以展开为独立标签页以便大批量下载。唯一例外是 **🎯 手动取图（Manual Pick）**，它属于 Chrome / Edge 的侧边栏功能，Firefox 版不提供。Firefox 版不申请 `sidePanel` 权限。批量下载期间请保持弹窗或标签页打开，因为下载由该页面发起。
 
 ---
 
@@ -89,6 +92,7 @@
 |---|---|
 | Chrome 应用商店 | [在 Chrome 中安装](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
 | Microsoft Edge 加载项 | [在 Edge 中安装](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
+| Firefox 附加组件（AMO） | 🔜 审核中，上架后补充链接 |
 
 > 请只通过上方官方商店安装，避免使用第三方下载站。
 
@@ -121,7 +125,7 @@
 
 ## 隐私
 
-- 所需权限：`storage`、`downloads`、`sidePanel`、`declarativeNetRequest`
+- 所需权限：`storage`、`downloads`、`sidePanel`、`declarativeNetRequest` （`sidePanel` 仅 Chrome / Edge；Firefox 不申请该权限，界面为工具栏弹窗）
 - 需要 `<all_urls>` 主机权限，才能检测并下载任意域名下的图片
 - `declarativeNetRequest` 仅用于设置 `Referer` 请求头。面板展示某个标签页的图片期间规则保持生效（让防盗链站点的缩略图也能显示），下载批次期间同样生效（让保存下来的文件是真正的原图而非错误占位图）。规则只作用于当前屏幕上出现的图片域名，并在关闭面板、切换标签页或页面跳转时移除
 - 规则生效期间，它作用于发往这些图片域名的请求，而不只是扩展自身的取图请求——批次期间页面对同一图片域名的请求也会带上页面 `Referer`。规则是会话级、按域名生效的，不会永久改写请求头
@@ -146,7 +150,7 @@
 
 ## 源码说明
 
-本仓库包含扩展的完整源码：manifest、内容脚本、Service Worker、全部 UI、语言文件和构建脚本。扩展同时通过 Chrome Web Store 分发。
+本仓库包含扩展的完整源码：manifest、内容脚本、Service Worker、全部 UI、语言文件和构建脚本。扩展同时通过 Chrome Web Store、Microsoft Edge Add-ons 与 Firefox 附加组件（AMO） 分发。
 
 ---
 

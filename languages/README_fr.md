@@ -4,7 +4,7 @@
 
 **Image Grabber** est un téléchargeur d’images gratuit pour Chrome et Edge : scannez n’importe quelle page web et téléchargez toutes ses images en lot en un clic.
 
-> Chromium · Manifest V3 · Aucun suivi · Panneau latéral
+> Chrome / Edge / Firefox · Manifest V3 · Aucun suivi · Panneau latéral / Popup
 
 ---
 
@@ -69,7 +69,10 @@
 |---------|--------|
 | Google Chrome | ✅ Entièrement pris en charge (Panneau latéral) |
 | Microsoft Edge | ✅ Entièrement pris en charge (Panneau latéral) |
+| Mozilla Firefox | ✅ Entièrement pris en charge |
 | Autres navigateurs basés sur Chromium | ✅ Pris en charge (repli sur popup) |
+
+> **Note Firefox :** Firefox n’a pas d’API de panneau latéral, l’extension s’ouvre donc en **popup de la barre d’outils**. Ce popup contient toute l’interface de travail (vue grille/liste, filtres, sélection, téléchargements et saisie de la clé de licence) et peut aussi s’ouvrir dans un onglet détaché pour les lots plus importants. Seule exception : **🎯 Manual Pick**, qui fait partie du panneau latéral de Chrome / Edge et n’est donc pas proposé dans la version Firefox. La version Firefox ne demande pas la permission `sidePanel`. Laissez le popup ou l’onglet ouvert pendant un téléchargement par lot, car les téléchargements sont lancés depuis cette page.
 
 ---
 
@@ -89,6 +92,7 @@
 |---|---|
 | Chrome Web Store | [Installer dans Chrome](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
 | Microsoft Edge Add-ons | [Installer dans Edge](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
+| Modules complémentaires Firefox (AMO) | 🔜 En cours d’examen — le lien sera ajouté après publication |
 
 > Installez uniquement depuis les boutiques officielles ci-dessus — évitez les sites de téléchargement tiers.
 
@@ -121,7 +125,7 @@ Les cibles de conversion sont limitées à JPG, PNG et WebP. GIF, SVG, AVIF, BMP
 
 ## Confidentialité
 
-- Permissions requises : `storage`, `downloads`, `sidePanel`, `declarativeNetRequest`
+- Permissions requises : `storage`, `downloads`, `sidePanel`, `declarativeNetRequest` (`sidePanel` uniquement sous Chrome / Edge ; Firefox ne la demande pas et utilise un popup de la barre d’outils)
 - La permission d'hôte `<all_urls>` est nécessaire pour détecter et télécharger les images hébergées sur n'importe quel domaine
 - `declarativeNetRequest` sert uniquement à définir l'en-tête `Referer`. La règle est active tant qu'un panneau affiche les images d'un onglet (pour que les aperçus se chargent sur les sites protégés contre le hotlink) et pendant un lot de téléchargements (pour que le fichier enregistré soit la vraie image, pas une image d'erreur). Elle est limitée aux domaines d'images actuellement affichés et retirée à la fermeture du panneau, au changement d'onglet ou lors d'une navigation.
 - Tant que la règle est active, elle s'applique aux requêtes vers ces domaines d'images, pas seulement aux requêtes de l'extension : une requête de la page vers le même domaine d'image pendant un lot portera aussi le `Referer` de la page. La règle est limitée à la session et au domaine ; elle ne réécrit pas les en-têtes de façon permanente
@@ -146,7 +150,7 @@ N'utilisez pas cet outil pour extraire massivement des ressources images de site
 
 ## Avis sur le code source
 
-Ce dépôt contient le code source complet de l'extension : le manifest, les scripts de contenu, le service worker, toutes les interfaces, les fichiers de langue et le script de build. L'extension est également distribuée via le Chrome Web Store.
+Ce dépôt contient le code source complet de l'extension : le manifest, les scripts de contenu, le service worker, toutes les interfaces, les fichiers de langue et le script de build. L'extension est également distribuée via le Chrome Web Store, Microsoft Edge Add-ons et Firefox Add-ons (AMO).
 
 ---
 

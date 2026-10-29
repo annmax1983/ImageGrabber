@@ -4,7 +4,7 @@
 
 **Image Grabber** es un descargador de imágenes gratuito para Chrome y Edge: escanea cualquier página web y descarga todas sus imágenes en lote con un clic.
 
-> Basada en Chromium · Manifest V3 · Sin rastreo · Interfaz de panel lateral
+> Chrome / Edge / Firefox · Manifest V3 · Sin rastreo · Interfaz de panel lateral / ventana emergente
 
 ---
 
@@ -69,7 +69,10 @@
 |---------|--------|
 | Google Chrome | ✅ Totalmente compatible (Panel lateral) |
 | Microsoft Edge | ✅ Totalmente compatible (Panel lateral) |
+| Mozilla Firefox | ✅ Totalmente compatible |
 | Otros navegadores basados en Chromium | ✅ Compatible (alternativa con popup) |
+
+> **Nota sobre Firefox:** Firefox no tiene API de panel lateral, así que la extensión se abre como **ventana emergente de la barra de herramientas**. Esa ventana contiene toda la interfaz de trabajo (vista de cuadrícula/lista, filtros, selección, descargas y entrada de la clave de licencia) y también puede abrirse como pestaña independiente para lotes grandes. La única excepción es **🎯 Manual Pick**, que forma parte del panel lateral de Chrome / Edge y por tanto no se ofrece en la versión de Firefox. La versión de Firefox no solicita el permiso `sidePanel`. Mantén la ventana o la pestaña abierta durante las descargas por lotes, porque las descargas se ejecutan desde esa página.
 
 ---
 
@@ -89,6 +92,7 @@
 |---|---|
 | Chrome Web Store | [Instalar en Chrome](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
 | Complementos de Microsoft Edge | [Instalar en Edge](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
+| Complementos de Firefox (AMO) | 🔜 En revisión: el enlace se añadirá al publicarse |
 
 > Instale solo desde las tiendas oficiales de arriba; evite sitios de descarga de terceros.
 
@@ -121,7 +125,7 @@ Los destinos de conversión se limitan a JPG, PNG y WebP. GIF, SVG, AVIF, BMP y 
 
 ## Privacidad
 
-- Permisos requeridos: `storage`, `downloads`, `sidePanel`, `declarativeNetRequest`
+- Permisos requeridos: `storage`, `downloads`, `sidePanel`, `declarativeNetRequest` (`sidePanel` solo en Chrome / Edge; Firefox no lo solicita y usa una ventana emergente de la barra de herramientas)
 - Se requiere el permiso de host `<all_urls>` para detectar y descargar imágenes alojadas en cualquier dominio
 - `declarativeNetRequest` se usa únicamente para establecer la cabecera `Referer`. La regla está activa mientras un panel muestra imágenes de una pestaña (para que las vistas previas carguen en sitios con protección antienlace) y durante un lote de descargas (para que el archivo guardado sea la imagen real, no un marcador de error). Se limita a los dominios de imagen que aparecen en pantalla y se retira al cerrar el panel, cambiar de pestaña o navegar.
 - Mientras la regla está activa se aplica a las peticiones a esos dominios de imagen, no solo a las peticiones de la extensión: una petición de la página a ese mismo dominio durante un lote también llevará el `Referer` de la página. La regla es de sesión y por dominio; no reescribe cabeceras de forma permanente
@@ -146,7 +150,7 @@ No uses esta herramienta para capturar masivamente recursos de imagen de sitios 
 
 ## Aviso sobre el código fuente
 
-Este repositorio contiene el código fuente completo de la extensión: el manifest, los scripts de contenido, el service worker, todas las interfaces, los archivos de idioma y el script de build. La extensión también se distribuye a través de Chrome Web Store.
+Este repositorio contiene el código fuente completo de la extensión: el manifest, los scripts de contenido, el service worker, todas las interfaces, los archivos de idioma y el script de build. La extensión también se distribuye a través de Chrome Web Store, Microsoft Edge Add-ons y Firefox Add-ons (AMO).
 
 ---
 
