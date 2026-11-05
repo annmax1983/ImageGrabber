@@ -14,15 +14,18 @@
 
 | Funcionalidad | Descripción |
 |---------|-------------|
-| 🔍 **Detección inteligente de imágenes** | Escanea `<img>` (incluidos atributos `data-src` / de carga diferida), `srcset` (elige el candidato más grande), CSS `background-image` (en línea, `::before` y `::after`), `<video poster>`, `<source srcset>` e imágenes SVG `<image>` |
+| 🔍 **Detección inteligente** | Escanea `<img>` (incluidos `data-src` / carga diferida), `srcset` (elige el mayor candidato), CSS `background-image` (en línea, `::before` y `::after`), `<video poster>`, `<source srcset>`, SVG `<image>` e imágenes dentro de **iframes** y **shadow roots abiertos** |
 | 💎 **Detección de originales** | Encuentra originales de mayor resolución expuestos en la página (atributos `data-*` de carga diferida, enlaces de imagen principales, candidatos de `<picture>` / `srcset`) y comprueba sus dimensiones reales antes de usarlos; si no se verifica un original mayor, se usa la imagen mostrada. Se puede desactivar con el interruptor **Original** |
 | 🤖 **Recopilación automática** | Recopila imágenes continuamente a medida que la página se carga (MutationObserver + idle callback) |
+| 🔃 **Desplazamiento automático** | Interruptor **Desplazar** opcional: antes de escanear, recorre la página (y cada iframe) hacia abajo para que carguen las imágenes de carga diferida y luego escanea. Se detiene cuando la página deja de crecer, tras 40 pasos o 60 segundos, o en cuanto desplazas, deslizas o pulsas una tecla de paginación. Desactivado por defecto |
 | 📋 **Vista de cuadrícula y lista** | Alterna entre miniaturas en cuadrícula y vista de tabla compacta |
 | 🔎 **Filtrado y ordenación** | Filtra por dimensiones mínimas y tipo de imagen; ordena por ancho, alto o nombre de archivo |
 | 🎯 **Selección manual** | Haz clic directamente sobre un elemento de la página para capturar su imagen |
+| 🖱️ **Entrada por clic derecho** | Haz clic derecho en la página → **Capturar las imágenes de esta página** para abrir el panel y escanear la pestaña actual al instante, sin buscar antes el icono de la barra de herramientas |
 | 🖼️ **Vista previa en lightbox** | Vista previa a tamaño completo con navegación por teclado (← → Esc), descarga y copia de URL |
 | 🔗 **Copiar URLs** | Copia al portapapeles las URLs de las imágenes seleccionadas (o de todas las filtradas) |
 | 📥 **Descarga por lotes (máx. 30 por lote)** | Cada imagen se obtiene dentro de la página de la extensión con las cookies y el `Referer` de la página, y se entrega al motor de descargas como blob — las imágenes con protección antienlace o restringidas a sesión iniciada se guardan como el archivo real, no como una página 403. Mantén el panel abierto hasta que termine el lote |
+| 📦 **Descarga ZIP** | Empaqueta el lote actual en un único `.zip` — cómodo para galerías, con la misma obtención a prueba de hotlink que un lote normal. Los lotes muy grandes se dividen automáticamente en partes numeradas (300 archivos o 300 MB por parte). Gratis, hasta el límite de 30 imágenes |
 | 📊 **Informe de resultados** | Al terminar un lote, un aviso indica cuántos archivos se descargaron y cuántos fallaron |
 | 💾 **Estado persistente** | Las listas de imágenes y tus marcas de «eliminado» sobreviven a las recargas de página y a los reinicios del service worker |
 | 🔄 **Compatibilidad con SPA** | Detecta navegaciones reales y `pushState` / `replaceState` / `popstate`; las imágenes de la página anterior se borran y la nueva vista se re-escanea automáticamente |
@@ -47,6 +50,7 @@
 | Copiar URLs de imágenes | ✅ | ✅ |
 | Límite de descarga por lotes | 30 imágenes por lote | Ilimitado |
 | Descarga básica (formato original) | ✅ | ✅ |
+| ZIP del lote actual | ✅ | ✅ |
 | Descargas con antienlace / sesión | ✅ | ✅ |
 | Deduplicación por pHash | — | ✅ |
 | Conversión de formato (WebP→JPG/PNG) | — | ✅ |
@@ -58,7 +62,7 @@
 ## Vista previa
 
 <p align="center">
-  <img src="../screenshots/es.png" alt="Interfaz de Image Grabber" >
+  <img src="../screenshots/01-scan-and-select.png" alt="Interfaz de Image Grabber" >
 </p>
 
 ---
@@ -92,7 +96,7 @@
 |---|---|
 | Chrome Web Store | [Instalar en Chrome](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
 | Complementos de Microsoft Edge | [Instalar en Edge](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
-| Complementos de Firefox (AMO) | 🔜 En revisión: el enlace se añadirá al publicarse |
+| Complementos de Firefox (AMO) | [Instalar para Firefox](https://addons.mozilla.org/firefox/addon/vkt-image-grabber/) |
 
 > Instale solo desde las tiendas oficiales de arriba; evite sitios de descarga de terceros.
 
@@ -101,19 +105,19 @@
 ## Uso
 
 1. **Navega por cualquier página web** — El script de contenido recopila imágenes de la página actual
-2. **Haz clic en el icono de Image Grabber** para abrir el panel lateral
+2. **Abre el panel** — Haz clic en el icono de Image Grabber para abrir el panel lateral, o haz clic derecho en la página → **Capturar las imágenes de esta página**
 3. **Activa Auto** — Alterna "Auto" para recopilar imágenes continuamente mientras la página se carga
-4. **O haz clic en Escanear** — Lanza manualmente un escaneo completo de la página
+4. **O haz clic en Escanear** — Lanza manualmente un escaneo completo de la página. Con **Desplazar** activado, la página primero se desplaza hacia abajo para que carguen las imágenes de carga diferida y luego se escanea
 5. **Filtra** — Establece ancho/alto mínimo, selecciona el tipo de imagen y elige el orden
 6. **Cambia de vista** — Alterna entre cuadrícula (▦) y lista (☰)
 7. **Selecciona** — Haz clic en las imágenes para seleccionar (hasta 30 para usuarios gratuitos)
 8. **Vista previa** — Haz clic en cualquier imagen para abrir el lightbox
 9. **Copia** — Usa el botón de copiar para poner las URLs de las imágenes seleccionadas en el portapapeles
-10. **Descarga** — Haz clic en ⬇️ para la descarga básica, o ⭐ para la descarga avanzada (premium). Un aviso informa de cuántos archivos se descargaron y cuántos fallaron. Las descargas las realiza la página del panel, así que mantenlo abierto hasta que termine el lote
+10. **Descarga** — Haz clic en ⬇️ para la descarga básica, en 📦 para guardar el lote como ZIP, o en ⭐ para la descarga avanzada (premium). Un aviso informa de cuántos archivos se descargaron y cuántos fallaron. Las descargas las realiza la página del panel, así que mantenlo abierto hasta que termine el lote. Los lotes grandes de la descarga avanzada se dividen automáticamente en partes ZIP numeradas
 
 ### Descarga avanzada (Premium)
 
-1. Obtén tu clave de licencia en [annmax1983.com](https://www.annmax1983.com/checkout.html?plugin=imagegrabber)
+1. Obtén tu clave de licencia en [annmax1983.com](https://annmax1983.com/checkout?plugin=imagegrabber)
 2. Abre Configuración (⚙️ icono de engranaje) → introduce tu clave de licencia
 3. Configura el formato de salida, la calidad y las opciones de deduplicación
 4. Selecciona las imágenes y haz clic en el botón ⭐ Descarga avanzada
@@ -125,7 +129,8 @@ Los destinos de conversión se limitan a JPG, PNG y WebP. GIF, SVG, AVIF, BMP y 
 
 ## Privacidad
 
-- Permisos requeridos: `storage`, `downloads`, `sidePanel`, `declarativeNetRequest` (`sidePanel` solo en Chrome / Edge; Firefox no lo solicita y usa una ventana emergente de la barra de herramientas)
+- Permisos requeridos: `storage`, `downloads`, `declarativeNetRequest` y `contextMenus` (`sidePanel` solo en Chrome / Edge; Firefox no lo solicita y usa una ventana emergente de la barra de herramientas)
+- `contextMenus` solo añade la entrada del menú contextual; a través de ella no se lee ningún contenido de la página
 - Se requiere el permiso de host `<all_urls>` para detectar y descargar imágenes alojadas en cualquier dominio
 - `declarativeNetRequest` se usa únicamente para establecer la cabecera `Referer`. La regla está activa mientras un panel muestra imágenes de una pestaña (para que las vistas previas carguen en sitios con protección antienlace) y durante un lote de descargas (para que el archivo guardado sea la imagen real, no un marcador de error). Se limita a los dominios de imagen que aparecen en pantalla y se retira al cerrar el panel, cambiar de pestaña o navegar.
 - Mientras la regla está activa se aplica a las peticiones a esos dominios de imagen, no solo a las peticiones de la extensión: una petición de la página a ese mismo dominio durante un lote también llevará el `Referer` de la página. La regla es de sesión y por dominio; no reescribe cabeceras de forma permanente
@@ -169,3 +174,12 @@ Copyright © 2026 Image Grabber. Todos los derechos reservados.
 Si Image Grabber te resulta útil, ¡invítame a un café!
 
 **[👉 Haz clic aquí para apoyar](https://ko-fi.com/annmax?ref=imagegrabber)**
+
+---
+
+## Enlaces
+
+- **Sitio oficial:** https://annmax1983.com/
+- **Esta extensión:** https://annmax1983.com/extensions/imagegrabber
+- **Privacidad:** https://annmax1983.com/privacy
+- **Contacto:** support@annmax1983.com

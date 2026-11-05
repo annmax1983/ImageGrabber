@@ -14,15 +14,18 @@
 
 | Feature | Description |
 |---------|-------------|
-| 🔍 **Smart Image Detection** | Scans `<img>` (including `data-src` / lazy-load attributes), `srcset` (picks the largest candidate), CSS `background-image` (inline, `::before` and `::after`), `<video poster>`, `<source srcset>`, and SVG `<image>` |
+| 🔍 **Smart Image Detection** | Scans `<img>` (including `data-src` / lazy-load attributes), `srcset` (picks the largest candidate), CSS `background-image` (inline, `::before` and `::after`), `<video poster>`, `<source srcset>`, SVG `<image>`, and images inside **iframes** and **open shadow roots** |
 | 💎 **Original-Image Detection** | Finds higher-resolution originals exposed in the page (lazy-load `data-*` attributes, parent image links, `<picture>` / `srcset` candidates) and probes their real dimensions before use; falls back to the displayed image when no larger original is verified. Can be disabled with the **Original** toggle |
 | 🤖 **Auto Collect** | Continuously collects images as the page loads (MutationObserver + idle callback) |
+| 🔃 **Auto Scroll** | Optional **Scroll** toggle: before scanning, steps down the page (and each iframe) so lazy-loaded images load, then scans. Stops when the page stops growing, after 40 steps or 60 seconds, or as soon as you scroll, swipe or press a paging key. Off by default |
 | 📋 **Grid & List View** | Switch between thumbnail grid and compact table view |
 | 🔎 **Filter & Sort** | Filter by minimum width/height and image type; sort by width, height or file name |
 | 🎯 **Manual Pick** | Click exact elements on a page to grab their image |
+| 🖱️ **Right-Click Entry** | Right-click the page → **Grab images on this page** to open the panel and scan the current tab right away — no need to find the toolbar icon first |
 | 🖼️ **Lightbox Preview** | Full-size preview with keyboard navigation (← → Esc), download and copy-URL actions |
 | 🔗 **Copy URLs** | Copy the selected image URLs (or all filtered ones) to the clipboard |
 | 📥 **Batch Download (30 max per batch)** | Each image is fetched inside the extension page with the page's cookies and `Referer`, then handed to the browser's download engine as a blob — images behind hotlink protection or login sessions save as the real file, not a 403 page. Keep the panel open until the batch finishes |
+| 📦 **ZIP Download** | Packs the current batch into a single `.zip` and saves it as one file — handy for galleries, using the same hotlink-safe fetching as a normal batch. Very large batches are split into numbered parts automatically (300 files or 300 MB per part). Free, within the 30-image batch limit |
 | 📊 **Download Result Report** | When a batch finishes, a toast reports how many files succeeded and how many failed |
 | 💾 **Persistent State** | Image lists and your "removed" marks survive page reloads and background restarts |
 | 🔄 **SPA Support** | Detects real navigations and `pushState` / `replaceState` / `popstate`; the previous page's images are cleared and the new view is re-scanned automatically |
@@ -47,6 +50,7 @@
 | Copy image URLs | ✅ | ✅ |
 | Batch download limit | 30 images per batch | Unlimited |
 | Basic download (original format) | ✅ | ✅ |
+| ZIP of the current batch | ✅ | ✅ |
 | Hotlink / login-protected downloads | ✅ | ✅ |
 | pHash deduplication | — | ✅ |
 | Format conversion (WebP→JPG/PNG) | — | ✅ |
@@ -58,7 +62,7 @@
 ## Preview
 
 <p align="center">
-  <img src="screenshots/en.png" alt="Image Grabber Icon" >
+  <img src="screenshots/01-scan-and-select.png" alt="Image Grabber Icon" >
 </p>
 
 ---
@@ -92,7 +96,7 @@
 |---|---|
 | Chrome Web Store | [Install for Chrome](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
 | Microsoft Edge Add-ons | [Install for Edge](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
-| Firefox Add-ons (AMO) | 🔜 Under review — link will be added once the listing is live |
+| Firefox Add-ons (AMO) | [Install for Firefox](https://addons.mozilla.org/firefox/addon/vkt-image-grabber/) |
 
 > Install only from the official stores above — avoid third-party download sites.
 
@@ -101,19 +105,19 @@
 ## Usage
 
 1. **Browse any webpage** — The content script collects images from the current page
-2. **Click the Image Grabber icon** to open the panel (side panel on Chrome / Edge, popup on Firefox)
+2. **Open the panel** — Click the Image Grabber icon (side panel on Chrome / Edge, popup on Firefox), or right-click the page → **Grab images on this page**
 3. **Enable Auto** — Toggle "Auto" to continuously collect images as the page loads
-4. **Or click Scan** — Manually trigger a one-time full-page scan
+4. **Or click Scan** — Manually trigger a one-time full-page scan. With **Scroll** enabled, the page first scrolls down so lazy-loaded images load, then scans
 5. **Filter** — Set minimum width/height, select image type, choose sort order
 6. **Switch views** — Toggle between grid (▦) and list (☰) layout
 7. **Select** — Click images to select (up to 30 for free users)
 8. **Preview** — Click any image to open the lightbox
 9. **Copy** — Use the copy button to put selected image URLs on the clipboard
-10. **Download** — Click ⬇️ for a basic download, or ⭐ for Advanced Download (premium). A toast reports how many files were downloaded and how many failed. Downloads are fetched by the panel page, so keep the panel, popup or tab open until the batch finishes
+10. **Download** — Click ⬇️ for a basic download, the ZIP button to save the batch as an archive, or ⭐ for Advanced Download (premium). Large premium batches are split into numbered ZIP parts automatically. A toast reports how many files were downloaded and how many failed. Downloads are fetched by the panel page, so keep the panel, popup or tab open until the batch finishes
 
 ### Advanced Download (Premium)
 
-1. Get your license key at [annmax1983.com](https://www.annmax1983.com/checkout.html?plugin=imagegrabber)
+1. Get your license key at [annmax1983.com](https://annmax1983.com/checkout?plugin=imagegrabber)
 2. Open Settings (⚙️ gear icon) → enter your license key
 3. Configure output format, quality, and deduplication options
 4. Select images and click the ⭐ Advanced Download button
@@ -125,7 +129,8 @@ Conversion targets are limited to JPG, PNG and WebP. GIF, SVG, AVIF, BMP and oth
 
 ## Privacy
 
-- Required permissions: `storage`, `downloads`, `declarativeNetRequest` — plus `sidePanel` on Chrome and Edge only (Firefox has no side-panel API, so that permission is not requested there)
+- Required permissions: `storage`, `downloads`, `declarativeNetRequest` and `contextMenus` — plus `sidePanel` on Chrome and Edge only (Firefox has no side-panel API, so that permission is not requested there)
+- `contextMenus` only adds the right-click entry; no page content is read through it
 - Host permission `<all_urls>` is required to detect and download images hosted on any domain
 - `declarativeNetRequest` is used only to set the `Referer` header. The rule is active while a panel displays images from a tab (so previews load on hotlink-protected sites) and during a download batch (so the saved file is the real image, not an error placeholder). It is scoped to the image domains currently on screen, and removed when the panel closes, you switch tabs, or the page navigates
 - While that rule is active it applies to requests to those image domains, not only to the extension's own image fetches — a page request to the same image domain during a batch will also carry the page `Referer`. The rule is session-scoped and scoped by domain, not a persistent header rewrite
@@ -167,3 +172,13 @@ Copyright © 2026 Image Grabber. All rights reserved.
 If you find Image Grabber helpful, consider buying me a coffee!
 
 **[👉 Click here to support](https://ko-fi.com/annmax?ref=imagegrabber)**
+
+---
+
+## Links
+
+- **Official website:** https://annmax1983.com/
+- **This extension:** https://annmax1983.com/extensions/imagegrabber
+- **Privacy policy:** https://annmax1983.com/privacy
+- **Contact:** support@annmax1983.com
+- **☕ Support this project (Ko-fi):** https://ko-fi.com/annmax?ref=imagegrabber

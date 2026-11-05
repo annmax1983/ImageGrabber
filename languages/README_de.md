@@ -14,15 +14,18 @@
 
 | Funktion | Beschreibung |
 |----------|--------------|
-| 🔍 **Intelligente Bilderkennung** | Scannt `<img>` (inkl. `data-src` / Lazy-Load-Attribute), `srcset` (wählt den größten Kandidaten), CSS `background-image` (inline, `::before` und `::after`), `<video poster>`, `<source srcset>` und SVG `<image>` |
+| 🔍 **Intelligente Bilderkennung** | Scannt `<img>` (inkl. `data-src` / Lazy-Load-Attributen), `srcset` (größte Variante), CSS `background-image` (inline, `::before` und `::after`), `<video poster>`, `<source srcset>`, SVG `<image>` sowie Bilder in **iframes** und **offenen Shadow Roots** |
 | 💎 **Originalbild-Erkennung** | Findet in der Seite offengelegte hochauflösende Originale (Lazy-Load-`data-*`-Attribute, übergeordnete Bildlinks, `<picture>`- / `srcset`-Kandidaten) und prüft deren tatsächliche Abmessungen, bevor sie verwendet werden; ohne bestätigt größeres Original wird das angezeigte Bild verwendet. Über den **Original**-Schalter deaktivierbar |
 | 🤖 **Auto-Sammlung** | Sammelt Bilder kontinuierlich während die Seite lädt (MutationObserver + Idle Callback) |
+| 🔃 **Auto-Scrollen** | Optionaler **Scrollen**-Schalter: Vor dem Scan wird die Seite (und jeder iframe) nach unten gescrollt, damit Lazy-Load-Bilder laden, dann wird gescannt. Stoppt, wenn die Seite nicht mehr wächst, nach 40 Schritten oder 60 Sekunden, oder sobald du scrollst, wischst oder eine Blättertaste drückst. Standardmäßig aus |
 | 📋 **Raster- & Listenansicht** | Zwischen Miniaturansicht-Raster und kompakter Tabellenansicht wechseln |
 | 🔎 **Filtern & Sortieren** | Nach Mindestabmessungen und Bildtyp filtern; nach Breite, Höhe oder Dateiname sortieren |
 | 🎯 **Manuelle Auswahl** | Klicke direkt auf ein Element der Seite, um dessen Bild zu erfassen |
+| 🖱️ **Rechtsklick-Einstieg** | Rechtsklick auf die Seite → **Bilder auf dieser Seite sammeln**, um das Panel zu öffnen und den aktuellen Tab sofort zu scannen – ohne erst das Symbolleisten-Symbol zu suchen |
 | 🖼️ **Lightbox-Vorschau** | Vollbild-Vorschau mit Tastaturnavigation (← → Esc), Download und URL-Kopieren |
 | 🔗 **URLs kopieren** | Kopiert die URLs der ausgewählten (oder aller gefilterten) Bilder in die Zwischenablage |
 | 📥 **Batch-Download (max. 30 pro Batch)** | Jedes Bild wird mit den Cookies und dem `Referer` der Seite innerhalb der Erweiterungsseite abgerufen und der Download-Engine als Blob übergeben — Bilder hinter Hotlink-Schutz oder Login-Sitzungen werden als echte Datei gespeichert, nicht als 403-Seite. Das Panel muss bis zum Ende des Batches geöffnet bleiben |
+| 📦 **ZIP-Download** | Packt den aktuellen Stapel in eine einzige `.zip`-Datei — praktisch für Galerien, mit derselben hotlink-sicheren Abholung wie ein normaler Batch. Sehr große Stapel werden automatisch in nummerierte Teile aufgeteilt (300 Dateien oder 300 MB pro Teil). Kostenlos, bis zum Limit von 30 Bildern |
 | 📊 **Download-Ergebnisbericht** | Nach Abschluss eines Batches meldet ein Hinweis, wie viele Dateien erfolgreich waren und wie viele fehlgeschlagen sind |
 | 💾 **Dauerhafter Zustand** | Bildlisten und deine „Entfernt"-Markierungen überleben Seiten-Neuladen und Service-Worker-Neustarts |
 | 🔄 **SPA-Unterstützung** | Erkennt echte Navigationen sowie `pushState` / `replaceState` / `popstate`; Bilder der vorherigen Seite werden gelöscht und die neue Ansicht automatisch neu gescannt |
@@ -47,6 +50,7 @@
 | Bild-URLs kopieren | ✅ | ✅ |
 | Batch-Download-Limit | 30 Bilder pro Batch | Unbegrenzt |
 | Standard-Download (Originalformat) | ✅ | ✅ |
+| ZIP des aktuellen Stapels | ✅ | ✅ |
 | Hotlink-/Login-geschützte Downloads | ✅ | ✅ |
 | pHash-Deduplizierung | — | ✅ |
 | Formatkonvertierung (WebP→JPG/PNG) | — | ✅ |
@@ -58,7 +62,7 @@
 ## Vorschau
 
 <p align="center">
-  <img src="../screenshots/de.png" alt="Image Grabber Oberfläche" >
+  <img src="../screenshots/01-scan-and-select.png" alt="Image Grabber Oberfläche" >
 </p>
 
 ---
@@ -92,7 +96,7 @@
 |---|---|
 | Chrome Web Store | [In Chrome installieren](https://chromewebstore.google.com/detail/chahehfnmhgnekhnnlmnganffejjaocc) |
 | Microsoft Edge Add-ons | [In Edge installieren](https://microsoftedge.microsoft.com/addons/detail/peiilcogdklfmnlioikcmdkgmnlpobke) |
-| Firefox-Add-ons (AMO) | 🔜 In Prüfung – Link folgt nach der Freigabe |
+| Firefox-Add-ons (AMO) | [Für Firefox installieren](https://addons.mozilla.org/firefox/addon/vkt-image-grabber/) |
 
 > Installieren Sie nur über die offiziellen Stores oben – meiden Sie Download-Seiten Dritter.
 
@@ -101,19 +105,19 @@
 ## Verwendung
 
 1. **Beliebige Webseite besuchen** — Das Content Script sammelt Bilder von der aktuellen Seite
-2. **Auf das Image Grabber-Symbol klicken**, um das Side Panel zu öffnen
+2. **Panel öffnen** — Klicke auf das Image Grabber-Symbol, um das Side Panel zu öffnen, oder mache einen Rechtsklick auf die Seite → **Bilder auf dieser Seite sammeln**
 3. **Auto aktivieren** — Schalte „Auto" um, um Bilder kontinuierlich während des Seitenladevorgangs zu sammeln
-4. **Oder auf Scan klicken** — Manuell einen einmaligen Vollseiten-Scan auslösen
+4. **Oder auf Scan klicken** — Manuell einen einmaligen Vollseiten-Scan auslösen. Ist **Scrollen** aktiviert, wird die Seite zuerst nach unten gescrollt, damit Lazy-Load-Bilder laden, und dann gescannt
 5. **Filtern** — Mindestbreite/-höhe einstellen, Bildtyp wählen, Sortierreihenfolge wählen
 6. **Ansichten wechseln** — Zwischen Raster (▦) und Listen (☰) Layout umschalten
 7. **Auswählen** — Bilder anklicken zum Auswählen (bis zu 30 für kostenlose Nutzer)
 8. **Vorschau** — Auf ein beliebiges Bild klicken, um die Lightbox zu öffnen
 9. **Kopieren** — Mit dem Kopier-Button die URLs der ausgewählten Bilder in die Zwischenablage legen
-10. **Download** — ⬇️ für Standard-Download oder ⭐ für erweiterten Download (Premium). Ein Hinweis meldet, wie viele Dateien heruntergeladen wurden und wie viele fehlgeschlagen sind. Die Downloads werden von der Panel-Seite ausgeführt; halte sie bis zum Ende des Batches geöffnet
+10. **Download** — ⬇️ für Standard-Download, 📦 um den Stapel als ZIP zu speichern, oder ⭐ für erweiterten Download (Premium). Ein Hinweis meldet, wie viele Dateien heruntergeladen wurden und wie viele fehlgeschlagen sind. Die Downloads werden von der Panel-Seite ausgeführt; halte sie bis zum Ende des Batches geöffnet. Große Premium-Stapel werden automatisch in nummerierte ZIP-Teile aufgeteilt
 
 ### Erweiterter Download (Premium)
 
-1. Hole deinen Lizenzschlüssel auf [annmax1983.com](https://www.annmax1983.com/checkout.html?plugin=imagegrabber)
+1. Hole deinen Lizenzschlüssel auf [annmax1983.com](https://annmax1983.com/checkout?plugin=imagegrabber)
 2. Öffne die Einstellungen (⚙️ Zahnradsymbol) → gib deinen Lizenzschlüssel ein
 3. Konfiguriere Ausgabeformat, Qualität und Deduplizierungsoptionen
 4. Wähle Bilder aus und klicke auf den ⭐ Erweiterter Download-Button
@@ -125,7 +129,8 @@ Konvertierungsziele sind auf JPG, PNG und WebP begrenzt. GIF, SVG, AVIF, BMP und
 
 ## Datenschutz
 
-- Benötigte Berechtigungen: `storage`, `downloads`, `sidePanel`, `declarativeNetRequest` (`sidePanel` nur unter Chrome / Edge; Firefox fordert sie nicht an und nutzt ein Symbolleisten-Popup)
+- Benötigte Berechtigungen: `storage`, `downloads`, `declarativeNetRequest` und `contextMenus` (`sidePanel` nur unter Chrome / Edge; Firefox fordert sie nicht an und nutzt ein Symbolleisten-Popup)
+- `contextMenus` fügt nur den Rechtsklick-Eintrag hinzu; darüber werden keine Seiteninhalte gelesen
 - Die Host-Berechtigung `<all_urls>` ist erforderlich, um Bilder auf beliebigen Domains zu erkennen und herunterzuladen
 - `declarativeNetRequest` wird nur verwendet, um den `Referer`-Header zu setzen. Die Regel ist aktiv, während ein Panel Bilder eines Tabs anzeigt (damit Vorschauen auf Hotlink-geschützten Seiten laden) und während eines Download-Batches (damit die gespeicherte Datei das echte Bild ist, kein Fehler-Platzhalter). Sie ist auf die aktuell sichtbaren Bild-Domains begrenzt und wird beim Schließen des Panels, beim Tabwechsel oder bei Navigation entfernt.
 - Solange die Regel aktiv ist, gilt sie für Anfragen an diese Bild-Domains, nicht nur für die Bildabrufe der Erweiterung: Auch eine Seitenanfrage an dieselbe Bild-Domain während eines Batches trägt den `Referer` der Seite. Die Regel ist sitzungsgebunden und domainbezogen; sie schreibt Header nicht dauerhaft um
@@ -169,3 +174,12 @@ Copyright © 2026 Image Grabber. Alle Rechte vorbehalten.
 Wenn dir Image Grabber hilft, kannst du mir gerne einen Kaffee ausgeben!
 
 **[👉 Hier unterstützen](https://ko-fi.com/annmax?ref=imagegrabber)**
+
+---
+
+## Links
+
+- **Offizielle Website:** https://annmax1983.com/
+- **Diese Erweiterung:** https://annmax1983.com/extensions/imagegrabber
+- **Datenschutz:** https://annmax1983.com/privacy
+- **Kontakt:** support@annmax1983.com
