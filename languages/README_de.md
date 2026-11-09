@@ -153,9 +153,11 @@ Verwende dieses Tool nicht, um Bildressourcen massenhaft von Websites mit Urhebe
 
 ---
 
-## Quellcode-Hinweis
+## Hinweis zum Quellcode
 
-Dieses Repository enthält den vollständigen Quellcode der Erweiterung: Manifest, Content Scripts, Service Worker, alle Oberflächen, Sprachdateien und das Build-Skript. Die Erweiterung wird außerdem über den Chrome Web Store, Microsoft Edge Add-ons und Firefox-Add-ons (AMO) vertrieben.
+> ⚠️ **Dieses Repository dient ausschließlich der Projektpräsentation — der vollständige Quellcode wird hier nicht veröffentlicht.** Es enthält nur die Nutzungsdokumentation, die Release-Notizen und Support-Informationen zur Erweiterung.
+
+> 📥 **Installation ausschließlich über die offiziellen Browser-Stores:** Chrome Web Store · Microsoft Edge Add-ons · Firefox-Add-ons (AMO). Von hier werden keine Offline-Installer verteilt.
 
 ---
 
@@ -163,9 +165,7 @@ Dieses Repository enthält den vollständigen Quellcode der Erweiterung: Manifes
 
 Copyright © 2026 Image Grabber. Alle Rechte vorbehalten.
 
----
-
-> **Hinweis:** Der Quellcode liegt aus Transparenzgründen in diesem Repository.
+Diese Software ist proprietär und quellgeschlossen. Ohne vorherige schriftliche Genehmigung des Autors ist das Dekompilieren, Reverse-Engineering, Knacken, Verändern, Neuverpacken, Weiterverbreiten oder Weiterverkaufen der Software (ganz oder teilweise) streng untersagt.
 
 ---
 

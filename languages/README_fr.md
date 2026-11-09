@@ -155,7 +155,9 @@ N'utilisez pas cet outil pour extraire massivement des ressources images de site
 
 ## Avis sur le code source
 
-Ce dépôt contient le code source complet de l'extension : le manifest, les scripts de contenu, le service worker, toutes les interfaces, les fichiers de langue et le script de build. L'extension est également distribuée via le Chrome Web Store, Microsoft Edge Add-ons et Firefox Add-ons (AMO).
+> ⚠️ **Ce dépôt sert uniquement à la présentation du projet — le code source complet n'y est pas publié.** Il ne contient que la documentation d'utilisation, les notes de version et les informations d'assistance de l'extension.
+
+> 📥 **Téléchargement et installation uniquement depuis les boutiques officielles :** Chrome Web Store · Microsoft Edge Add-ons · Modules complémentaires Firefox (AMO). Aucun installateur hors ligne n'est distribué ici.
 
 ---
 
@@ -163,9 +165,7 @@ Ce dépôt contient le code source complet de l'extension : le manifest, les scr
 
 Copyright © 2026 Image Grabber. Tous droits réservés.
 
----
-
-> **Note :** Le code source est fourni dans ce dépôt par souci de transparence.
+Ce logiciel est propriétaire et à code fermé. Sans autorisation écrite préalable de l'auteur, la décompilation, l'ingénierie inverse, le crackage, la modification, le reconditionnement, la redistribution ou la revente du logiciel (en tout ou en partie) sont strictement interdites.
 
 ---
 
