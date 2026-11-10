@@ -30,7 +30,7 @@
 | 💾 **Persistent State** | Image lists and your "removed" marks survive page reloads and background restarts |
 | 🔄 **SPA Support** | Detects real navigations and `pushState` / `replaceState` / `popstate`; the previous page's images are cleared and the new view is re-scanned automatically |
 
-### Premium Features (License Required)
+### Pro Features (License Required)
 
 | Feature | Description |
 |---------|-------------|
@@ -42,9 +42,9 @@
 
 ---
 
-## Free vs Premium
+## Free vs Pro
 
-| | Free | Premium |
+| | Free | Pro |
 |---|:---:|:---:|
 | Image scanning & browsing | ✅ Unlimited | ✅ Unlimited |
 | Copy image URLs | ✅ | ✅ |
@@ -115,7 +115,7 @@
 9. **Copy** — Use the copy button to put selected image URLs on the clipboard
 10. **Download** — Click ⬇️ for a basic download, the ZIP button to save the batch as an archive, or ⭐ for Advanced Download (premium). Large premium batches are split into numbered ZIP parts automatically. A toast reports how many files were downloaded and how many failed. Downloads are fetched by the panel page, so keep the panel, popup or tab open until the batch finishes
 
-### Advanced Download (Premium)
+### Advanced Download (Pro)
 
 1. Get your license key at [annmax1983.com](https://annmax1983.com/checkout?plugin=imagegrabber)
 2. Open Settings (⚙️ gear icon) → enter your license key

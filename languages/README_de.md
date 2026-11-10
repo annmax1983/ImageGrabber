@@ -30,7 +30,7 @@
 | 💾 **Dauerhafter Zustand** | Bildlisten und deine „Entfernt"-Markierungen überleben Seiten-Neuladen und Service-Worker-Neustarts |
 | 🔄 **SPA-Unterstützung** | Erkennt echte Navigationen sowie `pushState` / `replaceState` / `popstate`; Bilder der vorherigen Seite werden gelöscht und die neue Ansicht automatisch neu gescannt |
 
-### Premium-Funktionen (Lizenz erforderlich)
+### Pro-Funktionen (Lizenz erforderlich)
 
 | Funktion | Beschreibung |
 |----------|--------------|
@@ -42,9 +42,9 @@
 
 ---
 
-## Kostenlos vs. Premium
+## Kostenlos vs. Pro
 
-| | Kostenlos | Premium |
+| | Kostenlos | Pro |
 |---|:---:|:---:|
 | Bilderscannen & Browsen | ✅ Unbegrenzt | ✅ Unbegrenzt |
 | Bild-URLs kopieren | ✅ | ✅ |
@@ -113,9 +113,9 @@
 7. **Auswählen** — Bilder anklicken zum Auswählen (bis zu 30 für kostenlose Nutzer)
 8. **Vorschau** — Auf ein beliebiges Bild klicken, um die Lightbox zu öffnen
 9. **Kopieren** — Mit dem Kopier-Button die URLs der ausgewählten Bilder in die Zwischenablage legen
-10. **Download** — ⬇️ für Standard-Download, 📦 um den Stapel als ZIP zu speichern, oder ⭐ für erweiterten Download (Premium). Ein Hinweis meldet, wie viele Dateien heruntergeladen wurden und wie viele fehlgeschlagen sind. Die Downloads werden von der Panel-Seite ausgeführt; halte sie bis zum Ende des Batches geöffnet. Große Premium-Stapel werden automatisch in nummerierte ZIP-Teile aufgeteilt
+10. **Download** — ⬇️ für Standard-Download, 📦 um den Stapel als ZIP zu speichern, oder ⭐ für erweiterten Download (Pro). Ein Hinweis meldet, wie viele Dateien heruntergeladen wurden und wie viele fehlgeschlagen sind. Die Downloads werden von der Panel-Seite ausgeführt; halte sie bis zum Ende des Batches geöffnet. Große Pro-Stapel werden automatisch in nummerierte ZIP-Teile aufgeteilt
 
-### Erweiterter Download (Premium)
+### Erweiterter Download (Pro)
 
 1. Hole deinen Lizenzschlüssel auf [annmax1983.com](https://annmax1983.com/checkout?plugin=imagegrabber)
 2. Öffne die Einstellungen (⚙️ Zahnradsymbol) → gib deinen Lizenzschlüssel ein

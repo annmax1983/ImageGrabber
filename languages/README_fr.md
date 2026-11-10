@@ -30,7 +30,7 @@
 | 💾 **Persistance des données** | Les listes d'images et vos marques « supprimé » survivent aux rechargements de page et aux redémarrages du service worker |
 | 🔄 **Support SPA** | Détecte les navigations réelles et `pushState` / `replaceState` / `popstate` ; les images de la page précédente sont effacées et la nouvelle vue est ré-analysée automatiquement |
 
-### Fonctionnalités Premium (licence requise)
+### Fonctionnalités Pro (licence requise)
 
 | Fonctionnalité | Description |
 |---------|-------------|
@@ -42,9 +42,9 @@
 
 ---
 
-## Gratuit vs Premium
+## Gratuit vs Pro
 
-| | Gratuit | Premium |
+| | Gratuit | Pro |
 |---|:---:|:---:|
 | Analyse et parcours des images | ✅ Illimité | ✅ Illimité |
 | Copie des URLs d'images | ✅ | ✅ |
@@ -113,9 +113,9 @@
 7. **Sélectionnez** — Cliquez sur les images pour les sélectionner (30 max pour les utilisateurs gratuits)
 8. **Prévisualisez** — Cliquez sur une image pour ouvrir l'aperçu plein écran
 9. **Copiez** — Utilisez le bouton copier pour placer les URLs des images sélectionnées dans le presse-papiers
-10. **Téléchargez** — Cliquez sur ⬇️ pour le téléchargement de base, sur 📦 pour enregistrer le lot en ZIP, ou sur ⭐ pour le téléchargement avancé (Premium). Une notification indique combien de fichiers ont été téléchargés et combien ont échoué. Les téléchargements sont effectués par la page du panneau ; gardez-la ouverte jusqu'à la fin du lot. Les gros lots du téléchargement avancé sont automatiquement découpés en parties ZIP numérotées
+10. **Téléchargez** — Cliquez sur ⬇️ pour le téléchargement de base, sur 📦 pour enregistrer le lot en ZIP, ou sur ⭐ pour le téléchargement avancé (Pro). Une notification indique combien de fichiers ont été téléchargés et combien ont échoué. Les téléchargements sont effectués par la page du panneau ; gardez-la ouverte jusqu'à la fin du lot. Les gros lots du téléchargement avancé sont automatiquement découpés en parties ZIP numérotées
 
-### Téléchargement avancé (Premium)
+### Téléchargement avancé (Pro)
 
 1. Obtenez votre clé de licence sur [annmax1983.com](https://annmax1983.com/checkout?plugin=imagegrabber)
 2. Ouvrez les Paramètres (⚙️ icône engrenage) → saisissez votre clé de licence

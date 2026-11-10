@@ -30,7 +30,7 @@
 | 💾 **Estado persistente** | Las listas de imágenes y tus marcas de «eliminado» sobreviven a las recargas de página y a los reinicios del service worker |
 | 🔄 **Compatibilidad con SPA** | Detecta navegaciones reales y `pushState` / `replaceState` / `popstate`; las imágenes de la página anterior se borran y la nueva vista se re-escanea automáticamente |
 
-### Funcionalidades Premium (requieren licencia)
+### Funcionalidades Pro (requieren licencia)
 
 | Funcionalidad | Descripción |
 |---------|-------------|
@@ -42,9 +42,9 @@
 
 ---
 
-## Gratis vs Premium
+## Gratis vs Pro
 
-| | Gratis | Premium |
+| | Gratis | Pro |
 |---|:---:|:---:|
 | Escaneo y visualización de imágenes | ✅ Ilimitado | ✅ Ilimitado |
 | Copiar URLs de imágenes | ✅ | ✅ |
@@ -115,7 +115,7 @@
 9. **Copia** — Usa el botón de copiar para poner las URLs de las imágenes seleccionadas en el portapapeles
 10. **Descarga** — Haz clic en ⬇️ para la descarga básica, en 📦 para guardar el lote como ZIP, o en ⭐ para la descarga avanzada (premium). Un aviso informa de cuántos archivos se descargaron y cuántos fallaron. Las descargas las realiza la página del panel, así que mantenlo abierto hasta que termine el lote. Los lotes grandes de la descarga avanzada se dividen automáticamente en partes ZIP numeradas
 
-### Descarga avanzada (Premium)
+### Descarga avanzada (Pro)
 
 1. Obtén tu clave de licencia en [annmax1983.com](https://annmax1983.com/checkout?plugin=imagegrabber)
 2. Abre Configuración (⚙️ icono de engranaje) → introduce tu clave de licencia
