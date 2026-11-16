@@ -76,7 +76,7 @@
 | Mozilla Firefox | ✅ Entièrement pris en charge |
 | Autres navigateurs basés sur Chromium | ✅ Pris en charge (repli sur popup) |
 
-> **Note Firefox :** Firefox n’a pas d’API de panneau latéral, l’extension s’ouvre donc en **popup de la barre d’outils**. Ce popup contient toute l’interface de travail (vue grille/liste, filtres, sélection, téléchargements et saisie de la clé de licence) et peut aussi s’ouvrir dans un onglet détaché pour les lots plus importants. Seule exception : **🎯 Manual Pick**, qui fait partie du panneau latéral de Chrome / Edge et n’est donc pas proposé dans la version Firefox. La version Firefox ne demande pas la permission `sidePanel`. Laissez le popup ou l’onglet ouvert pendant un téléchargement par lot, car les téléchargements sont lancés depuis cette page.
+> **Note Firefox :** Firefox n’a pas d’API de panneau latéral, l’extension s’ouvre donc en **popup de la barre d’outils**. Ce popup contient toute l’interface de travail (vue grille/liste, filtres, sélection, téléchargements et saisie de la clé de licence) et peut aussi s’ouvrir dans un onglet détaché pour les lots plus importants. Seule exception : **🎯 Manual Pick**, disponible dans le panneau latéral et l’onglet détaché (pas dans le popup), qui n’est pas proposé dans la version Firefox. La version Firefox ne demande pas la permission `sidePanel`. Laissez le popup ou l’onglet ouvert pendant un téléchargement par lot, car les téléchargements sont lancés depuis cette page.
 
 ---
 
@@ -85,8 +85,8 @@
 | Interface | Ouverture | Ce qu'elle offre |
 |---------|--------------|----------------|
 | **Panneau latéral** | Clic sur l'icône de la barre d'outils (Chrome / Edge) | Interface complète, y compris le panneau ⚙️ Paramètres où saisir la clé de licence, plus la 🎯 **Sélection manuelle** |
-| **Popup** | S'ouvre automatiquement sur les navigateurs sans API de panneau latéral, ou si le panneau latéral ne peut pas s'ouvrir | Navigation en grille/liste, filtres, sélection et téléchargements |
-| **Onglet détaché** | S'ouvre automatiquement en repli lorsque le panneau latéral est indisponible | Navigation en grille, filtres, sélection et téléchargements |
+| **Popup** | S'ouvre automatiquement sur les navigateurs sans API de panneau latéral, ou si le panneau latéral ne peut pas s'ouvrir | Navigation en grille/liste, filtres, sélection et téléchargements (sans 🎯 Sélection manuelle) |
+| **Onglet détaché** | S'ouvre automatiquement en repli lorsque le panneau latéral est indisponible | Navigation en grille, filtres, sélection, téléchargements et 🎯 Sélection manuelle |
 
 ---
 

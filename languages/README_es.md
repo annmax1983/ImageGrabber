@@ -76,7 +76,7 @@
 | Mozilla Firefox | ✅ Totalmente compatible |
 | Otros navegadores basados en Chromium | ✅ Compatible (alternativa con popup) |
 
-> **Nota sobre Firefox:** Firefox no tiene API de panel lateral, así que la extensión se abre como **ventana emergente de la barra de herramientas**. Esa ventana contiene toda la interfaz de trabajo (vista de cuadrícula/lista, filtros, selección, descargas y entrada de la clave de licencia) y también puede abrirse como pestaña independiente para lotes grandes. La única excepción es **🎯 Manual Pick**, que forma parte del panel lateral de Chrome / Edge y por tanto no se ofrece en la versión de Firefox. La versión de Firefox no solicita el permiso `sidePanel`. Mantén la ventana o la pestaña abierta durante las descargas por lotes, porque las descargas se ejecutan desde esa página.
+> **Nota sobre Firefox:** Firefox no tiene API de panel lateral, así que la extensión se abre como **ventana emergente de la barra de herramientas**. Esa ventana contiene toda la interfaz de trabajo (vista de cuadrícula/lista, filtros, selección, descargas y entrada de la clave de licencia) y también puede abrirse como pestaña independiente para lotes grandes. La única excepción es **🎯 Manual Pick**, disponible en el panel lateral y en la pestaña independiente (no en el popup), que no se ofrece en la versión de Firefox. La versión de Firefox no solicita el permiso `sidePanel`. Mantén la ventana o la pestaña abierta durante las descargas por lotes, porque las descargas se ejecutan desde esa página.
 
 ---
 
@@ -85,8 +85,8 @@
 | Interfaz | Cómo se abre | Qué ofrece |
 |---------|--------------|----------------|
 | **Panel lateral** | Haz clic en el icono de la barra de herramientas (Chrome / Edge) | Interfaz completa, incluido el panel ⚙️ Configuración donde se introduce la clave de licencia, además de 🎯 **Selección manual** |
-| **Popup** | Se abre automáticamente en navegadores sin la API de panel lateral, o si el panel lateral no puede abrirse | Navegación en cuadrícula/lista, filtros, selección y descargas |
-| **Pestaña independiente** | Se abre automáticamente como alternativa cuando el panel lateral no puede usarse | Navegación en cuadrícula, filtros, selección y descargas |
+| **Popup** | Se abre automáticamente en navegadores sin la API de panel lateral, o si el panel lateral no puede abrirse | Navegación en cuadrícula/lista, filtros, selección y descargas (sin 🎯 Selección manual) |
+| **Pestaña independiente** | Se abre automáticamente como alternativa cuando el panel lateral no puede usarse | Navegación en cuadrícula, filtros, selección, descargas y 🎯 Selección manual |
 
 ---
 
@@ -150,12 +150,6 @@ Esta extensión solo proporciona capacidades de visualización y descarga local 
 ## Recordatorio sobre rastreo web
 
 No uses esta herramienta para capturar masivamente recursos de imagen de sitios web con protección de derechos de autor, mecanismos anti-rastreo o restricciones claras de uso de contenido. Respeta las reglas de acceso del sitio web y las leyes locales al escanear imágenes de páginas.
-
----
-
-## Aviso sobre el código fuente
-
-Este repositorio contiene el código fuente completo de la extensión: el manifest, los scripts de contenido, el service worker, todas las interfaces, los archivos de idioma y el script de build. La extensión también se distribuye a través de Chrome Web Store, Microsoft Edge Add-ons y Firefox Add-ons (AMO).
 
 ---
 

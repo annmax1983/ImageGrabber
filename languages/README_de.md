@@ -76,7 +76,7 @@
 | Mozilla Firefox | ✅ Vollständig unterstützt |
 | Andere Chromium-basierte Browser | ✅ Unterstützt (Popup-Fallback) |
 
-> **Firefox-Hinweis:** Firefox kennt keine `sidePanel`-API, deshalb öffnet sich die Erweiterung als **Symbolleisten-Popup**. Das Popup enthält die komplette Arbeitsoberfläche (Raster-/Listenansicht, Filter, Auswahl, Downloads und Lizenzschlüssel-Eingabe) und kann für größere Stapel auch als eigener Tab geöffnet werden. Die einzige Ausnahme ist **🎯 Manual Pick**: das gehört zur Seitenleiste von Chrome / Edge und wird in der Firefox-Version daher nicht angeboten. Die Berechtigung `sidePanel` wird in der Firefox-Version nicht angefordert. Während eines Stapel-Downloads das Popup oder den Tab geöffnet lassen, da die Downloads von dieser Seite ausgeführt werden.
+> **Firefox-Hinweis:** Firefox kennt keine `sidePanel`-API, deshalb öffnet sich die Erweiterung als **Symbolleisten-Popup**. Das Popup enthält die komplette Arbeitsoberfläche (Raster-/Listenansicht, Filter, Auswahl, Downloads und Lizenzschlüssel-Eingabe) und kann für größere Stapel auch als eigener Tab geöffnet werden. Die einzige Ausnahme ist **🎯 Manual Pick**: es steht in der Seitenleiste und im abgetrennten Tab zur Verfügung (nicht im Popup); die Firefox-Version bietet es nicht an. Die Berechtigung `sidePanel` wird in der Firefox-Version nicht angefordert. Während eines Stapel-Downloads das Popup oder den Tab geöffnet lassen, da die Downloads von dieser Seite ausgeführt werden.
 
 ---
 
@@ -85,8 +85,8 @@
 | Oberfläche | Öffnen | Funktionsumfang |
 |---------|--------------|----------------|
 | **Side Panel** | Klick auf das Toolbar-Symbol (Chrome / Edge) | Vollständige UI, inklusive ⚙️ Einstellungs-Panel zur Eingabe des Lizenzschlüssels, plus 🎯 **Manuelle Auswahl** |
-| **Popup** | Öffnet sich automatisch in Browsern ohne Side-Panel-API oder wenn das Side Panel nicht geöffnet werden kann | Raster-/Listenansicht, Filter, Auswahl und Downloads |
-| **Abgetrennter Tab** | Öffnet sich automatisch als Fallback, wenn das Side Panel nicht genutzt werden kann | Rasteransicht, Filter, Auswahl und Downloads |
+| **Popup** | Öffnet sich automatisch in Browsern ohne Side-Panel-API oder wenn das Side Panel nicht geöffnet werden kann | Raster-/Listenansicht, Filter, Auswahl und Downloads (ohne 🎯 Manuelle Auswahl) |
+| **Abgetrennter Tab** | Öffnet sich automatisch als Fallback, wenn das Side Panel nicht genutzt werden kann | Rasteransicht, Filter, Auswahl, Downloads und 🎯 Manuelle Auswahl |
 
 ---
 

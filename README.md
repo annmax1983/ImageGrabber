@@ -76,7 +76,7 @@
 | Mozilla Firefox | ✅ Fully supported — Manifest V3, Firefox 140+ (desktop) | Popup |
 | Other Chromium-based browsers | ✅ Supported | Popup fallback |
 
-> **Firefox note:** Firefox has no `sidePanel` API, so the extension opens as a **toolbar popup** instead of a side panel — that popup carries the whole working UI (grid/list browsing, filters, selection, downloads and the licence key entry) and it can also open as a detached tab for larger batches. The one exception is **🎯 Manual Pick**, which lives in the Chrome / Edge side panel and is therefore not offered in the Firefox build. The `sidePanel` permission is not declared in the Firefox build. Keep the popup or tab open while a batch downloads, because downloads are fetched from that page.
+> **Firefox note:** Firefox has no `sidePanel` API, so the extension opens as a **toolbar popup** instead of a side panel — that popup carries the whole working UI (grid/list browsing, filters, selection, downloads and the licence key entry) and it can also open as a detached tab for larger batches. The one exception is **🎯 Manual Pick**, which lives in the side panel and the detached tab (not the popup) and is not offered in the Firefox build. The `sidePanel` permission is not declared in the Firefox build. Keep the popup or tab open while a batch downloads, because downloads are fetched from that page.
 
 ---
 
@@ -85,8 +85,8 @@
 | Surface | How it opens | What it offers |
 |---------|--------------|----------------|
 | **Side Panel** | Click the toolbar icon (Chrome / Edge only) | Full UI, including the ⚙️ Settings panel where the license key is entered, plus 🎯 **Manual Pick** |
-| **Popup** | Click the toolbar icon on Firefox (no side-panel API), or on Chromium browsers without side-panel support | Grid/list browsing, filters, selection, downloads and the licence key entry (🎯 Manual Pick stays side-panel only) |
-| **Detached tab** | Opens automatically as a fallback when neither the side panel nor the popup can be used | Grid browsing, filters, selection and downloads |
+| **Popup** | Click the toolbar icon on Firefox (no side-panel API), or on Chromium browsers without side-panel support | Grid/list browsing, filters, selection, downloads and the licence key entry (🎯 Manual Pick is not in the popup) |
+| **Detached tab** | Opens automatically as a fallback when neither the side panel nor the popup can be used | Grid browsing, filters, selection, downloads and 🎯 Manual Pick |
 
 ---
 
