@@ -24,8 +24,8 @@
 | 🖱️ **Right-Click Entry** | Right-click the page → **Grab images on this page** to open the panel and scan the current tab right away — no need to find the toolbar icon first |
 | 🖼️ **Lightbox Preview** | Full-size preview with keyboard navigation (← → Esc), download and copy-URL actions |
 | 🔗 **Copy URLs** | Copy the selected image URLs (or all filtered ones) to the clipboard |
-| 📥 **Batch Download (30 max per batch)** | Each image is fetched inside the extension page with the page's cookies and `Referer`, then handed to the browser's download engine as a blob — images behind hotlink protection or login sessions save as the real file, not a 403 page. Keep the panel open until the batch finishes |
-| 📦 **ZIP Download** | Packs the current batch into a single `.zip` and saves it as one file — handy for galleries, using the same hotlink-safe fetching as a normal batch. Very large batches are split into numbered parts automatically (300 files or 300 MB per part). Free, within the 30-image batch limit |
+| 📥 **Batch Download (10 max per batch)** | Each image is fetched inside the extension page with the page's cookies and `Referer`, then handed to the browser's download engine as a blob — images behind hotlink protection or login sessions save as the real file, not a 403 page. Keep the panel open until the batch finishes |
+| 📦 **ZIP Download** | Packs the current batch into a single `.zip` and saves it as one file — handy for galleries, using the same hotlink-safe fetching as a normal batch. Very large batches are split into numbered parts automatically (300 files or 300 MB per part). Free, within the 10-image batch limit |
 | 📊 **Download Result Report** | When a batch finishes, a toast reports how many files succeeded and how many failed |
 | 💾 **Persistent State** | Image lists and your "removed" marks survive page reloads and background restarts |
 | 🔄 **SPA Support** | Detects real navigations and `pushState` / `replaceState` / `popstate`; the previous page's images are cleared and the new view is re-scanned automatically |
@@ -34,7 +34,7 @@
 
 | Feature | Description |
 |---------|-------------|
-| ⭐ **Unlimited Selection** | No 30-image limit — select and download as many as you want |
+| ⭐ **Unlimited Selection** | No 10-image limit — select and download as many as you want |
 | 🔬 **pHash Deduplication** | Perceptual hash detects duplicate/similar images even when their URLs differ |
 | 🔄 **Format Conversion** | Convert on download to JPG, PNG or WebP. GIF, SVG, AVIF and other source formats are kept as-is instead of being lossy re-encoded |
 | 🗜️ **Image Compression** | Adjust quality and max width to reduce file size. With **Original** format and no resizing, the original bytes are downloaded untouched |
@@ -48,7 +48,7 @@
 |---|:---:|:---:|
 | Image scanning & browsing | ✅ Unlimited | ✅ Unlimited |
 | Copy image URLs | ✅ | ✅ |
-| Batch download limit | 30 images per batch | Unlimited |
+| Batch download limit | 10 images per batch | Unlimited |
 | Basic download (original format) | ✅ | ✅ |
 | ZIP of the current batch | ✅ | ✅ |
 | Hotlink / login-protected downloads | ✅ | ✅ |
@@ -110,7 +110,7 @@
 4. **Or click Scan** — Manually trigger a one-time full-page scan. With **Scroll** enabled, the page first scrolls down so lazy-loaded images load, then scans
 5. **Filter** — Set minimum width/height, select image type, choose sort order
 6. **Switch views** — Toggle between grid (▦) and list (☰) layout
-7. **Select** — Click images to select (up to 30 for free users)
+7. **Select** — Click images to select (up to 10 for free users)
 8. **Preview** — Click any image to open the lightbox
 9. **Copy** — Use the copy button to put selected image URLs on the clipboard
 10. **Download** — Click ⬇️ for a basic download, the ZIP button to save the batch as an archive, or ⭐ for Advanced Download (premium). Large premium batches are split into numbered ZIP parts automatically. A toast reports how many files were downloaded and how many failed. Downloads are fetched by the panel page, so keep the panel, popup or tab open until the batch finishes

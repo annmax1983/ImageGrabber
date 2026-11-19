@@ -24,8 +24,8 @@
 | 🖱️ **Entrada por clic derecho** | Haz clic derecho en la página → **Capturar las imágenes de esta página** para abrir el panel y escanear la pestaña actual al instante, sin buscar antes el icono de la barra de herramientas |
 | 🖼️ **Vista previa en lightbox** | Vista previa a tamaño completo con navegación por teclado (← → Esc), descarga y copia de URL |
 | 🔗 **Copiar URLs** | Copia al portapapeles las URLs de las imágenes seleccionadas (o de todas las filtradas) |
-| 📥 **Descarga por lotes (máx. 30 por lote)** | Cada imagen se obtiene dentro de la página de la extensión con las cookies y el `Referer` de la página, y se entrega al motor de descargas como blob — las imágenes con protección antienlace o restringidas a sesión iniciada se guardan como el archivo real, no como una página 403. Mantén el panel abierto hasta que termine el lote |
-| 📦 **Descarga ZIP** | Empaqueta el lote actual en un único `.zip` — cómodo para galerías, con la misma obtención a prueba de hotlink que un lote normal. Los lotes muy grandes se dividen automáticamente en partes numeradas (300 archivos o 300 MB por parte). Gratis, hasta el límite de 30 imágenes |
+| 📥 **Descarga por lotes (máx. 10 por lote)** | Cada imagen se obtiene dentro de la página de la extensión con las cookies y el `Referer` de la página, y se entrega al motor de descargas como blob — las imágenes con protección antienlace o restringidas a sesión iniciada se guardan como el archivo real, no como una página 403. Mantén el panel abierto hasta que termine el lote |
+| 📦 **Descarga ZIP** | Empaqueta el lote actual en un único `.zip` — cómodo para galerías, con la misma obtención a prueba de hotlink que un lote normal. Los lotes muy grandes se dividen automáticamente en partes numeradas (300 archivos o 300 MB por parte). Gratis, hasta el límite de 10 imágenes |
 | 📊 **Informe de resultados** | Al terminar un lote, un aviso indica cuántos archivos se descargaron y cuántos fallaron |
 | 💾 **Estado persistente** | Las listas de imágenes y tus marcas de «eliminado» sobreviven a las recargas de página y a los reinicios del service worker |
 | 🔄 **Compatibilidad con SPA** | Detecta navegaciones reales y `pushState` / `replaceState` / `popstate`; las imágenes de la página anterior se borran y la nueva vista se re-escanea automáticamente |
@@ -34,7 +34,7 @@
 
 | Funcionalidad | Descripción |
 |---------|-------------|
-| ⭐ **Selección ilimitada** | Sin límite de 30 imágenes — selecciona y descarga tantas como quieras |
+| ⭐ **Selección ilimitada** | Sin límite de 10 imágenes — selecciona y descarga tantas como quieras |
 | 🔬 **Deduplicación por pHash** | El hash perceptivo detecta imágenes duplicadas/similares aunque tengan URLs distintas |
 | 🔄 **Conversión de formato** | Convierte al descargar a JPG, PNG o WebP. GIF, SVG, AVIF y otros formatos de origen se conservan tal cual en lugar de recodificarse con pérdida |
 | 🗜️ **Compresión de imágenes** | Ajusta la calidad y el ancho máximo para reducir el tamaño del archivo. Con formato **Original** y sin redimensionar, se descargan los bytes originales sin tocar |
@@ -48,7 +48,7 @@
 |---|:---:|:---:|
 | Escaneo y visualización de imágenes | ✅ Ilimitado | ✅ Ilimitado |
 | Copiar URLs de imágenes | ✅ | ✅ |
-| Límite de descarga por lotes | 30 imágenes por lote | Ilimitado |
+| Límite de descarga por lotes | 10 imágenes por lote | Ilimitado |
 | Descarga básica (formato original) | ✅ | ✅ |
 | ZIP del lote actual | ✅ | ✅ |
 | Descargas con antienlace / sesión | ✅ | ✅ |
@@ -110,7 +110,7 @@
 4. **O haz clic en Escanear** — Lanza manualmente un escaneo completo de la página. Con **Desplazar** activado, la página primero se desplaza hacia abajo para que carguen las imágenes de carga diferida y luego se escanea
 5. **Filtra** — Establece ancho/alto mínimo, selecciona el tipo de imagen y elige el orden
 6. **Cambia de vista** — Alterna entre cuadrícula (▦) y lista (☰)
-7. **Selecciona** — Haz clic en las imágenes para seleccionar (hasta 30 para usuarios gratuitos)
+7. **Selecciona** — Haz clic en las imágenes para seleccionar (hasta 10 para usuarios gratuitos)
 8. **Vista previa** — Haz clic en cualquier imagen para abrir el lightbox
 9. **Copia** — Usa el botón de copiar para poner las URLs de las imágenes seleccionadas en el portapapeles
 10. **Descarga** — Haz clic en ⬇️ para la descarga básica, en 📦 para guardar el lote como ZIP, o en ⭐ para la descarga avanzada (premium). Un aviso informa de cuántos archivos se descargaron y cuántos fallaron. Las descargas las realiza la página del panel, así que mantenlo abierto hasta que termine el lote. Los lotes grandes de la descarga avanzada se dividen automáticamente en partes ZIP numeradas

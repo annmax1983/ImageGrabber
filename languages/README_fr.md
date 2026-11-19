@@ -24,8 +24,8 @@
 | 🖱️ **Entrée par clic droit** | Clic droit sur la page → **Récupérer les images de cette page** pour ouvrir le panneau et analyser immédiatement l'onglet courant, sans chercher d'abord l'icône de la barre d'outils |
 | 🖼️ **Prévisualisation plein écran** | Aperçu en taille réelle avec navigation clavier (← → Esc), téléchargement et copie d'URL |
 | 🔗 **Copier les URLs** | Copie dans le presse-papiers les URLs des images sélectionnées (ou de toutes celles filtrées) |
-| 📥 **Téléchargement par lot (30 max par lot)** | Chaque image est récupérée dans la page de l'extension avec les cookies et le `Referer` de la page, puis transmise au moteur de téléchargement sous forme de blob — les images protégées contre le hotlink ou réservées à une session connectée sont enregistrées comme le vrai fichier, pas comme une page 403. Gardez le panneau ouvert jusqu'à la fin du lot |
-| 📦 **Téléchargement ZIP** | Regroupe le lot en cours dans un seul `.zip` — pratique pour les galeries, avec la même récupération anti-hotlink qu'un lot normal. Les lots très volumineux sont automatiquement découpés en parties numérotées (300 fichiers ou 300 Mo par partie). Gratuit, dans la limite de 30 images |
+| 📥 **Téléchargement par lot (10 max par lot)** | Chaque image est récupérée dans la page de l'extension avec les cookies et le `Referer` de la page, puis transmise au moteur de téléchargement sous forme de blob — les images protégées contre le hotlink ou réservées à une session connectée sont enregistrées comme le vrai fichier, pas comme une page 403. Gardez le panneau ouvert jusqu'à la fin du lot |
+| 📦 **Téléchargement ZIP** | Regroupe le lot en cours dans un seul `.zip` — pratique pour les galeries, avec la même récupération anti-hotlink qu'un lot normal. Les lots très volumineux sont automatiquement découpés en parties numérotées (300 fichiers ou 300 Mo par partie). Gratuit, dans la limite de 10 images |
 | 📊 **Rapport de résultat** | À la fin d'un lot, une notification indique combien de fichiers ont réussi et combien ont échoué |
 | 💾 **Persistance des données** | Les listes d'images et vos marques « supprimé » survivent aux rechargements de page et aux redémarrages du service worker |
 | 🔄 **Support SPA** | Détecte les navigations réelles et `pushState` / `replaceState` / `popstate` ; les images de la page précédente sont effacées et la nouvelle vue est ré-analysée automatiquement |
@@ -34,7 +34,7 @@
 
 | Fonctionnalité | Description |
 |---------|-------------|
-| ⭐ **Sélection illimitée** | Pas de limite de 30 images — sélectionnez et téléchargez autant que vous voulez |
+| ⭐ **Sélection illimitée** | Pas de limite de 10 images — sélectionnez et téléchargez autant que vous voulez |
 | 🔬 **Dédoublonnage pHash** | Le hash perceptuel détecte les images en double/similaires même à partir d'URLs différentes |
 | 🔄 **Conversion de format** | Convertissez au téléchargement en JPG, PNG ou WebP. Les formats sources GIF, SVG, AVIF et autres sont conservés tels quels au lieu d'être réencodés avec perte |
 | 🗜️ **Compression d'images** | Ajustez la qualité et la largeur maximale pour réduire la taille des fichiers. Avec le format **Original** et sans redimensionnement, les octets d'origine sont téléchargés sans modification |
@@ -48,7 +48,7 @@
 |---|:---:|:---:|
 | Analyse et parcours des images | ✅ Illimité | ✅ Illimité |
 | Copie des URLs d'images | ✅ | ✅ |
-| Limite de téléchargement par lot | 30 images par lot | Illimité |
+| Limite de téléchargement par lot | 10 images par lot | Illimité |
 | Téléchargement de base (format original) | ✅ | ✅ |
 | ZIP du lot en cours | ✅ | ✅ |
 | Téléchargements hotlink / session connectée | ✅ | ✅ |
@@ -110,7 +110,7 @@
 4. **Ou cliquez sur Scanner** — Déclenchez manuellement un scan complet de la page. Avec **Défiler** activé, la page défile d'abord vers le bas pour charger les images en chargement différé, puis elle est analysée
 5. **Filtrez** — Définissez une largeur/hauteur minimale, sélectionnez le type d'image, choisissez l'ordre de tri
 6. **Changez de vue** — Basculez entre la grille (▦) et la liste (☰)
-7. **Sélectionnez** — Cliquez sur les images pour les sélectionner (30 max pour les utilisateurs gratuits)
+7. **Sélectionnez** — Cliquez sur les images pour les sélectionner (10 max pour les utilisateurs gratuits)
 8. **Prévisualisez** — Cliquez sur une image pour ouvrir l'aperçu plein écran
 9. **Copiez** — Utilisez le bouton copier pour placer les URLs des images sélectionnées dans le presse-papiers
 10. **Téléchargez** — Cliquez sur ⬇️ pour le téléchargement de base, sur 📦 pour enregistrer le lot en ZIP, ou sur ⭐ pour le téléchargement avancé (Pro). Une notification indique combien de fichiers ont été téléchargés et combien ont échoué. Les téléchargements sont effectués par la page du panneau ; gardez-la ouverte jusqu'à la fin du lot. Les gros lots du téléchargement avancé sont automatiquement découpés en parties ZIP numérotées

@@ -24,8 +24,8 @@
 | 🖱️ **Rechtsklick-Einstieg** | Rechtsklick auf die Seite → **Bilder auf dieser Seite sammeln**, um das Panel zu öffnen und den aktuellen Tab sofort zu scannen – ohne erst das Symbolleisten-Symbol zu suchen |
 | 🖼️ **Lightbox-Vorschau** | Vollbild-Vorschau mit Tastaturnavigation (← → Esc), Download und URL-Kopieren |
 | 🔗 **URLs kopieren** | Kopiert die URLs der ausgewählten (oder aller gefilterten) Bilder in die Zwischenablage |
-| 📥 **Batch-Download (max. 30 pro Batch)** | Jedes Bild wird mit den Cookies und dem `Referer` der Seite innerhalb der Erweiterungsseite abgerufen und der Download-Engine als Blob übergeben — Bilder hinter Hotlink-Schutz oder Login-Sitzungen werden als echte Datei gespeichert, nicht als 403-Seite. Das Panel muss bis zum Ende des Batches geöffnet bleiben |
-| 📦 **ZIP-Download** | Packt den aktuellen Stapel in eine einzige `.zip`-Datei — praktisch für Galerien, mit derselben hotlink-sicheren Abholung wie ein normaler Batch. Sehr große Stapel werden automatisch in nummerierte Teile aufgeteilt (300 Dateien oder 300 MB pro Teil). Kostenlos, bis zum Limit von 30 Bildern |
+| 📥 **Batch-Download (max. 10 pro Batch)** | Jedes Bild wird mit den Cookies und dem `Referer` der Seite innerhalb der Erweiterungsseite abgerufen und der Download-Engine als Blob übergeben — Bilder hinter Hotlink-Schutz oder Login-Sitzungen werden als echte Datei gespeichert, nicht als 403-Seite. Das Panel muss bis zum Ende des Batches geöffnet bleiben |
+| 📦 **ZIP-Download** | Packt den aktuellen Stapel in eine einzige `.zip`-Datei — praktisch für Galerien, mit derselben hotlink-sicheren Abholung wie ein normaler Batch. Sehr große Stapel werden automatisch in nummerierte Teile aufgeteilt (300 Dateien oder 300 MB pro Teil). Kostenlos, bis zum Limit von 10 Bildern |
 | 📊 **Download-Ergebnisbericht** | Nach Abschluss eines Batches meldet ein Hinweis, wie viele Dateien erfolgreich waren und wie viele fehlgeschlagen sind |
 | 💾 **Dauerhafter Zustand** | Bildlisten und deine „Entfernt"-Markierungen überleben Seiten-Neuladen und Service-Worker-Neustarts |
 | 🔄 **SPA-Unterstützung** | Erkennt echte Navigationen sowie `pushState` / `replaceState` / `popstate`; Bilder der vorherigen Seite werden gelöscht und die neue Ansicht automatisch neu gescannt |
@@ -34,7 +34,7 @@
 
 | Funktion | Beschreibung |
 |----------|--------------|
-| ⭐ **Unbegrenzte Auswahl** | Kein 30-Bilder-Limit — so viele auswählen und herunterladen wie gewünscht |
+| ⭐ **Unbegrenzte Auswahl** | Kein 10-Bilder-Limit — so viele auswählen und herunterladen wie gewünscht |
 | 🔬 **pHash-Deduplizierung** | Perceptual Hash erkennt doppelte/ähnliche Bilder selbst von verschiedenen URLs |
 | 🔄 **Formatkonvertierung** | Beim Download nach JPG, PNG oder WebP konvertieren. GIF, SVG, AVIF und andere Ausgangsformate bleiben unverändert, statt verlustbehaftet neu codiert zu werden |
 | 🗜️ **Bildkompression** | Qualität und maximale Breite anpassen, um Dateigröße zu reduzieren. Bei **Original** ohne Größenänderung werden die Originalbytes unverändert heruntergeladen |
@@ -48,7 +48,7 @@
 |---|:---:|:---:|
 | Bilderscannen & Browsen | ✅ Unbegrenzt | ✅ Unbegrenzt |
 | Bild-URLs kopieren | ✅ | ✅ |
-| Batch-Download-Limit | 30 Bilder pro Batch | Unbegrenzt |
+| Batch-Download-Limit | 10 Bilder pro Batch | Unbegrenzt |
 | Standard-Download (Originalformat) | ✅ | ✅ |
 | ZIP des aktuellen Stapels | ✅ | ✅ |
 | Hotlink-/Login-geschützte Downloads | ✅ | ✅ |
@@ -110,7 +110,7 @@
 4. **Oder auf Scan klicken** — Manuell einen einmaligen Vollseiten-Scan auslösen. Ist **Scrollen** aktiviert, wird die Seite zuerst nach unten gescrollt, damit Lazy-Load-Bilder laden, und dann gescannt
 5. **Filtern** — Mindestbreite/-höhe einstellen, Bildtyp wählen, Sortierreihenfolge wählen
 6. **Ansichten wechseln** — Zwischen Raster (▦) und Listen (☰) Layout umschalten
-7. **Auswählen** — Bilder anklicken zum Auswählen (bis zu 30 für kostenlose Nutzer)
+7. **Auswählen** — Bilder anklicken zum Auswählen (bis zu 10 für kostenlose Nutzer)
 8. **Vorschau** — Auf ein beliebiges Bild klicken, um die Lightbox zu öffnen
 9. **Kopieren** — Mit dem Kopier-Button die URLs der ausgewählten Bilder in die Zwischenablage legen
 10. **Download** — ⬇️ für Standard-Download, 📦 um den Stapel als ZIP zu speichern, oder ⭐ für erweiterten Download (Pro). Ein Hinweis meldet, wie viele Dateien heruntergeladen wurden und wie viele fehlgeschlagen sind. Die Downloads werden von der Panel-Seite ausgeführt; halte sie bis zum Ende des Batches geöffnet. Große Pro-Stapel werden automatisch in nummerierte ZIP-Teile aufgeteilt
